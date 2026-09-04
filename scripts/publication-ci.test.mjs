@@ -176,6 +176,19 @@ test("Buildx can receive reviewed self-hosted runner network options without rep
   );
 });
 
+test("container smoke validates the image revision with a valid Docker template", () => {
+  const source = workflows["container.yml"];
+  assert.ok(
+    source.includes(
+      `docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.revision"}}'`,
+    ),
+  );
+  assert.doesNotMatch(
+    source,
+    /docker image inspect --format '\{\{index \.Config\.Labels \\"/,
+  );
+});
+
 test("private release rehearsal is manual, private-only, exact, and comprehensive", () => {
   const source = workflows["private-release-rehearsal.yml"];
   assert.match(source, /workflow_dispatch:/);

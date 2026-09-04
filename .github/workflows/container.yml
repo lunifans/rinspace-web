@@ -75,7 +75,7 @@ jobs:
             --tag "$IMAGE" \
             .
           test "$(docker image inspect --format '{{.Architecture}}' "$IMAGE")" = "${{ matrix.architecture }}"
-          test "$(docker image inspect --format '{{index .Config.Labels \"org.opencontainers.image.revision\"}}' "$IMAGE")" = "$GITHUB_SHA"
+          test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.revision"}}' "$IMAGE")" = "$GITHUB_SHA"
       - name: Validate root Compose, restart, health, and read-only runtime
         env:
           DOCKER_DEFAULT_PLATFORM: ${{ matrix.platform }}
