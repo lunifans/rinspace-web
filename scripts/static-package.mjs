@@ -237,10 +237,13 @@ export function assembleRuntimeShell({
       fs.copyFileSync(path.join(core, file), target);
     }
   }
-  for (const file of coreFiles.filter((name) => name.endsWith('.html'))) {
-    const absolute = path.join(output, file);
-    fs.writeFileSync(absolute, rewriteHtmlShell(fs.readFileSync(path.join(core, file), 'utf8'), runtimeConfig));
-  }
+  // Only index.html is the runtime-configured application shell. Auxiliary
+  // Vite HTML entries (for example, the design labs) intentionally have no
+  // runtime-config marker and keep their relative asset URLs unchanged.
+  fs.writeFileSync(
+    path.join(output, 'index.html'),
+    rewriteHtmlShell(fs.readFileSync(path.join(core, 'index.html'), 'utf8'), runtimeConfig),
+  );
   const index = fs.readFileSync(path.join(output, 'index.html'), 'utf8');
   fs.writeFileSync(path.join(output, '404.html'), index);
   fs.writeFileSync(path.join(output, 'runtime-config.json'), `${JSON.stringify(runtimeConfig, null, 2)}\n`);

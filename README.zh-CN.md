@@ -51,17 +51,72 @@ Rinspace Web 是 Rinspace（芥子环）的浏览器前端与本地演示运行�
 
 <!-- rinspace-section: quick-start -->
 
-## 三分钟快速开始
+## 对新手友好的快速开始
 
-前置条件：Node.js 22 与 Corepack；仓库固定 pnpm 9.7.0。
+不需要数据库、账号、CloudBase 项目或 `.env`。先按自己的目标选择最简单的路径：
+
+| 目标                                | 推荐路径                                | 需要安装         |
+| ----------------------------------- | --------------------------------------- | ---------------- |
+| 不学习 Node.js 或 pnpm，只体验 demo | [Docker 与 Compose](#docker-与-compose) | 只安装 Docker    |
+| 阅读或修改源码，并获得热更新        | 下方本地开发方式                        | Git + Node.js 22 |
+| 生成可交给静态托管平台的文件        | [静态部署](#静态部署)                   | Git + Node.js 22 |
+
+### 1. 在 Windows、macOS 或 Linux 安装 Git 与 Node.js
+
+Rinspace Web 文档约定并由 CI 验证的是 **Node.js 22.x**。官网可能默认选择更新的大版本，请在 [Node.js 下载页](https://nodejs.org/en/download)明确选择 22。若 `git --version` 不可用，还需安装 [Git](https://git-scm.com/downloads)。
+
+| 系统          | 适合新手的安装方式                                                                                     | 使用的终端                     |
+| ------------- | ------------------------------------------------------------------------------------------------------ | ------------------------------ |
+| Windows 10/11 | 安装 Git for Windows 和 Node.js 22 Windows 安装包，保留安装程序默认的 PATH 选项。                      | PowerShell 或 Windows Terminal |
+| macOS         | 安装 Node.js 22 macOS 安装包；若系统提示安装命令行工具，按提示补装 Git。                               | “终端”应用                     |
+| Linux         | 用发行版包管理器安装 Git，再按官网说明或用版本管理器安装 Node.js 22；发行版仓库里的 Node.js 可能过旧。 | 常用 shell                     |
+
+安装后关闭并重新打开终端，再检查：
+
+```bash
+git --version
+node --version
+npm --version
+```
+
+`node --version` 应以 `v22.` 开头。然后克隆仓库并进入目录：
+
+```bash
+git clone https://github.com/lunifans/rinspace-web.git
+cd rinspace-web
+```
+
+### 2. 用 pnpm 启动 Demo
+
+pnpm 只是本项目用来安装 JavaScript 依赖和运行脚本的包管理器，作用类似 npm；不会使用 pnpm 也没关系。仓库已经固定 pnpm 9.7.0，请不要替换 `pnpm-lock.yaml`，也不要用 `npm install` 安装项目依赖。
+
+正常情况下直接复制以下命令：
 
 ```bash
 corepack enable
+pnpm --version
 pnpm install --frozen-lockfile
 pnpm start
 ```
 
-打开 <http://127.0.0.1:5173/>。不需要数据库、账号、CloudBase 项目或 `.env`。干净 checkout 文档门禁会测量从安装到 ready 的实际耗时，并验证 demo 不发出外部请求；Task 27 记录实际证据，不把未验证平台写成性能承诺。
+打开 <http://127.0.0.1:5173/>。体验期间保持终端运行；按 <kbd>Ctrl</kbd>+<kbd>C</kbd> 停止。
+
+如果系统提示 `pnpm`“不是内部或外部命令”或 `command not found`，无需修改系统权限，直接通过 Corepack 运行：
+
+```bash
+corepack pnpm --version
+corepack pnpm install --frozen-lockfile
+corepack pnpm start
+```
+
+如果连 `corepack` 也不可用，但 `npm --version` 正常，可一次性安装项目指定版本，再重试正常命令：
+
+```bash
+npm install --global pnpm@9.7.0
+pnpm --version
+```
+
+如果系统阻止安装全局工具，请参考 [pnpm 官方安装说明](https://pnpm.io/installation)。干净 checkout 文档门禁会测量前置工具就绪后从安装到 ready 的实际耗时，并验证 demo 不发出外部请求；Task 27 记录实际证据，不把未验证平台写成性能承诺。
 
 <!-- rinspace-section: reset -->
 
@@ -75,22 +130,31 @@ pnpm start
 
 ## 静态部署
 
-core 只构建一次，然后在不重新编译的情况下组装根路径外壳：
+完成上方本地安装后，在仓库根目录运行以下命令。core 只构建一次，然后在不重新编译的情况下组装根路径外壳，并预览将要部署的准确目录：
 
 ```bash
 pnpm build
 pnpm package -- --config config/runtime.demo.json --out package
-RINSPACE_ARTIFACT_DIR=package pnpm preview
+pnpm preview:artifact -- --root package --port 4173
 ```
 
-子路径必须选用 `basePath`、本地 API、canonical、manifest scope 和 worker scope 一致的配置：
+打开 <http://127.0.0.1:4173/>。可部署文件位于 `package/`；按 <kbd>Ctrl</kbd>+<kbd>C</kbd> 停止预览。
+
+子路径必须选用 `basePath`、本地 API、canonical、manifest scope 和 worker scope 一致的配置。以下示例部署到 `/rinspace-demo/`：
 
 ```bash
 pnpm package -- --config config/runtime.demo.subpath.json --out package-subpath --base-path /rinspace-demo/
-RINSPACE_ARTIFACT_DIR=package-subpath RINSPACE_PREVIEW_BASE_PATH=/rinspace-demo/ pnpm preview
+pnpm preview:artifact -- --root package-subpath --port 4173
 ```
 
-部署完整输出目录。`_headers`、`_redirects`、`404.html` 和 `static-headers.json` 描述 SPA fallback、CSP、worker scope、哈希资源 immutable 与外壳 no-store 规则。托管平台不得把缺失 JS/CSS/font 重写为 HTML。
+打开 <http://127.0.0.1:4173/rinspace-demo/>。正式部署到真实域名前，复制 `config/` 中最接近需求的配置，填写公开的 `canonicalOrigin`、`basePath` 和同前缀 API 路径，再把该文件交给 `pnpm package`。配置会被所有浏览器下载，绝不能放入密码、token、私钥、数据库 URL、内部地址或真实用户数据。
+
+部署检查清单：
+
+1. 上传 `package/` 的**全部内容**（或完整子路径布局），包括点文件和生成的 metadata；不能只上传 `index.html` 或 `assets/`。
+2. 托管平台支持时应用 `_headers` 与 `_redirects`；使用其他服务器时，将 `static-headers.json` 精确转换为等价的 CSP、缓存与 Service Worker 规则。
+3. 浏览器页面导航需要 SPA fallback 到匹配的 `index.html`，但缺失的 JS、CSS、字体、图片等资源必须返回真实 `404`，不能返回 HTML。
+4. 访问首页并直接刷新一个深层 URL；确认 `/runtime-config.json` 和 `/version.json` 后再视为部署完成。
 
 首个特定平台模板选择 Netlify。`pnpm prepare:netlify` 使用同一 package 实现生成正确的 root/subpath 物理布局；配置更新、验证和回滚见 [`docs/static-hosting-netlify.zh-CN.md`](./docs/static-hosting-netlify.zh-CN.md)。在带凭据 preview 与回滚留下实测记录前，不提供一键部署按钮。
 
@@ -98,19 +162,52 @@ RINSPACE_ARTIFACT_DIR=package-subpath RINSPACE_PREVIEW_BASE_PATH=/rinspace-demo/
 
 ## Docker 与 Compose
 
-默认 Compose 在 loopback 8080 构建并运行零凭据根路径 demo：
+如果只想运行 demo，Docker 是最省心的路径：宿主机**不需要**安装 Node.js、Corepack 或 pnpm。
+
+| 系统          | 安装方式                                                                                                                                           |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Windows 10/11 | 安装并启动 [Docker Desktop for Windows](https://docs.docker.com/desktop/setup/install/windows-install/)，默认的 Linux container/WSL 2 方案即可。   |
+| macOS         | 根据 Apple 芯片或 Intel 芯片选择并启动 [Docker Desktop for Mac](https://docs.docker.com/desktop/setup/install/mac-install/)。                      |
+| Linux         | 按发行版安装 [Docker Engine](https://docs.docker.com/engine/install/) 和 [Docker Compose plugin](https://docs.docker.com/compose/install/linux/)。 |
+
+安装后，`docker compose version` 应能输出版本。克隆仓库、进入目录，然后在 loopback 8080 构建并运行零凭据根路径 demo：
 
 ```bash
+git clone https://github.com/lunifans/rinspace-web.git
+cd rinspace-web
+docker compose version
 docker compose up --build
 ```
 
-经过验证的子路径 overlay：
+首次构建需要下载基础镜像和依赖，可能比后续启动慢。日志显示服务 ready 后，打开 <http://127.0.0.1:8080/>。按 <kbd>Ctrl</kbd>+<kbd>C</kbd> 停止，再清理已停止的项目资源：
+
+```bash
+docker compose down
+```
+
+如需后台运行、查看日志、稍后停止：
+
+```bash
+docker compose up --build -d
+docker compose logs -f
+docker compose down
+```
+
+经过验证的子路径 overlay 使用以下命令，随后打开 <http://127.0.0.1:8080/rinspace-demo/>：
 
 ```bash
 docker compose -f compose.yaml -f compose.subpath.yaml up --build
 ```
 
 runtime 使用 UID/GID 1000、监听 8080、drop 全部 Linux capabilities、只读根文件系统，只把生成的外壳/config 写入 `/run/rinspace` tmpfs。`/healthz` 与 `/version.json` 提供健康状态和不可变构建事实。Compose 不使用 privileged、host network、Docker socket、凭据或持久卷。
+
+### 常见安装与启动问题
+
+- **5173 端口被占用：**运行 `pnpm start -- --port 5174`，再打开 `http://127.0.0.1:5174/`。
+- **8080 端口被占用：**PowerShell 运行 `$env:RINSPACE_WEB_PORT='8081'; docker compose up --build`；macOS/Linux shell 运行 `RINSPACE_WEB_PORT=8081 docker compose up --build`。
+- **找不到 `docker compose`：**先启动 Docker Desktop；Linux 需要安装 Compose plugin。本项目使用当前的 `docker compose`，不是旧版 `docker-compose`。
+- **部署后的深层链接返回 404：**配置 SPA fallback 并部署所有生成文件；不要把缺失资源请求重写成 HTML。
+- **子路径页面空白或跳转错误：**重新构建，保证 `basePath`、API 前缀、canonical origin 与实际托管目录完全一致。
 
 <!-- rinspace-section: integration -->
 

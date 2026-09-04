@@ -27,12 +27,26 @@ const expectedSections = [
 const requiredCommands = [
   'pnpm install --frozen-lockfile',
   'pnpm start',
+  'corepack pnpm install --frozen-lockfile',
+  'npm install --global pnpm@9.7.0',
   'pnpm build',
   'pnpm package -- --config config/runtime.demo.json --out package',
+  'pnpm preview:artifact -- --root package --port 4173',
   'docker compose up --build',
+  'docker compose down',
   'pnpm test',
   'pnpm test:static-package',
   'pnpm test:container-contract',
+];
+const requiredSetupGuidance = [
+  'Windows 10/11',
+  'macOS',
+  'Linux',
+  'https://nodejs.org/en/download',
+  'https://pnpm.io/installation',
+  'https://docs.docker.com/desktop/setup/install/windows-install/',
+  'https://docs.docker.com/desktop/setup/install/mac-install/',
+  'https://docs.docker.com/engine/install/',
 ];
 const requiredPublicKeys = [
   'RINSPACE_PUBLIC_BASE_PATH',
@@ -48,6 +62,9 @@ for (const document of documents) {
   }
   for (const command of requiredCommands) {
     if (!document.source.includes(command)) throw new Error(`${document.name} is missing command: ${command}`);
+  }
+  for (const guidance of requiredSetupGuidance) {
+    if (!document.source.includes(guidance)) throw new Error(`${document.name} is missing setup guidance: ${guidance}`);
   }
   for (const key of requiredPublicKeys) {
     if (!document.source.includes(key)) throw new Error(`${document.name} is missing public config key: ${key}`);
@@ -83,4 +100,6 @@ for (const [name, width, height] of [
   const sha256 = crypto.createHash('sha256').update(png).digest('hex');
   if (screenshotManifest.files?.[name]?.sha256 !== sha256) throw new Error(`${name} differs from the screenshot manifest.`);
 }
-process.stdout.write(`README parity passed (${expectedSections.length} shared sections, ${requiredCommands.length} shared commands, ${quickStart.timingMilliseconds.total} ms quick start).\n`);
+process.stdout.write(
+  `README parity passed (${expectedSections.length} shared sections, ${requiredCommands.length} shared commands, ${requiredSetupGuidance.length} setup requirements, ${quickStart.timingMilliseconds.total} ms quick start).\n`,
+);

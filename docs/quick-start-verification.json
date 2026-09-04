@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "verifiedAt": "2026-09-01T17:36:37.147Z",
+  "verifiedAt": "2026-09-04T10:15:53.748Z",
   "environment": {
     "platform": "linux",
     "architecture": "x64",
@@ -11,10 +11,10 @@
     "dependencyStoreMode": "warm-offline-store"
   },
   "timingMilliseconds": {
-    "copy": 387,
-    "install": 3590,
-    "serverReady": 1155,
-    "total": 5132
+    "copy": 1031,
+    "install": 3300,
+    "serverReady": 924,
+    "total": 5255
   },
   "result": "passed"
 }

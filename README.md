@@ -51,17 +51,72 @@ The images below are generated from the fixed local seed by `pnpm capture:demo-s
 
 <!-- rinspace-section: quick-start -->
 
-## Three-minute quick start
+## Beginner-friendly quick start
 
-Prerequisites: Node.js 22 and Corepack. The repository pins pnpm 9.7.0.
+No database, account, CloudBase project, or `.env` file is needed. Choose the path that matches what you want to do:
+
+| Goal                                          | Recommended path                          | What to install  |
+| --------------------------------------------- | ----------------------------------------- | ---------------- |
+| Try the demo without learning Node.js or pnpm | [Docker and Compose](#docker-and-compose) | Docker only      |
+| Read or change the source and get hot reload  | Local development below                   | Git + Node.js 22 |
+| Produce files for a static host               | [Static deployment](#static-deployment)   | Git + Node.js 22 |
+
+### 1. Install Git and Node.js on Windows, macOS, or Linux
+
+Rinspace Web's documented and CI-tested line is **Node.js 22.x**. The official download page may select a newer line by default, so explicitly select version 22 from the [Node.js download page](https://nodejs.org/en/download). Install [Git](https://git-scm.com/downloads) if `git --version` is not already available.
+
+| System        | Beginner route                                                                                                                                                                                    | Terminal to use                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| Windows 10/11 | Install Git for Windows and the Node.js 22 Windows installer. Keep the installer's default PATH options.                                                                                          | PowerShell or Windows Terminal |
+| macOS         | Install the Node.js 22 macOS installer. Install Git when macOS prompts for the command-line tools, if needed.                                                                                     | Terminal                       |
+| Linux         | Install Git with the distribution package manager, then install Node.js 22 using the official download instructions or a version manager. Distribution repositories may contain an older Node.js. | Your normal shell              |
+
+Close and reopen the terminal after installation, then check the tools:
+
+```bash
+git --version
+node --version
+npm --version
+```
+
+`node --version` should start with `v22.`. Next, clone the repository and enter it:
+
+```bash
+git clone https://github.com/lunifans/rinspace-web.git
+cd rinspace-web
+```
+
+### 2. Start the demo with pnpm
+
+pnpm is the package manager used to install this project's JavaScript dependencies and run its scripts. You do not need prior pnpm knowledge, and the repository pins pnpm 9.7.0 for you. Do not replace `pnpm-lock.yaml` or run `npm install` for project dependencies.
+
+The normal commands are:
 
 ```bash
 corepack enable
+pnpm --version
 pnpm install --frozen-lockfile
 pnpm start
 ```
 
-Open <http://127.0.0.1:5173/>. No database, account, CloudBase project, or `.env` file is needed. The clean-checkout documentation gate measures install-to-ready time and refuses external demo requests; timing evidence is recorded with Task 27 rather than presented as an unverified platform promise.
+Open <http://127.0.0.1:5173/>. Keep the terminal open while using the demo; press <kbd>Ctrl</kbd>+<kbd>C</kbd> to stop it.
+
+If `pnpm` is “not recognized” or “command not found”, use Corepack directly instead of changing system permissions:
+
+```bash
+corepack pnpm --version
+corepack pnpm install --frozen-lockfile
+corepack pnpm start
+```
+
+If `corepack` itself is unavailable but `npm --version` works, install the exact project version once and retry the normal commands:
+
+```bash
+npm install --global pnpm@9.7.0
+pnpm --version
+```
+
+See the [pnpm installation guide](https://pnpm.io/installation) if your system blocks global tools. The clean-checkout documentation gate measures install-to-ready time after prerequisites and refuses external demo requests; timing evidence is recorded with Task 27 rather than presented as an unverified platform promise.
 
 <!-- rinspace-section: reset -->
 
@@ -75,22 +130,31 @@ If bootstrap itself cannot complete, use **Reset demo** on the standalone error 
 
 ## Static deployment
 
-Build the runtime-neutral core once, then assemble a root shell without recompiling it:
+Run these commands from the repository root after completing the local installation above. Build the runtime-neutral core once, assemble a root shell without recompiling it, and preview the exact output directory:
 
 ```bash
 pnpm build
 pnpm package -- --config config/runtime.demo.json --out package
-RINSPACE_ARTIFACT_DIR=package pnpm preview
+pnpm preview:artifact -- --root package --port 4173
 ```
 
-For a subpath, select a config whose normalized `basePath`, local API path, canonical URL, manifest scope, and worker scope agree:
+Open <http://127.0.0.1:4173/>. The deployable files are now in `package/`; stop the preview with <kbd>Ctrl</kbd>+<kbd>C</kbd>.
+
+For a subpath, select a config whose normalized `basePath`, local API path, canonical URL, manifest scope, and worker scope agree. This example serves the demo at `/rinspace-demo/`:
 
 ```bash
 pnpm package -- --config config/runtime.demo.subpath.json --out package-subpath --base-path /rinspace-demo/
-RINSPACE_ARTIFACT_DIR=package-subpath RINSPACE_PREVIEW_BASE_PATH=/rinspace-demo/ pnpm preview
+pnpm preview:artifact -- --root package-subpath --port 4173
 ```
 
-Deploy the complete output directory. `_headers`, `_redirects`, `404.html`, and `static-headers.json` describe SPA fallback, CSP, worker scope, immutable hashed assets, and no-store shell files. A host must not rewrite a missing JS/CSS/font request to HTML.
+Open <http://127.0.0.1:4173/rinspace-demo/>. Before deploying to a real domain, copy the closest file in `config/`, set its public `canonicalOrigin`, `basePath`, and same-prefix API path, then pass that file to `pnpm package`. Configuration is downloaded by every browser: never put a password, token, private key, database URL, internal address, or real user data in it.
+
+Deployment checklist:
+
+1. Upload the **complete contents** of `package/` (or the complete subpath layout), including dotfiles and generated metadata. Do not upload only `index.html` or only `assets/`.
+2. Apply `_headers` and `_redirects` when the provider supports them. On another server, translate `static-headers.json` into equivalent CSP, cache, and service-worker rules.
+3. Configure SPA fallback to the matching `index.html` for browser navigation, but leave missing JS, CSS, font, image, and other asset requests as real `404` responses.
+4. Visit the home page and directly refresh a deep URL. Check `/runtime-config.json` and `/version.json` before considering the deployment complete.
 
 The first provider-specific template is Netlify. `pnpm prepare:netlify` creates the required physical root/subpath layout from the same package implementation; setup, config updates, verification, and rollback are documented in [`docs/static-hosting-netlify.md`](./docs/static-hosting-netlify.md). No one-click deploy button is advertised before a credentialed preview and rollback are recorded.
 
@@ -98,19 +162,52 @@ The first provider-specific template is Netlify. `pnpm prepare:netlify` creates 
 
 ## Docker and Compose
 
-The default Compose service builds and runs the zero-credential root demo on loopback port 8080:
+Docker is the simplest route if you only want to run the demo: it does **not** require Node.js, Corepack, or pnpm on the host.
+
+| System        | Install                                                                                                                                                                 |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Windows 10/11 | Install and start [Docker Desktop for Windows](https://docs.docker.com/desktop/setup/install/windows-install/). Its default Linux-container/WSL 2 setup is suitable.    |
+| macOS         | Install and start the correct Apple silicon or Intel build from [Docker Desktop for Mac](https://docs.docker.com/desktop/setup/install/mac-install/).                   |
+| Linux         | Install [Docker Engine](https://docs.docker.com/engine/install/) and the [Docker Compose plugin](https://docs.docker.com/compose/install/linux/) for your distribution. |
+
+After installation, `docker compose version` should print a version. Clone this repository, enter it, and start the zero-credential root demo on loopback port 8080:
 
 ```bash
+git clone https://github.com/lunifans/rinspace-web.git
+cd rinspace-web
+docker compose version
 docker compose up --build
 ```
 
-For the verified subpath overlay:
+The first build downloads base images and dependencies, so it may take longer than later starts. When the log reports the service as ready, open <http://127.0.0.1:8080/>. Press <kbd>Ctrl</kbd>+<kbd>C</kbd>, then remove the stopped project resources with:
+
+```bash
+docker compose down
+```
+
+To run in the background, inspect logs, and stop later:
+
+```bash
+docker compose up --build -d
+docker compose logs -f
+docker compose down
+```
+
+For the verified subpath overlay, run the following command and open <http://127.0.0.1:8080/rinspace-demo/>:
 
 ```bash
 docker compose -f compose.yaml -f compose.subpath.yaml up --build
 ```
 
 The runtime is UID/GID 1000, listens on 8080, drops all Linux capabilities, uses a read-only root filesystem, and writes only the generated shell/config to `/run/rinspace` tmpfs. Health and immutable build facts are available at `/healthz` and `/version.json`. The Compose files do not use privileged mode, host networking, the Docker socket, credentials, or persistent volumes.
+
+### Common setup problems
+
+- **Port 5173 is already in use:** run `pnpm start -- --port 5174`, then open `http://127.0.0.1:5174/`.
+- **Port 8080 is already in use:** in PowerShell run `$env:RINSPACE_WEB_PORT='8081'; docker compose up --build`; in macOS/Linux shells run `RINSPACE_WEB_PORT=8081 docker compose up --build`.
+- **`docker compose` is unavailable:** start Docker Desktop, or on Linux install the Compose plugin. This project uses the current `docker compose` command, not legacy `docker-compose`.
+- **A deployed deep link returns 404:** configure the SPA fallback and deploy all generated files; do not rewrite missing asset requests to HTML.
+- **A subpath page is blank or redirects incorrectly:** rebuild with one consistent `basePath`, API prefix, canonical origin, and physical hosting directory.
 
 <!-- rinspace-section: integration -->
 

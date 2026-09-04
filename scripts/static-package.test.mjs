@@ -10,6 +10,7 @@ import { assembleRuntimeShell, immutableCacheControl } from './static-package.mj
 function writeCore(directory, version) {
   fs.mkdirSync(path.join(directory, 'static/js'), { recursive: true });
   fs.mkdirSync(path.join(directory, 'static/css'), { recursive: true });
+  fs.mkdirSync(path.join(directory, 'lab'), { recursive: true });
   const hash = crypto.createHash('sha256').update(version).digest('hex').slice(0, 8);
   const js = `static/js/index.${hash}.js`;
   const css = `static/css/index.${hash}.css`;
@@ -18,6 +19,7 @@ function writeCore(directory, version) {
   fs.writeFileSync(path.join(directory, 'mockServiceWorker.js'), '// fixture worker\n');
   fs.writeFileSync(path.join(directory, 'bootstrap-theme.js'), '// fixture theme\n');
   fs.writeFileSync(path.join(directory, 'index.html'), `<!doctype html><html lang="en"><head><meta name="description" content="neutral"><meta name="rinspace-runtime-config" content="./runtime-config.json"><link rel="stylesheet" href="./${css}"><title>Neutral</title></head><body><script src="./bootstrap-theme.js"></script><script type="module" src="./${js}"></script></body></html>`);
+  fs.writeFileSync(path.join(directory, 'lab', 'foundations.html'), '<!doctype html><html lang="en"><head><link rel="stylesheet" href="../static/css/lab.css"><title>Lab</title></head><body>Lab</body></html>');
   fs.writeFileSync(path.join(directory, 'asset-manifest.json'), `${JSON.stringify({ files: { 'main.js': `/${js}`, 'main.css': `/${css}` }, entrypoints: [`/${js}`, `/${css}`] }, null, 2)}\n`);
   fs.writeFileSync(path.join(directory, 'version.json'), `${JSON.stringify({ schemaVersion: 1, applicationVersion: version })}\n`);
   return { js, css };
@@ -37,6 +39,10 @@ test('one neutral core assembles root and subpath shells without changing immuta
   const subpathHtml = fs.readFileSync(path.join(subpath, 'index.html'), 'utf8');
   assert.ok(subpathHtml.includes(`src="/rinspace-demo/${assets.js}"`));
   assert.match(subpathHtml, /data-rinspace-shell="true" rel="canonical" href="http:\/\/localhost:4173\/rinspace-demo\/"/);
+  assert.equal(
+    fs.readFileSync(path.join(subpath, 'lab', 'foundations.html'), 'utf8'),
+    '<!doctype html><html lang="en"><head><link rel="stylesheet" href="../static/css/lab.css"><title>Lab</title></head><body>Lab</body></html>',
+  );
   assert.equal(fs.readFileSync(path.join(subpath, '404.html'), 'utf8'), subpathHtml);
   const manifest = JSON.parse(fs.readFileSync(path.join(subpath, 'site.webmanifest'), 'utf8'));
   assert.equal(manifest.start_url, '/rinspace-demo/');
