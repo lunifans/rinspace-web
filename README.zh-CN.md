@@ -401,7 +401,7 @@ git push -u origin fix/short-description
 
 Rinspace 自有软件面向社区采用 `AGPL-3.0-only`，同时提供独立 commercial licensing，满足需要专有修改或集成的客户。第三方材料继续适用各自条款：其中 `src/components/animate-ui/` 保留 Animate UI 署名并适用随仓库提供的 MIT + Commons Clause 条款，不纳入 Rinspace 商业再许可。范围详见 [`LICENSING.md`](./LICENSING.md)。
 
-权利主体已经在明确披露“非律师审查”的前提下，依据中国法和成熟项目文本定稿 `LICENSE`、许可说明、仓库内贡献条款、商标政策与资产条款。普通贡献者只需运行 `git commit -s`，不需要注册外部 CLA、上传证件或进入私密贡献者台账。贡献者保留著作权，并按 Apache License 2.0 许可贡献，使 Rinspace 可以将其纳入 AGPL 社区版和另行许可的商业版；大额或权属复杂的机构贡献仍可能在合并前要求单独书面协议。该候选在其余发布门禁通过前仍保持 private；第三方材料不会因包含在应用中而被重新许可。参见 [`CONTRIBUTING.md`](./CONTRIBUTING.md)、[`DCO`](./DCO) 与 [`CONTRIBUTION-LICENSE.md`](./CONTRIBUTION-LICENSE.md)。
+权利主体已经在明确披露“非律师审查”的前提下，依据中国法和成熟项目文本定稿 `LICENSE`、许可说明、仓库内贡献条款、商标政策与资产条款。普通贡献者只需运行 `git commit -s`，不需要注册外部 CLA、上传证件或进入私密贡献者台账。贡献者保留著作权，并按 Apache License 2.0 许可贡献，使 Rinspace 可以将其纳入 AGPL 社区版和另行许可的商业版；大额或权属复杂的机构贡献仍可能在合并前要求单独书面协议。源码仓库已在源码公开门禁通过后开放，正式 Release 与官方生产迁移仍是独立里程碑；第三方材料不会因包含在应用中而被重新许可。参见 [`CONTRIBUTING.md`](./CONTRIBUTING.md)、[`DCO`](./DCO) 与 [`CONTRIBUTION-LICENSE.md`](./CONTRIBUTION-LICENSE.md)。
 
 <!-- rinspace-section: security -->
 
@@ -419,4 +419,4 @@ Rinspace 自有软件面向社区采用 `AGPL-3.0-only`，同时提供独立 com
 - 支付、短信、真实上传、Gitea、code-server、Quiver 和 durable Renderer job 是 production-only。
 - 静态托管只提供客户端 metadata 与 SPA fallback，不提供按请求动态 SSR。
 - Integration mode 依赖契约兼容且由集成方独立保护的后端。
-- 第三方、法律、release 与明确公开授权门禁全部通过前，仓库仍是 private candidate。
+- 源码仓库已经公开，但目前尚未宣称存在正式版本化 Release、预构建 package 或已经完成的官方生产迁移。
