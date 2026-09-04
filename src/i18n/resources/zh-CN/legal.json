@@ -1,0 +1,142 @@
+{
+  "about": "关于",
+  "terms": "服务条款",
+  "privacy": "隐私政策",
+  "copyright": "版权",
+  "contact": "联系我们",
+  "navigation": "法律页面导航",
+  "operator": "运营主体",
+  "source": "源代码",
+  "notPublished": "此部署未公开",
+  "nav": {
+    "about": "关于",
+    "legal": "法律信息",
+    "terms": "用户协议",
+    "privacy": "隐私政策",
+    "copyright": "侵权投诉",
+    "contact": "联系我们"
+  },
+  "pages": {
+    "about": {
+      "title": "关于 {{siteName}}",
+      "label": "About",
+      "description": "{{siteName}} 是一个以 Tag 为核心的长文知识社区，支持 Markdown 与 LaTeX 写作，并依托 Git 进行版本管理。",
+      "sections": {
+        "position": {
+          "title": "站点定位",
+          "line1": "{{siteName}} 面向长期知识整理、博客写作、书籍笔记、标签 Wiki 与问答讨论。",
+          "line2": "我们希望把标签作为知识组织的核心，让内容、引用和版本变更都能被清晰追踪。"
+        },
+        "operator": {
+          "title": "运营主体",
+          "line1": "{{siteName}} 的运营主体：{{company}}。",
+          "line2": "站点公开联系邮箱为 {{email}}。"
+        }
+      }
+    },
+    "legal": {
+      "title": "法律信息",
+      "label": "Legal",
+      "description": "{{siteName}} 的运营主体、备案信息和公开联系方式。",
+      "sections": {
+        "identity": {
+          "title": "主体信息",
+          "line1": "网站名称：{{siteName}}",
+          "line2": "运营主体：{{company}}",
+          "line3": "联系邮箱：{{email}}"
+        },
+        "records": {
+          "title": "备案信息",
+          "line1": "ICP备案号：{{icp}}",
+          "line2": "公安备案号：{{publicSecurity}}"
+        },
+        "links": {
+          "title": "相关入口",
+          "line1": "用户协议、隐私政策、版权与侵权投诉规则可通过本页底部链接访问。",
+          "line2": "如需反馈站点问题、内容权利问题或安全问题，请优先通过公开邮箱联系。"
+        }
+      }
+    },
+    "terms": {
+      "title": "用户协议",
+      "label": "Terms",
+      "description": "使用 {{siteName}} 发布、编辑、引用和互动内容时适用的基础规则。",
+      "sections": {
+        "account": {
+          "title": "账户与内容",
+          "line1": "用户应对自己发布、编辑、上传和提交的内容负责，并确保相关内容不侵犯第三方合法权益。",
+          "line2": "用户不得发布违法违规、恶意攻击、垃圾推广、侵犯隐私或破坏站点正常运行的内容。"
+        },
+        "knowledge": {
+          "title": "知识内容与引用",
+          "line1": "{{siteName}} 支持 Markdown、LaTeX、标签 Wiki 和 Git 版本管理，用户应尊重原作者署名和引用规范。",
+          "line2": "平台可以基于展示、索引、备份、审核和安全维护需要，对用户公开内容进行必要处理。"
+        },
+        "enforcement": {
+          "title": "处置规则",
+          "line1": "对于违反规则的内容，平台可采取隐藏、删除、限制发布、限制账户能力或移交审核等措施。",
+          "line2": "对处置有异议，可以通过 {{email}} 联系我们。"
+        }
+      }
+    },
+    "privacy": {
+      "title": "隐私政策",
+      "label": "Privacy",
+      "description": "{{siteName}} 对账户、内容、日志和联系信息的基本处理说明。",
+      "sections": {
+        "collection": {
+          "title": "信息收集",
+          "line1": "为提供登录、发布、编辑、评论、通知、安全审计和反滥用能力，{{siteName}} 会处理必要的账户信息、内容信息和操作日志。",
+          "line2": "用户主动提交的邮箱、头像、个人简介、文章、评论、标签编辑和上传文件，会按用户选择的可见性进行展示或保存。"
+        },
+        "purpose": {
+          "title": "使用目的",
+          "line1": "相关信息主要用于提供站点功能、维护内容版本、处理举报投诉、保障安全、改进产品体验和满足合规要求。",
+          "line2": "除法律法规要求、用户授权或安全处置需要外，我们不会将个人信息用于与 {{siteName}} 无关的目的。"
+        },
+        "rights": {
+          "title": "联系与更正",
+          "line1": "如需访问、更正、删除个人信息，或咨询隐私相关问题，可以发送邮件至 {{email}}。"
+        }
+      }
+    },
+    "copyright": {
+      "title": "版权与侵权投诉",
+      "label": "Copyright",
+      "description": "{{siteName}} 的版权尊重原则和侵权投诉联系渠道。",
+      "sections": {
+        "principles": {
+          "title": "版权原则",
+          "line1": "{{siteName}} 尊重原创内容、学术引用、开源协议和合理转载规则。",
+          "line2": "用户发布内容时，应确认自己拥有相应权利，或已经取得授权，或符合合理使用、引用、开源协议等合法基础。"
+        },
+        "materials": {
+          "title": "投诉材料",
+          "line1": "如认为 {{siteName}} 上的内容侵犯你的合法权益，请提供被投诉链接、权利证明、侵权说明和可联系的邮箱。",
+          "line2": "投诉邮箱：{{email}}"
+        },
+        "handling": {
+          "title": "处理方式",
+          "line1": "收到有效投诉后，我们会进行核验，并根据情况采取移除、隐藏、限制访问、联系发布者或保留必要证据等措施。"
+        }
+      }
+    },
+    "contact": {
+      "title": "联系我们",
+      "label": "Contact",
+      "description": "{{siteName}} 的公开联系邮箱和常见联系事项。",
+      "sections": {
+        "email": {
+          "title": "公开邮箱",
+          "line1": "邮箱：{{email}}",
+          "line2": "适用事项：站点反馈、账号问题、内容投诉、版权侵权投诉、安全问题、商务与合作咨询。"
+        },
+        "handling": {
+          "title": "处理说明",
+          "line1": "来信请尽量附上相关页面链接、账号信息、问题截图和必要说明，便于我们定位和处理。",
+          "line2": "涉及权利投诉或安全问题时，请使用清晰、可核验的信息说明具体影响范围。"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": false,
+    "skipLibCheck": false,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noImplicitAny": true,
+    "ignoreDeprecations": "5.0",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"],
+      "app/*": ["src/app/*"],
+      "components/*": ["src/components/*"],
+      "features/*": ["src/features/*"],
+      "pages/*": ["src/pages/*"],
+      "services/*": ["src/services/*"],
+      "styles/*": ["src/styles/*"],
+      "react-bootstrap": ["src/components/ui/compat.tsx"],
+      "react": ["node_modules/@types/react/index.d.ts"],
+      "react/jsx-runtime": ["node_modules/@types/react/jsx-runtime.d.ts"],
+      "react/jsx-dev-runtime": ["node_modules/@types/react/jsx-dev-runtime.d.ts"],
+      "react-easy-crop": ["src/types/react-easy-crop.d.ts"]
+    }
+  },
+  "include": ["src", "scripts"],
+  "exclude": ["src/plugins"]
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <script src="/bootstrap-theme.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8fafc" />
+    <meta name="description" content="Loading the public Rinspace Web configuration." />
+    <meta name="rinspace-runtime-config" content="%BASE_URL%runtime-config.json" />
+    <meta name="generator" content="Rinspace Web" />
+    <link rel="stylesheet" href="/fonts/library/rinspace-core-fonts.css" />
+    <!--
+      MathJax CHTML composes tall delimiters from NewCM glyphs.  Fetch the two
+      core faces before React can expose server-rendered mathematics so a cold
+      page never paints those pieces with metrics from a system fallback font.
+    -->
+    <link
+      rel="preload"
+      href="/fonts/mathjax-newcm/woff2/mjx-ncm-zero.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/mathjax-newcm/woff2/mjx-ncm-n.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <title>Rinspace Web</title>
+  </head>
+  <body>
+    <noscript>Rinspace Web requires JavaScript to load its public site configuration.</noscript>
+    <div id="root" data-rin-ui="v2">
+      <p data-rin-bootstrap-fallback="true" style="padding: 24px; text-align: center; color: #5f6470; font: 14px/1.6 system-ui, sans-serif;">Loading Rinspace Web…</p>
+    </div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>

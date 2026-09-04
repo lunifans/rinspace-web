@@ -1,0 +1,25 @@
+name: Contributor license agreement
+
+"on":
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  cla:
+    name: Verify every contributor against the reviewed CLA registry
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout the trusted base commit only
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+      - name: Check linked commit authors and the pull request author
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/check-cla-registry.mjs --event "$GITHUB_EVENT_PATH"

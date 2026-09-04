@@ -1,0 +1,3 @@
+.notification-row.is-read .notification-side time {
+  color: var(--rin-ink-muted);
+}

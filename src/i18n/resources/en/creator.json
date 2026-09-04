@@ -1,0 +1,128 @@
+{
+  "title": "Creator Center",
+  "navigation": {
+    "label": "Creator Center navigation",
+    "home": "Creator home",
+    "content": "Content",
+    "analytics": "Analytics",
+    "homeAria": "Open Creator Center home"
+  },
+  "tabs": {
+    "blog": "Blogs",
+    "book": "Books",
+    "question": "Q&A",
+    "discussion": "Discussions",
+    "dynamic": "Updates"
+  },
+  "common": {
+    "edit": "Edit",
+    "opening": "Opening…",
+    "delete": "Delete",
+    "retry": "Retry",
+    "private": "Private",
+    "public": "Public",
+    "draft": "Draft",
+    "published": "Published"
+  },
+  "overview": {
+    "label": "Creator overview",
+    "recent": "Recently updated",
+    "allContent": "All content",
+    "empty": "No content yet."
+  },
+  "content": {
+    "label": "Content management",
+    "typeLabel": "Content type",
+    "tagsLabel": "Content tags",
+    "emptyType": "No {{type}} yet.",
+    "answerCount_one": "{{displayCount}} answer",
+    "answerCount_other": "{{displayCount}} answers",
+    "voteCount_one": "{{displayCount}} like",
+    "voteCount_other": "{{displayCount}} likes",
+    "sourceVisibility": "Source visibility",
+    "visibility": "Visibility",
+    "pageStatus": "Page status"
+  },
+  "edit": {
+    "title": "Title",
+    "body": "Body",
+    "tags": "Tags",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel"
+  },
+  "notice": {
+    "contentSaved": "Content saved.",
+    "questionSaved": "Question saved.",
+    "contentDeleted": "Content deleted.",
+    "publishingUpdated": "Publishing settings updated.",
+    "questionDeleted": "Question deleted."
+  },
+  "delete": {
+    "title": "Confirm deletion",
+    "description": "Delete “{{title}}”?",
+    "feedRemoved": "The {{type}} will be removed from Creator Center.",
+    "sourceRemoved": "The corresponding source repository content will also be removed.",
+    "referencesHidden": "Related references and interaction entry points may no longer be available.",
+    "questionImpact": "Deleting the question may affect its answers, bookmarks, and references.",
+    "confirm": "Delete"
+  },
+  "auth": {
+    "required": "Sign-in required",
+    "signIn": "Sign in"
+  },
+  "analytics": {
+    "label": "Analytics",
+    "period": {
+      "label": "Analytics period",
+      "week": "Week",
+      "month": "Month",
+      "year": "Year",
+      "previous": "Previous period",
+      "select": "Select analytics period",
+      "next": "Next period",
+      "weekLabel": "Week {{week}}, {{year}} · {{start}}–{{end}}"
+    },
+    "summary": {
+      "label": "Reading summary",
+      "cumulativeReads": "Total reads",
+      "periodReads": "New this period"
+    },
+    "metrics": {
+      "label": "Chart metrics",
+      "reads": "Reads",
+      "likes": "Likes",
+      "favorites": "Bookmarks",
+      "newFollowers": "New followers"
+    },
+    "chart": {
+      "title": "Blog and book trends",
+      "description": "Line chart of reads, likes, bookmarks, and new followers"
+    },
+    "sources": {
+      "heading": "Works generating reads",
+      "untitled": "Untitled work"
+    },
+    "table": {
+      "caption": "Blog and book data for {{period}}",
+      "date": "Date"
+    }
+  },
+  "demoCapabilities": {
+    "notice": "Browser demo: creator data and local publications stay on this device. Code workspaces, collaboration, moderation, Gitea activity, and production publication are unavailable."
+  },
+  "heatmap": {
+    "label": "Contribution heatmap",
+    "contributions_one": "{{displayCount}} contribution in the past year",
+    "contributions_other": "{{displayCount}} contributions in the past year",
+    "dayContributions_one": "{{date}} · {{displayCount}} contribution",
+    "dayContributions_other": "{{date}} · {{displayCount}} contributions",
+    "weekday": {
+      "monday": "Mon",
+      "wednesday": "Wed",
+      "friday": "Fri"
+    },
+    "less": "Less",
+    "more": "More"
+  }
+}

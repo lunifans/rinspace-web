@@ -1,0 +1,215 @@
+[data-rin-ui="v2"] .rin-app-frame:not([data-rin-ui-boundary="frozen"]) { min-block-size: 100dvh; background: var(--rin-canvas); color: var(--rin-ink); }
+[data-rin-ui="v2"] .rin-app-frame:not([data-rin-ui-boundary="frozen"]) .topbar { position: sticky; inset-block-start: 0; z-index: 100; border-block-end: 1px solid var(--rin-border); background: color-mix(in srgb, var(--rin-canvas) 90%, transparent); backdrop-filter: blur(18px); }
+[data-rin-ui="v2"] .rin-app-frame:not([data-rin-ui-boundary="frozen"]) :where(.panel, .community-board, .search-results-panel, .profile-panel, .admin-panel) { border-color: var(--rin-border); border-radius: var(--rin-radius-lg); background: var(--rin-surface); color: var(--rin-ink); box-shadow: none; }
+[data-rin-ui="v2"] .rin-app-frame:not([data-rin-ui-boundary="frozen"]) :where(.community-page, .search-shell, .users-shell, .activity-page, .notification-page, .settings-page, .admin-page, .review-page, .creator-page, .publish-page, .writer-shell, .profile-shell) { inline-size: min(calc(100% - 2rem), var(--rin-grid-max)); margin-inline: auto; padding-block: clamp(1.5rem, 4vw, 4rem); }
+[data-rin-ui="v2"] [data-page-family="discovery"] :where(.directory-stream-grid, .search-result-list) { display: grid; gap: 14px; }
+/* Community/directory cards share the book card look: thin border, rounded
+   surface, uniform padding. */
+[data-rin-ui="v2"] [data-page-family="discovery"] :where(.stream-card, .search-result-card, .directory-stream-card, .home-book-card) { border: 1px solid color-mix(in srgb, var(--rin-ink) 10%, transparent); border-radius: 8px; background: var(--rin-surface); box-shadow: none; }
+[data-rin-ui="v2"] [data-page-family="discovery"] :where(.stream-card, .search-result-card, .directory-stream-card) { padding: 14px; }
+/* Card action buttons (评论/收藏/分享/关注/评分) share the compact pill
+   sizing of the book card actions: translucent surface, 0.82rem type. */
+[data-rin-ui="v2"] :where(.social-actions, .stream-dynamic-action-buttons, .tag-directory-follow, .home-book-actions) :is(a, button) { border-color: color-mix(in srgb, var(--rin-ink) 12%, transparent); background: color-mix(in srgb, var(--rin-canvas) 50%, transparent); color: var(--rin-ink-muted); font-size: 0.82rem; }
+/* Creator rows: the four per-item controls (编辑 / 公开|私密 / 发布|草稿 /
+   删除) sit in one horizontal row instead of stacking. */
+[data-rin-ui="v2"] .creator-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+[data-rin-ui="v2"] .creator-row-actions .secondary-link,
+[data-rin-ui="v2"] .creator-row-actions .creator-row-select {
+  min-block-size: 34px;
+}
+/* Form controls default to inline-size: 100%; in the actions row the
+   selects must shrink to their content or they each wrap onto their own
+   line and stack vertically. */
+[data-rin-ui="v2"] .creator-row-actions .creator-row-select {
+  inline-size: auto;
+}
+/* Profile main column: the implicit grid track sizes to the widest child's
+   min-content (e.g. the nowrap profile tab row), overflowing sideways. Pin
+   the track to the column width; the tab strip scrolls horizontally instead. */
+[data-rin-ui="v2"] .profile-main-column {
+  grid-template-columns: minmax(0, 1fr);
+}
+/* The badges sidebar was removed from the profile page; the content layout
+   collapses to a single full-width column. */
+[data-rin-ui="v2"] .profile-content-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+/* Book hero cover: the legacy figure rule sets no margin, so covers with an
+   image fall back to the UA default (1em 40px) and sit offset from the
+   fallback cover position. Reset to the grid slot. */
+[data-rin-ui="v2"] .book-detail-hero figure {
+  margin: 0;
+}
+/* Book workspace actions: the legacy rules style only <a>/label actions;
+   buttons (编辑档案 dialog trigger) get the same pill treatment. */
+[data-rin-ui="v2"] .book-workspace-actions button {
+  display: inline-flex;
+  min-height: 38px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 0 12px;
+  border: 1px solid color-mix(in srgb, var(--rin-ink) 10%, transparent);
+  border-radius: 7px;
+  background: var(--rin-surface);
+  color: var(--rin-ink);
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 900;
+  white-space: nowrap;
+  cursor: pointer;
+}
+[data-rin-ui="v2"] .book-workspace-actions button:hover {
+  border-color: color-mix(in srgb, var(--rin-accent) 44%, transparent);
+  background: color-mix(in srgb, var(--rin-accent) 8%, transparent);
+  color: var(--rin-accent);
+}
+[data-rin-ui="v2"] [data-page-family="discovery"] :where(.panel-heading, .directory-simple-heading) h1 { font-size: clamp(2rem, 4vw, 4.25rem); line-height: .98; }
+[data-rin-ui="v2"] :where(.feed-tabs, .search-tabs) button { min-block-size: 2.5rem; border: 0; border-block-end: 2px solid transparent; background: transparent; color: var(--rin-ink-muted); }
+[data-rin-ui="v2"] :where(.feed-tabs, .search-tabs) button:is(.active,[aria-selected="true"]) { border-color: var(--rin-accent); color: var(--rin-ink); }
+[data-rin-ui="v2"] :where(.site-operator-line, .site-legal-links, .home-icp-link, .site-icp-link, .site-police-beian-link) { color: var(--rin-ink-muted); opacity: 1; }
+[data-rin-ui="v2"] .rin-ui-notice { position: static; animation: none !important; visibility: visible !important; opacity: 1 !important; background: var(--rin-elevated) !important; color: var(--rin-ink) !important; }
+[data-theme="dark"] [data-rin-ui="v2"] .rin-app-frame:not([data-rin-ui-boundary="frozen"]) :where(.brand, .brand > span, .topbar-auth-button, .community-view-head > strong) { background-color: var(--rin-surface); color: var(--rin-ink) !important; }
+[data-theme="dark"] [data-rin-ui="v2"] .rin-app-frame:not([data-rin-ui-boundary="frozen"]) :where(.panel-heading, .panel-heading > span, .panel-heading > strong, .state-strip, .mb-3, .site-operator-line, .site-legal-links, .home-icp-link, .site-icp-link, .site-police-beian-link) { color: var(--rin-ink-muted) !important; }
+[data-theme="dark"] [data-rin-ui="v2"] .site-icp-links { border-radius: var(--rin-radius-md); background: var(--rin-surface); padding: .75rem; }
+[data-theme="dark"] [data-rin-ui="v2"] [data-page-family="operations"] :where(.section-label, .admin-empty-panel p) { color: var(--rin-ink-muted) !important; }
+[data-rin-ui="v2"] [data-page-family="knowledge"] :where(.detail-shell, .wiki-shell, .legal-shell) { --rin-content-measure: min(100%, var(--rin-reading-max)); }
+/* Markdown writer: the legacy rule caps the Milkdown content at 920px and
+   centers it; the writing surface should span the host width instead. */
+[data-rin-ui="v2"] .milkdown-editor-host .ProseMirror { max-inline-size: none; margin-inline: 0; }
+/* Markdown writer height: fill the viewport below the topbar and let the
+   editor host stretch to the remaining space (internal scroll), so the page
+   itself never scrolls and the ProseMirror surface fills the host. */
+[data-rin-ui="v2"] .markdown-writer-shell {
+  block-size: calc(100vh - 64px);
+  block-size: calc(100dvh - 64px);
+  min-block-size: 0;
+  overflow: hidden;
+}
+[data-rin-ui="v2"] .writer-shell.demo-creation-writer-shell {
+  grid-template-rows: auto auto minmax(0, 1fr);
+}
+[data-rin-ui="v2"] .demo-rin-editor {
+  display: grid;
+  block-size: 100%;
+  min-block-size: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--rin-surface);
+}
+[data-rin-ui="v2"] .demo-rin-editor-source {
+  display: grid;
+  min-block-size: 0;
+  grid-template-rows: auto minmax(0, 1fr);
+  border-inline-end: 1px solid var(--rin-border);
+}
+[data-rin-ui="v2"] .demo-rin-editor-source > span {
+  padding: .55rem .75rem;
+  border-block-end: 1px solid var(--rin-border);
+  color: var(--rin-ink-muted);
+  font-family: var(--rin-font-mono);
+  font-size: .75rem;
+  font-weight: 700;
+}
+[data-rin-ui="v2"] .demo-rin-editor textarea,
+[data-rin-ui="v2"] .demo-rin-editor-preview {
+  inline-size: 100%;
+  block-size: 100%;
+  min-block-size: 0;
+  margin: 0;
+  padding: 1rem;
+  overflow: auto;
+  border: 0;
+  border-radius: 0;
+  background: var(--rin-surface);
+  color: var(--rin-ink);
+  font-family: var(--rin-font-mono);
+  font-size: .82rem;
+  line-height: 1.6;
+  resize: none;
+}
+[data-rin-ui="v2"] .demo-rin-editor-preview {
+  background: var(--rin-surface-subtle);
+  white-space: pre-wrap;
+}
+[data-rin-ui="v2"] .markdown-writer-shell .milkdown-editor-host {
+  block-size: 100%;
+  min-block-size: 0;
+}
+[data-rin-ui="v2"] .markdown-writer-shell .milkdown-editor-host .milkdown {
+  block-size: 100%;
+  display: flex;
+  flex-direction: column;
+}
+[data-rin-ui="v2"] .markdown-writer-shell .milkdown-editor-host .ProseMirror {
+  flex: 1;
+  min-block-size: 0;
+  box-sizing: border-box;
+}
+[data-rin-ui="v2"] [data-page-family="identity"] :where(.profile-hero, .user-card, .identity-card) { border-color: var(--rin-border); background: var(--rin-surface); }
+[data-rin-ui="v2"] [data-page-family="creation"] :where(input, textarea, select) { border-color: var(--rin-border); background: var(--rin-surface); color: var(--rin-ink); }
+
+@media (max-width: 860px) {
+  [data-rin-ui="v2"] [data-page-family="creation"] .book-workspace-node-actions.markdown-node-actions,
+  [data-rin-ui="v2"] [data-page-family="creation"] .book-workspace-node-actions.markdown-node-actions.has-inline-section {
+    grid-template-columns: minmax(0, 1fr);
+    inline-size: 100%;
+    min-inline-size: 0;
+  }
+}
+[data-rin-ui="v2"] [data-page-family="operations"] :where(table) { inline-size: 100%; border-collapse: collapse; }
+[data-rin-ui="v2"] [data-page-family="operations"] :where(th, td) { border-block-end: 1px solid var(--rin-border); padding: .75rem; }
+
+@media (max-width: 48rem) {
+  [data-rin-ui="v2"] .rin-app-frame:not([data-rin-ui-boundary="frozen"]) :where(.community-page, .search-shell, .users-shell, .activity-page, .notification-page, .settings-page, .admin-page, .review-page, .creator-page, .publish-page, .writer-shell, .profile-shell) { inline-size: 100%; padding: 1rem; }
+  [data-rin-ui="v2"] :where(.panel-heading, .directory-simple-heading) { align-items: stretch; flex-direction: column; }
+}
+
+/* Production-content accessibility: these unlayered rules intentionally win over route snapshots. */
+[data-rin-ui="v2"] .rin-app-frame:not([data-rin-ui-boundary="frozen"]) .content-type-meta .label {
+  color: var(--rin-ink-muted) !important;
+}
+[data-rin-ui="v2"] .home-shell .stream-metric-book-score {
+  color: var(--rin-warning);
+}
+[data-rin-ui="v2"] :where(.floor-reply-reference small, .qna-comment-head span, .inline-report-button) {
+  color: var(--rin-ink-muted) !important;
+}
+[data-rin-ui="v2"] :where(.stream-card-head time, .qna-comment-empty) {
+  color: var(--rin-ink-muted) !important;
+}
+[data-rin-ui="v2"] .katex .katex-mathml {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+[data-rin-ui="v2"] .rin-display-math {
+  max-inline-size: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+[data-rin-ui="v2"] .rin-display-math > .katex-display {
+  max-inline-size: none;
+  overflow: visible;
+}
+[data-rin-ui="v2"] :where(.detail-shell, .detail-grid, .detail-main, .comment-list, .forum-floor-body, .comment-meta) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+[data-rin-ui="v2"] :where(.detail-shell, .profile-shell) {
+  overflow-x: clip;
+}
+[data-rin-ui="v2"] :where(.profile-content-layout, .profile-main-column, .profile-tab-panel) {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+[data-rin-ui="v2"] .profile-tabs.rin-animate-tabs {
+  inline-size: 100%;
+  min-inline-size: 0;
+}

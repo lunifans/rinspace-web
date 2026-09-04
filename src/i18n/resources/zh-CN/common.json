@@ -1,0 +1,298 @@
+{
+  "appName": "芥子环",
+  "loading": "加载中…",
+  "pageLoading": "页面加载中",
+  "accountRestoring": "正在恢复账户",
+  "processing": "处理中…",
+  "pageLoaded": "页面已加载",
+  "actions": {
+    "save": "保存",
+    "saving": "保存中…",
+    "cancel": "取消",
+    "confirm": "确认",
+    "close": "关闭",
+    "retry": "重试"
+  },
+  "imageCrop": {
+    "zoom": "缩放",
+    "uploading": "上传中…",
+    "apply": "应用裁剪",
+    "failed": "图片裁剪失败，请换一张图片重试。"
+  },
+  "accessibility": {
+    "skipToMain": "跳到主要内容",
+    "close": "关闭",
+    "popoverContent": "弹出内容",
+    "command": "命令",
+    "commandSearch": "{{label}}搜索",
+    "pagination": "分页"
+  },
+  "footer": {
+    "company": "Rinspace Web",
+    "source": "源代码",
+    "legalNav": "站点法律信息",
+    "legal": "法律信息",
+    "terms": "用户协议",
+    "privacy": "隐私政策",
+    "copyright": "侵权投诉",
+    "contact": "联系我们"
+  },
+  "pagination": {
+    "previous": "上一页",
+    "position": "第 {{page}} / {{pageCount}} 页",
+    "next": "下一页"
+  },
+  "states": {
+    "filter": "筛选",
+    "loading": "正在加载",
+    "emptyTitle": "暂无内容",
+    "emptyDescription": "这里还没有可以显示的内容。",
+    "loadFailed": "加载失败",
+    "tryAgain": "请稍后重试。"
+  },
+  "collection": {
+    "closeSelector": "关闭收藏夹选择",
+    "current": "当前：{{path}}",
+    "chooseLocation": "选择保存位置",
+    "target": "目标：{{path}}",
+    "chooseTarget": "请选择目标收藏夹",
+    "created": "已新建收藏夹「{{name}}」。",
+    "newName": "新建收藏夹名称",
+    "newPlaceholder": "新建收藏夹",
+    "creating": "新建中",
+    "create": "新建",
+    "search": "搜索收藏夹",
+    "title": "收藏夹",
+    "itemCount_one": "{{displayCount}} 条",
+    "itemCount_other": "{{displayCount}} 条",
+    "childCount_one": "{{displayCount}} 子夹",
+    "childCount_other": "{{displayCount}} 子夹",
+    "noMatches": "没有匹配的收藏夹。"
+  },
+  "report": {
+    "title": "举报",
+    "reason": "原因",
+    "detail": "补充说明",
+    "detailRequired": "请填写补充说明。",
+    "loadFailed": "举报原因加载失败。",
+    "submitFailed": "举报提交失败。",
+    "submit": "提交举报",
+    "reasons": {
+      "spam": "垃圾广告",
+      "harassment": "骚扰攻击",
+      "unsafe": "危险或违法",
+      "deceptive": "虚假或欺诈",
+      "privacy": "隐私泄露",
+      "impersonation": "冒充他人",
+      "other": "其他"
+    }
+  },
+  "publication": {
+    "stages": {
+      "queue": "等待调度",
+      "source_prepare": "准备源文件",
+      "document_compile": "文档转换",
+      "asset_process": "处理资源",
+      "store": "保存结果",
+      "fallback": "渲染处理中"
+    },
+    "duration": {
+      "seconds_one": "{{displayCount}} 秒",
+      "seconds_other": "{{displayCount}} 秒",
+      "minutes_one": "{{displayCount}} 分钟",
+      "minutes_other": "{{displayCount}} 分钟",
+      "hoursMinutes": "{{displayHours}} 小时 {{displayMinutes}} 分钟"
+    },
+    "awaitingEvent": {
+      "title": "接收新版本",
+      "previous": "仍显示上一版",
+      "waiting": "等待发布事件"
+    },
+    "validating": {
+      "title": "检查项目",
+      "detail": "配置与入口文件"
+    },
+    "queued": {
+      "title": "等待渲染",
+      "waiting": "等待渲染资源",
+      "ahead_one": "前方约 {{displayCount}} 个任务{{eta}}",
+      "ahead_other": "前方约 {{displayCount}} 个任务{{eta}}"
+    },
+    "running": "正在渲染",
+    "activating": {
+      "title": "正在发布",
+      "switching": "核对并切换新版本"
+    },
+    "failed": {
+      "title": "更新未完成",
+      "diagnostics": "查看诊断"
+    },
+    "reconciliation": {
+      "title": "状态待核对"
+    },
+    "published": {
+      "title": "发布完成",
+      "detail": "新版本已上线"
+    },
+    "completedStages": "已完成 {{displayCompleted}} / {{displayTotal}} 个阶段",
+    "showDiagnostics": "查看诊断信息",
+    "hideDiagnostics": "收起诊断信息",
+    "openDiagnostics": "打开完整诊断",
+    "support": "支持渲染服务"
+  },
+  "media": {
+    "commentImage": "评论图片",
+    "diagram": "图表",
+    "renderingDiagram": "正在渲染图表…"
+  },
+  "boundaries": {
+    "appTitle": "页面暂时无法显示",
+    "appMessage": "请刷新页面；未保存的编辑内容仍会由原有恢复机制保留。",
+    "routeTitle": "页面加载失败",
+    "routeMessage": "请刷新页面后重试。"
+  },
+  "access": {
+    "signInTitle": "需要登录",
+    "signInMessage": "此页面仅对已登录成员开放。",
+    "signInAction": "登录 / 注册"
+  },
+  "demo": {
+    "badge": "本地演示",
+    "title": "演示控制",
+    "description": "身份、内容修改和故障场景只保存在此浏览器，不会连接真实账户或生产服务。",
+    "routeSupport": {
+      "kicker": "演示覆盖边界",
+      "title": "此路由暂未支持",
+      "message": "该页面已进入公开路由契约，但首发演示尚未提供可验收的本地行为。演示不会用伪造成功或生产请求填补缺口。",
+      "recovery": "请使用已标记为可交互或只读的路由，或等待后续版本完成该领域。"
+    },
+    "openControls": "打开演示控制面板",
+    "closeControls": "关闭演示控制面板",
+    "enterMember": "以演示成员进入",
+    "persona": "演示身份",
+    "personas": {
+      "guest": "访客",
+      "member": "演示成员"
+    },
+    "personaChanged": "已切换为{{persona}}。",
+    "scenario": "故障场景",
+    "scenarios": {
+      "normal": "正常",
+      "offline": "离线",
+      "latency": "固定延迟",
+      "unauthorized": "未登录（401）",
+      "forbidden": "无权限（403）",
+      "conflict": "冲突（409）",
+      "validation": "校验失败（422）",
+      "rate-limited": "限流（429）",
+      "server-error": "服务错误（500）"
+    },
+    "scenarioChanged": "故障场景已切换为{{scenario}}。",
+    "reset": "重置演示数据",
+    "resetting": "正在重置…",
+    "resetComplete": "演示数据已恢复；身份、主题和语言保持不变。",
+    "resetFailed": "演示数据重置失败，请查看浏览器存储状态后重试。",
+    "resetUnavailable": "演示数据仓库尚未就绪。",
+    "storageUnavailable": "浏览器无法保存本地演示设置。",
+    "diagnostics": "诊断与稳定入口",
+    "mode": "模式",
+    "basePath": "基础路径",
+    "worker": "网络隔离",
+    "dataset": "数据集",
+    "checksum": "校验和",
+    "ready": "已就绪",
+    "notReady": "未就绪",
+    "directLinks": "演示身份稳定入口",
+    "guestLink": "访客直达",
+    "memberLink": "成员直达",
+    "capabilities": {
+      "title": "生产能力边界",
+      "description": "这些能力不会在本地演示中连接真实服务；页面会显示状态、依赖和恢复路径。",
+      "productionOnly": "需要生产集成",
+      "state": "演示状态",
+      "dependency": "生产依赖",
+      "recovery": "恢复路径",
+      "backHome": "返回演示首页",
+      "states": {
+        "unavailable": "不可用",
+        "local-only": "仅本地模拟"
+      },
+      "items": {
+        "gitea": {
+          "title": "Gitea 源码仓库",
+          "description": "演示模式不会同步 Gitea 身份、读取仓库或跳转到真实源码服务。",
+          "dependency": "同源 Gitea 服务与身份桥接。",
+          "recovery": "切换到 integration 或 official，并配置兼容的 Gitea 适配器。"
+        },
+        "code-server": {
+          "title": "code-server 工作区",
+          "description": "演示模式不会创建、轮询或打开远程代码工作区。",
+          "dependency": "经过认证的远程工作区服务。",
+          "recovery": "切换到 integration 或 official，并配置兼容的 workspace 适配器。"
+        },
+        "renderer": {
+          "title": "远程 Renderer",
+          "description": "演示模式不会提交或轮询生产渲染任务；本地阅读预览仍可使用。",
+          "dependency": "异步文档渲染器及任务 API。",
+          "recovery": "切换到 integration 或 official，并配置兼容的 renderer 适配器。"
+        },
+        "quiver": {
+          "title": "Quiver 交换图",
+          "description": "演示模式不会加载 Quiver iframe，也不会调用真实图表 API。",
+          "dependency": "同源 Quiver 应用及图表 API。",
+          "recovery": "切换到 integration 或 official，并显式启用 Quiver 应用。"
+        },
+        "payments": {
+          "title": "支付与赞助",
+          "description": "演示模式不会创建订单、提交支付表单、轮询支付状态或处理真实回调。",
+          "dependency": "订单服务、支付平台凭据和服务端回调验签。",
+          "recovery": "仅在明确启用支付后端的 official 部署中恢复。"
+        },
+        "sms": {
+          "title": "短信验证码",
+          "description": "演示身份是浏览器本地 persona，不会发送真实短信或创建生产账户。",
+          "dependency": "受支持的认证提供方和已配置的服务端短信发送方。",
+          "recovery": "配置 integration 或 official 认证及其服务端短信发送方。"
+        },
+        "real-upload": {
+          "title": "真实文件上传",
+          "description": "演示只把不超过 2MB 的图片保存在本地仓库；PDF、归档和对象存储上传不可用。",
+          "dependency": "兼容的对象存储及上传授权服务。",
+          "recovery": "继续使用本地图片模拟，或在 integration/official 配置上传适配器。"
+        }
+      }
+    }
+  },
+  "routes": {
+    "home": "以 Tag 为核心的长文社区",
+    "about": "关于",
+    "legal": "法律信息",
+    "terms": "服务条款",
+    "privacy": "隐私政策",
+    "copyright": "版权",
+    "contact": "联系我们",
+    "sponsor": "赞助",
+    "search": "搜索",
+    "creator": "创作中心",
+    "write": "写作",
+    "questions": "问答",
+    "ask": "提问",
+    "tags": "标签",
+    "tag": "标签",
+    "badges": "徽章",
+    "blogs": "博客",
+    "books": "书籍",
+    "book": "书籍",
+    "profile": "用户主页",
+    "users": "用户",
+    "settings": "设置",
+    "admin": "管理",
+    "notifications": "通知",
+    "activity": "动态记录",
+    "announcements": "公告",
+    "discussions": "讨论",
+    "dynamics": "动态",
+    "content": "内容",
+    "notFound": "页面未找到"
+  }
+}

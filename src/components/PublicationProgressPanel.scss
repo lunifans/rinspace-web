@@ -1,0 +1,238 @@
+.publication-progress-panel {
+  --publication-accent: var(--muted);
+  --publication-accent-soft: color-mix(
+    in srgb,
+    var(--publication-accent) 10%,
+    transparent
+  );
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  gap: 8px;
+  overflow: hidden;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--line) 76%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--paper) 96%, var(--publication-accent-soft));
+  color: var(--ink);
+}
+
+.publication-progress-panel.state-queued,
+.publication-progress-panel.state-running,
+.publication-progress-panel.state-activating {
+  --publication-accent: var(--green);
+}
+
+.publication-progress-panel.state-published {
+  --publication-accent: var(--green);
+}
+
+.publication-progress-panel.state-failed {
+  --publication-accent: var(--danger);
+}
+
+.publication-progress-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+}
+
+.publication-progress-mark {
+  display: inline-grid;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  place-items: center;
+  border: 1px solid
+    color-mix(in srgb, var(--publication-accent) 30%, transparent);
+  border-radius: 50%;
+  background: var(--publication-accent-soft);
+  color: var(--publication-accent);
+}
+
+.publication-progress-head h2 {
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.publication-progress-detail,
+.publication-progress-diagnostics,
+.publication-progress-diagnostics-trigger,
+.publication-progress-support {
+  font-family: "IBM Plex Mono", "Noto Sans SC", monospace;
+}
+
+.publication-progress-detail,
+.publication-progress-diagnostics p {
+  margin: 0;
+  color: color-mix(in srgb, var(--ink) 70%, var(--muted));
+  font-size: 0.7rem;
+  line-height: 1.6;
+}
+
+.publication-progress-meter {
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--publication-accent) 13%, transparent);
+}
+
+.publication-progress-meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--publication-accent);
+  box-shadow: 0 0 12px
+    color-mix(in srgb, var(--publication-accent) 44%, transparent);
+}
+
+.publication-progress-diagnostics-shell {
+  display: grid;
+  margin-top: 1px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 76%, transparent);
+}
+
+.publication-progress-diagnostics-trigger {
+  display: flex;
+  width: 100%;
+  min-height: 34px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.publication-progress-diagnostics-trigger > span:last-child,
+.publication-progress-diagnostics-trigger .animate-icon {
+  display: inline-flex;
+}
+
+.publication-progress-diagnostics-trigger:hover,
+.publication-progress-diagnostics-trigger:focus-visible {
+  color: var(--publication-accent);
+}
+
+.publication-progress-diagnostics-trigger:focus-visible {
+  border-radius: 4px;
+  outline: 2px solid
+    color-mix(in srgb, var(--publication-accent) 46%, transparent);
+  outline-offset: 3px;
+}
+
+.publication-progress-diagnostics {
+  display: grid;
+  gap: 8px;
+  overflow: hidden;
+  padding-top: 7px;
+}
+
+.publication-progress-diagnostics p {
+  display: grid;
+  gap: 5px;
+  padding: 9px 10px;
+  border: 1px solid color-mix(in srgb, var(--publication-accent) 18%, transparent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--publication-accent) 6%, transparent);
+}
+
+.publication-progress-diagnostics code {
+  width: fit-content;
+  color: var(--publication-accent);
+  font-family: inherit;
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.publication-progress-diagnostics a,
+.publication-progress-support a {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 5px;
+  color: var(--green);
+  font-size: 0.68rem;
+  text-decoration: none;
+}
+
+.publication-progress-support {
+  margin-top: 1px;
+  padding-top: 9px;
+  border-top: 1px solid color-mix(in srgb, var(--line) 76%, transparent);
+}
+
+.publication-progress-support a {
+  color: var(--muted);
+}
+
+.publication-progress-support a:hover,
+.publication-progress-support a:focus-visible,
+.publication-progress-diagnostics a:hover,
+.publication-progress-diagnostics a:focus-visible {
+  color: var(--green);
+}
+
+.publication-progress-support a:hover svg,
+.publication-progress-diagnostics a:hover svg {
+  transform: translate(1px, -1px);
+}
+
+.publication-progress-support svg,
+.publication-progress-diagnostics a svg {
+  flex: 0 0 auto;
+  transition: transform 160ms ease;
+}
+
+.publication-progress-support a:focus-visible,
+.publication-progress-diagnostics a:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid color-mix(in srgb, var(--green) 46%, transparent);
+  outline-offset: 3px;
+}
+
+.publication-progress-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[data-theme="dark"] .publication-progress-panel {
+  background: color-mix(in srgb, var(--paper) 94%, var(--publication-accent-soft));
+}
+
+@media (max-width: 620px) {
+  .publication-progress-panel {
+    padding: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .publication-progress-support svg,
+  .publication-progress-diagnostics a svg {
+    transition: none;
+  }
+}

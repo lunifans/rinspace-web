@@ -1,0 +1,107 @@
+import { getStoredSession, type CloudUser } from './phoneAuth';
+
+export type TopbarUserProfile = {
+  nickname?: string;
+  avatarDataUrl?: string;
+};
+
+export type TopbarSessionSnapshot = {
+  authorizationSource: 'backend-identity-v1';
+  user: CloudUser;
+  profile: TopbarUserProfile | null;
+  nickname: string;
+  avatarDataUrl: string;
+  publicUserId: string;
+  isAdmin: boolean;
+  isModerator: boolean;
+  language?: string;
+  colorScheme?: string;
+  cachedAt: number;
+};
+
+const topbarSessionCacheKey = 'rinspace-topbar-session-cache';
+
+function optionalString(value: unknown) {
+  return typeof value === 'string' ? value : '';
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
+
+function cachedCloudUser(value: unknown): CloudUser | null {
+  if (!isRecord(value) || typeof value.id !== 'string' || !value.id) {
+    return null;
+  }
+  const metadata = isRecord(value.user_metadata)
+    ? value.user_metadata
+    : undefined;
+  return {
+    id: value.id,
+    username: optionalString(value.username) || optionalString(metadata?.username),
+    phone: optionalString(value.phone),
+    user_metadata: metadata,
+    is_anonymous:
+      typeof value.is_anonymous === 'boolean'
+        ? value.is_anonymous
+        : undefined,
+  };
+}
+
+function cachedUserProfile(value: unknown): TopbarUserProfile | null {
+  if (value === null) return null;
+  if (!isRecord(value)) return null;
+  return {
+    nickname: optionalString(value.nickname),
+    avatarDataUrl: optionalString(value.avatarDataUrl),
+  };
+}
+
+export function readTopbarSessionSnapshot(): TopbarSessionSnapshot | null {
+  const session = getStoredSession();
+  if (!session) return null;
+  const raw = window.localStorage.getItem(topbarSessionCacheKey);
+  if (!raw) return null;
+  try {
+    const parsed: unknown = JSON.parse(raw);
+    if (!isRecord(parsed)) return null;
+    if (parsed.authorizationSource !== 'backend-identity-v1') {
+      window.localStorage.removeItem(topbarSessionCacheKey);
+      return null;
+    }
+    const user = cachedCloudUser(parsed.user);
+    if (!user) return null;
+    if (session.sub && user.id !== session.sub) return null;
+    return {
+      authorizationSource: 'backend-identity-v1',
+      user,
+      profile: cachedUserProfile(parsed.profile),
+      nickname: optionalString(parsed.nickname),
+      avatarDataUrl: optionalString(parsed.avatarDataUrl),
+      publicUserId: optionalString(parsed.publicUserId),
+      isAdmin: parsed.isAdmin === true,
+      isModerator: parsed.isModerator === true,
+      language: optionalString(parsed.language),
+      colorScheme: optionalString(parsed.colorScheme),
+      cachedAt:
+        typeof parsed.cachedAt === 'number'
+          ? parsed.cachedAt
+          : Date.now(),
+    };
+  } catch {
+    window.localStorage.removeItem(topbarSessionCacheKey);
+    return null;
+  }
+}
+
+export function writeTopbarSessionSnapshot(snapshot: TopbarSessionSnapshot) {
+  try {
+    window.localStorage.setItem(topbarSessionCacheKey, JSON.stringify(snapshot));
+  } catch {
+    // The cache is optional; login and navigation must continue if storage is full.
+  }
+}
+
+export function clearTopbarSessionSnapshot() {
+  window.localStorage.removeItem(topbarSessionCacheKey);
+}

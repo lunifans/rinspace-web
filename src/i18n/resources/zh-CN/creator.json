@@ -1,0 +1,128 @@
+{
+  "title": "创作中心",
+  "navigation": {
+    "label": "创作中心导航",
+    "home": "创作主页",
+    "content": "内容管理",
+    "analytics": "数据分析",
+    "homeAria": "进入创作中心主页"
+  },
+  "tabs": {
+    "blog": "博客",
+    "book": "书籍",
+    "question": "问答",
+    "discussion": "讨论",
+    "dynamic": "动态"
+  },
+  "common": {
+    "edit": "编辑",
+    "opening": "打开中…",
+    "delete": "删除",
+    "retry": "重试",
+    "private": "私密",
+    "public": "公开",
+    "draft": "草稿",
+    "published": "发布"
+  },
+  "overview": {
+    "label": "创作概览",
+    "recent": "最近更新",
+    "allContent": "全部内容",
+    "empty": "还没有内容。"
+  },
+  "content": {
+    "label": "内容管理",
+    "typeLabel": "创作类型",
+    "tagsLabel": "内容标签",
+    "emptyType": "还没有{{type}}内容。",
+    "answerCount_one": "{{displayCount}} 个回答",
+    "answerCount_other": "{{displayCount}} 个回答",
+    "voteCount_one": "{{displayCount}} 个赞",
+    "voteCount_other": "{{displayCount}} 个赞",
+    "sourceVisibility": "源码可见性",
+    "visibility": "可见性",
+    "pageStatus": "页面状态"
+  },
+  "edit": {
+    "title": "标题",
+    "body": "正文",
+    "tags": "标签",
+    "save": "保存",
+    "saving": "保存中…",
+    "cancel": "取消"
+  },
+  "notice": {
+    "contentSaved": "内容已保存。",
+    "questionSaved": "题目已保存。",
+    "contentDeleted": "内容已删除。",
+    "publishingUpdated": "发布设置已更新。",
+    "questionDeleted": "题目已删除。"
+  },
+  "delete": {
+    "title": "确认删除",
+    "description": "确认删除“{{title}}”吗？",
+    "feedRemoved": "{{type}}将从创作中心移除。",
+    "sourceRemoved": "对应的源码仓库内容也会被清理。",
+    "referencesHidden": "相关引用和互动入口可能不再可见。",
+    "questionImpact": "题目删除后，回答、收藏和引用入口可能受影响。",
+    "confirm": "确认删除"
+  },
+  "auth": {
+    "required": "需要登录",
+    "signIn": "登录"
+  },
+  "analytics": {
+    "label": "数据分析",
+    "period": {
+      "label": "统计周期",
+      "week": "周",
+      "month": "月",
+      "year": "年",
+      "previous": "上一个周期",
+      "select": "选择统计周期",
+      "next": "下一个周期",
+      "weekLabel": "{{year}} 年第 {{week}} 周 · {{start}}–{{end}}"
+    },
+    "summary": {
+      "label": "阅读数据摘要",
+      "cumulativeReads": "累计阅读",
+      "periodReads": "本周期新增"
+    },
+    "metrics": {
+      "label": "图表指标",
+      "reads": "阅读量",
+      "likes": "点赞数",
+      "favorites": "收藏数",
+      "newFollowers": "新增粉丝"
+    },
+    "chart": {
+      "title": "博客与书籍数据趋势",
+      "description": "阅读量、点赞数、收藏数和新增粉丝折线图"
+    },
+    "sources": {
+      "heading": "阅读来源作品",
+      "untitled": "未命名作品"
+    },
+    "table": {
+      "caption": "{{period}}博客与书籍数据",
+      "date": "日期"
+    }
+  },
+  "demoCapabilities": {
+    "notice": "浏览器演示：创作数据与本地发布仅保存在本设备。代码工作区、协作、审核、Gitea 活跃度和真实发布不可用。"
+  },
+  "heatmap": {
+    "label": "创作热力图",
+    "contributions_one": "一年内 {{displayCount}} 次贡献",
+    "contributions_other": "一年内 {{displayCount}} 次贡献",
+    "dayContributions_one": "{{date}} · {{displayCount}} 次贡献",
+    "dayContributions_other": "{{date}} · {{displayCount}} 次贡献",
+    "weekday": {
+      "monday": "一",
+      "wednesday": "三",
+      "friday": "五"
+    },
+    "less": "少",
+    "more": "多"
+  }
+}

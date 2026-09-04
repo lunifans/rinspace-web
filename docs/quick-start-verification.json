@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-09-01T17:36:37.147Z",
+  "environment": {
+    "platform": "linux",
+    "architecture": "x64",
+    "osRelease": "5.15.0-153-generic",
+    "node": "v22.22.3",
+    "pnpm": "9.7.0",
+    "cleanWorkingDirectory": true,
+    "dependencyStoreMode": "warm-offline-store"
+  },
+  "timingMilliseconds": {
+    "copy": 387,
+    "install": 3590,
+    "serverReady": 1155,
+    "total": 5132
+  },
+  "result": "passed"
+}

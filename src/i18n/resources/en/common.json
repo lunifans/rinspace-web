@@ -1,0 +1,298 @@
+{
+  "appName": "Rinspace",
+  "loading": "Loading…",
+  "pageLoading": "Page loading",
+  "accountRestoring": "Restoring account",
+  "processing": "Processing…",
+  "pageLoaded": "Page loaded",
+  "actions": {
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close",
+    "retry": "Retry"
+  },
+  "imageCrop": {
+    "zoom": "Zoom",
+    "uploading": "Uploading…",
+    "apply": "Apply crop",
+    "failed": "The image could not be cropped. Choose another image and try again."
+  },
+  "accessibility": {
+    "skipToMain": "Skip to main content",
+    "close": "Close",
+    "popoverContent": "Popover content",
+    "command": "Command",
+    "commandSearch": "Search {{label}}",
+    "pagination": "Pagination"
+  },
+  "footer": {
+    "company": "Rinspace Web",
+    "source": "Source code",
+    "legalNav": "Legal information",
+    "legal": "Legal",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "copyright": "Copyright reports",
+    "contact": "Contact"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "position": "Page {{page}} of {{pageCount}}",
+    "next": "Next"
+  },
+  "states": {
+    "filter": "Filters",
+    "loading": "Loading",
+    "emptyTitle": "No content",
+    "emptyDescription": "There is nothing to display yet.",
+    "loadFailed": "Could not load content",
+    "tryAgain": "Try again shortly."
+  },
+  "collection": {
+    "closeSelector": "Close collection folder selector",
+    "current": "Current: {{path}}",
+    "chooseLocation": "Choose where to save",
+    "target": "Destination: {{path}}",
+    "chooseTarget": "Choose a destination folder",
+    "created": "Created collection folder “{{name}}”.",
+    "newName": "New collection folder name",
+    "newPlaceholder": "New collection folder",
+    "creating": "Creating",
+    "create": "Create",
+    "search": "Search collection folders",
+    "title": "Collection folders",
+    "itemCount_one": "{{displayCount}} item",
+    "itemCount_other": "{{displayCount}} items",
+    "childCount_one": "{{displayCount}} subfolder",
+    "childCount_other": "{{displayCount}} subfolders",
+    "noMatches": "No matching collection folders."
+  },
+  "report": {
+    "title": "Report",
+    "reason": "Reason",
+    "detail": "Additional details",
+    "detailRequired": "Add the required details.",
+    "loadFailed": "Report reasons could not be loaded.",
+    "submitFailed": "The report could not be submitted.",
+    "submit": "Submit report",
+    "reasons": {
+      "spam": "Spam",
+      "harassment": "Harassment or abuse",
+      "unsafe": "Dangerous or illegal content",
+      "deceptive": "Deceptive or fraudulent content",
+      "privacy": "Privacy violation",
+      "impersonation": "Impersonation",
+      "other": "Other"
+    }
+  },
+  "publication": {
+    "stages": {
+      "queue": "Waiting for a worker",
+      "source_prepare": "Preparing source files",
+      "document_compile": "Converting document",
+      "asset_process": "Processing assets",
+      "store": "Saving result",
+      "fallback": "Rendering"
+    },
+    "duration": {
+      "seconds_one": "{{displayCount}} second",
+      "seconds_other": "{{displayCount}} seconds",
+      "minutes_one": "{{displayCount}} minute",
+      "minutes_other": "{{displayCount}} minutes",
+      "hoursMinutes": "{{displayHours}} hr {{displayMinutes}} min"
+    },
+    "awaitingEvent": {
+      "title": "Receiving the new version",
+      "previous": "The previous version remains visible",
+      "waiting": "Waiting for the publication event"
+    },
+    "validating": {
+      "title": "Checking the project",
+      "detail": "Configuration and entry file"
+    },
+    "queued": {
+      "title": "Waiting to render",
+      "waiting": "Waiting for rendering capacity",
+      "ahead_one": "About {{displayCount}} job ahead{{eta}}",
+      "ahead_other": "About {{displayCount}} jobs ahead{{eta}}"
+    },
+    "running": "Rendering",
+    "activating": {
+      "title": "Publishing",
+      "switching": "Verifying and activating the new version"
+    },
+    "failed": {
+      "title": "Update incomplete",
+      "diagnostics": "View diagnostics"
+    },
+    "reconciliation": {
+      "title": "Status needs review"
+    },
+    "published": {
+      "title": "Published",
+      "detail": "The new version is live"
+    },
+    "completedStages": "Completed {{displayCompleted}} of {{displayTotal}} stages",
+    "showDiagnostics": "View diagnostics",
+    "hideDiagnostics": "Hide diagnostics",
+    "openDiagnostics": "Open full diagnostics",
+    "support": "Support the rendering service"
+  },
+  "media": {
+    "commentImage": "Comment image",
+    "diagram": "Diagram",
+    "renderingDiagram": "Rendering diagram…"
+  },
+  "boundaries": {
+    "appTitle": "This page is temporarily unavailable",
+    "appMessage": "Refresh the page to try again. Existing recovery will preserve unsaved edits.",
+    "routeTitle": "Page failed to load",
+    "routeMessage": "Refresh the page to try again."
+  },
+  "access": {
+    "signInTitle": "Sign in required",
+    "signInMessage": "This page is available to signed-in members.",
+    "signInAction": "Sign in / Register"
+  },
+  "demo": {
+    "badge": "Local demo",
+    "title": "Demo controls",
+    "description": "Persona, content changes, and failure scenarios stay in this browser and never connect to a real account or production service.",
+    "routeSupport": {
+      "kicker": "Demo coverage boundary",
+      "title": "This route is not supported yet",
+      "message": "The page is part of the public route contract, but the first demo release does not yet provide an acceptance-ready local behavior. The demo will not fill the gap with fake success or production requests.",
+      "recovery": "Use a route marked interactive or read-only, or wait for a later release to complete this domain."
+    },
+    "openControls": "Open demo controls",
+    "closeControls": "Close demo controls",
+    "enterMember": "Enter as demo member",
+    "persona": "Demo persona",
+    "personas": {
+      "guest": "Guest",
+      "member": "Demo member"
+    },
+    "personaChanged": "Switched to {{persona}}.",
+    "scenario": "Failure scenario",
+    "scenarios": {
+      "normal": "Normal",
+      "offline": "Offline",
+      "latency": "Fixed latency",
+      "unauthorized": "Unauthorized (401)",
+      "forbidden": "Forbidden (403)",
+      "conflict": "Conflict (409)",
+      "validation": "Validation error (422)",
+      "rate-limited": "Rate limited (429)",
+      "server-error": "Server error (500)"
+    },
+    "scenarioChanged": "Failure scenario changed to {{scenario}}.",
+    "reset": "Reset demo data",
+    "resetting": "Resetting…",
+    "resetComplete": "Demo data was restored; persona, theme, and language were preserved.",
+    "resetFailed": "Demo data could not be reset. Check browser storage and try again.",
+    "resetUnavailable": "The demo data repository is not ready.",
+    "storageUnavailable": "The browser could not save the local demo setting.",
+    "diagnostics": "Diagnostics and direct links",
+    "mode": "Mode",
+    "basePath": "Base path",
+    "worker": "Network isolation",
+    "dataset": "Dataset",
+    "checksum": "Checksum",
+    "ready": "Ready",
+    "notReady": "Not ready",
+    "directLinks": "Stable demo persona links",
+    "guestLink": "Guest link",
+    "memberLink": "Member link",
+    "capabilities": {
+      "title": "Production capability boundaries",
+      "description": "The local demo never connects these capabilities to real services; pages expose their status, dependency, and recovery path.",
+      "productionOnly": "Production integration required",
+      "state": "Demo state",
+      "dependency": "Production dependency",
+      "recovery": "Recovery path",
+      "backHome": "Back to the demo home",
+      "states": {
+        "unavailable": "Unavailable",
+        "local-only": "Local simulation only"
+      },
+      "items": {
+        "gitea": {
+          "title": "Gitea source repositories",
+          "description": "Demo mode does not synchronize a Gitea identity, read repositories, or redirect to a real source service.",
+          "dependency": "A same-origin Gitea service and identity bridge.",
+          "recovery": "Switch to integration or official mode and configure a compatible Gitea adapter."
+        },
+        "code-server": {
+          "title": "code-server workspaces",
+          "description": "Demo mode does not create, poll, or open a remote code workspace.",
+          "dependency": "An authenticated remote workspace service.",
+          "recovery": "Switch to integration or official mode and configure a compatible workspace adapter."
+        },
+        "renderer": {
+          "title": "Remote Renderer",
+          "description": "Demo mode does not submit or poll production render jobs; local reading previews remain available.",
+          "dependency": "An asynchronous document renderer and job API.",
+          "recovery": "Switch to integration or official mode and configure a compatible renderer adapter."
+        },
+        "quiver": {
+          "title": "Quiver diagrams",
+          "description": "Demo mode does not load the Quiver iframe or call a real diagram API.",
+          "dependency": "A same-origin Quiver application and diagram API.",
+          "recovery": "Switch to integration or official mode and explicitly enable the Quiver application."
+        },
+        "payments": {
+          "title": "Payments and sponsorship",
+          "description": "Demo mode does not create orders, submit payment forms, poll payment status, or process real callbacks.",
+          "dependency": "An order service, payment-provider credentials, and server-side callback verification.",
+          "recovery": "Restore this only in an official deployment with the payment backend explicitly enabled."
+        },
+        "sms": {
+          "title": "SMS verification",
+          "description": "Demo identities are local browser personas; they never send an SMS or create a production account.",
+          "dependency": "A supported authentication provider and configured server-side SMS sender.",
+          "recovery": "Configure integration or official authentication and its server-side SMS sender."
+        },
+        "real-upload": {
+          "title": "Real file uploads",
+          "description": "The demo stores images up to 2 MB in its local repository; PDF, archive, and object-storage uploads are unavailable.",
+          "dependency": "A compatible object store and upload authorization service.",
+          "recovery": "Keep using the local image simulation, or configure an upload adapter in integration or official mode."
+        }
+      }
+    }
+  },
+  "routes": {
+    "home": "A long-form community organized by tags",
+    "about": "About",
+    "legal": "Legal",
+    "terms": "Terms of Service",
+    "privacy": "Privacy Policy",
+    "copyright": "Copyright",
+    "contact": "Contact",
+    "sponsor": "Sponsor",
+    "search": "Search",
+    "creator": "Creator Center",
+    "write": "Write",
+    "questions": "Questions",
+    "ask": "Ask a question",
+    "tags": "Tags",
+    "tag": "Tag",
+    "badges": "Badges",
+    "blogs": "Blogs",
+    "books": "Books",
+    "book": "Book",
+    "profile": "Profile",
+    "users": "People",
+    "settings": "Settings",
+    "admin": "Administration",
+    "notifications": "Notifications",
+    "activity": "Activity",
+    "announcements": "Announcements",
+    "discussions": "Discussions",
+    "dynamics": "Updates",
+    "content": "Content",
+    "notFound": "Page not found"
+  }
+}

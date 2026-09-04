@@ -1,0 +1,37 @@
+/* Dark theme for embedded code/markdown editors (Shiki, Milkdown Crepe).
+   Shiki emits --shiki-dark-* custom properties alongside light values when
+   dual themes are requested; the rules below apply them under data-theme. */
+
+[data-theme="dark"] .shiki,
+[data-theme="dark"] .shiki span {
+  color: var(--shiki-dark, inherit) !important;
+  background-color: var(--shiki-dark-bg, transparent) !important;
+  font-style: var(--shiki-dark-font-style, inherit) !important;
+  font-weight: var(--shiki-dark-font-weight, inherit) !important;
+  text-decoration: var(--shiki-dark-text-decoration, inherit) !important;
+}
+
+/* Milkdown Crepe ships its theme as a fixed light variable block; restate the
+   variables against the rin tokens so the editor follows the site theme. */
+[data-theme="dark"] .milkdown {
+  --crepe-color-background: var(--rin-canvas);
+  --crepe-color-on-background: var(--rin-ink);
+  --crepe-color-surface: var(--rin-surface);
+  --crepe-color-surface-low: var(--rin-surface-subtle);
+  --crepe-color-on-surface: var(--rin-ink);
+  --crepe-color-on-surface-variant: var(--rin-ink-muted);
+  --crepe-color-outline: var(--rin-border);
+  --crepe-color-primary: var(--rin-accent);
+  --crepe-color-secondary: color-mix(in srgb, var(--rin-accent) 18%, var(--rin-surface));
+  --crepe-color-on-secondary: var(--rin-ink);
+  --crepe-color-inverse: var(--rin-ink);
+  --crepe-color-on-inverse: var(--rin-canvas);
+  --crepe-color-inline-code: #ffb4ab;
+  --crepe-color-error: var(--rin-destructive);
+  --crepe-color-hover: var(--rin-surface-subtle);
+  --crepe-color-selected: color-mix(in srgb, var(--rin-accent) 22%, var(--rin-surface));
+  --crepe-color-inline-area: var(--rin-surface-subtle);
+
+  --crepe-shadow-1: 0px 1px 2px 0px rgb(0 0 0 / 50%), 0px 1px 3px 1px rgb(0 0 0 / 30%);
+  --crepe-shadow-2: 0px 1px 2px 0px rgb(0 0 0 / 50%), 0px 2px 6px 2px rgb(0 0 0 / 30%);
+}

@@ -1,0 +1,142 @@
+{
+  "about": "About",
+  "terms": "Terms of Service",
+  "privacy": "Privacy Policy",
+  "copyright": "Copyright",
+  "contact": "Contact",
+  "navigation": "Legal pages",
+  "operator": "Operator",
+  "source": "Source code",
+  "notPublished": "Not published for this deployment",
+  "nav": {
+    "about": "About",
+    "legal": "Legal",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "copyright": "Copyright reports",
+    "contact": "Contact"
+  },
+  "pages": {
+    "about": {
+      "title": "About {{siteName}}",
+      "label": "About",
+      "description": "{{siteName}} is a long-form knowledge community organized by tags, with Markdown and LaTeX writing backed by Git version control.",
+      "sections": {
+        "position": {
+          "title": "What Rinspace is for",
+          "line1": "{{siteName}} supports long-term knowledge organization, blogging, book notes, tag Wikis, questions, and discussions.",
+          "line2": "Tags form the core of its knowledge structure so that content, citations, and version changes remain traceable."
+        },
+        "operator": {
+          "title": "Operator",
+          "line1": "Operator for {{siteName}}: {{company}}.",
+          "line2": "The public contact email is {{email}}."
+        }
+      }
+    },
+    "legal": {
+      "title": "Legal information",
+      "label": "Legal",
+      "description": "{{siteName}} operator details, regulatory records, and public contact information.",
+      "sections": {
+        "identity": {
+          "title": "Operator details",
+          "line1": "Website: {{siteName}}",
+          "line2": "Operator: {{company}}",
+          "line3": "Contact: {{email}}"
+        },
+        "records": {
+          "title": "Regulatory records",
+          "line1": "ICP filing: {{icp}}",
+          "line2": "Public security filing: {{publicSecurity}}"
+        },
+        "links": {
+          "title": "Related pages",
+          "line1": "The Terms, Privacy Policy, and copyright reporting rules are available from the links at the bottom of this page.",
+          "line2": "For site feedback, content rights, or security issues, contact us through the public email address."
+        }
+      }
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "label": "Terms",
+      "description": "Basic rules for publishing, editing, citing, and interacting with content on {{siteName}}.",
+      "sections": {
+        "account": {
+          "title": "Accounts and content",
+          "line1": "Users are responsible for the content they publish, edit, upload, or submit and must respect the lawful rights of others.",
+          "line2": "Users must not publish unlawful content, harassment, spam, privacy violations, or material that disrupts the service."
+        },
+        "knowledge": {
+          "title": "Knowledge and citations",
+          "line1": "{{siteName}} supports Markdown, LaTeX, tag Wikis, and Git versioning; users must respect attribution and citation standards.",
+          "line2": "The platform may process public content as needed for display, indexing, backup, moderation, and security."
+        },
+        "enforcement": {
+          "title": "Enforcement",
+          "line1": "Content that violates these rules may be hidden or removed, and publishing or account capabilities may be restricted or referred for review.",
+          "line2": "To dispute an action, contact {{email}}."
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "label": "Privacy",
+      "description": "How {{siteName}} handles basic account, content, log, and contact information.",
+      "sections": {
+        "collection": {
+          "title": "Information collected",
+          "line1": "{{siteName}} processes the account data, content data, and activity logs needed for sign-in, publishing, editing, comments, notifications, security audits, and abuse prevention.",
+          "line2": "Email addresses, avatars, profiles, posts, comments, tag edits, and uploaded files are displayed or stored according to the visibility selected by the user."
+        },
+        "purpose": {
+          "title": "How information is used",
+          "line1": "Information is used to provide the service, preserve content versions, handle reports, protect security, improve the product, and meet legal obligations.",
+          "line2": "Personal information is not used for purposes unrelated to {{siteName}} unless required by law, authorized by the user, or necessary for security."
+        },
+        "rights": {
+          "title": "Access and correction",
+          "line1": "To access, correct, or delete personal information, or to ask a privacy question, email {{email}}."
+        }
+      }
+    },
+    "copyright": {
+      "title": "Copyright and infringement reports",
+      "label": "Copyright",
+      "description": "{{siteName}} copyright principles and the channel for reporting infringement.",
+      "sections": {
+        "principles": {
+          "title": "Copyright principles",
+          "line1": "{{siteName}} respects original work, academic citation, open-source licenses, and lawful republication.",
+          "line2": "Before publishing, users must hold the relevant rights, have permission, or rely on another lawful basis such as fair use, citation, or an open-source license."
+        },
+        "materials": {
+          "title": "What to include in a report",
+          "line1": "If content on {{siteName}} infringes your rights, provide the URL, proof of rights, an explanation of the infringement, and a contact email.",
+          "line2": "Report to: {{email}}"
+        },
+        "handling": {
+          "title": "How reports are handled",
+          "line1": "After validating a report, we may remove or hide content, restrict access, contact the publisher, or preserve necessary evidence."
+        }
+      }
+    },
+    "contact": {
+      "title": "Contact",
+      "label": "Contact",
+      "description": "{{siteName}} public email address and common reasons to contact us.",
+      "sections": {
+        "email": {
+          "title": "Public email",
+          "line1": "Email: {{email}}",
+          "line2": "Use it for site feedback, account issues, content or copyright reports, security matters, and business inquiries."
+        },
+        "handling": {
+          "title": "Sending a useful report",
+          "line1": "Include relevant page links, account details, screenshots, and any context needed to investigate the issue.",
+          "line2": "For rights or security reports, clearly identify the affected scope and provide information that can be verified."
+        }
+      }
+    }
+  }
+}

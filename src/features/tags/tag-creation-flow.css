@@ -1,0 +1,82 @@
+.tag-creation-flow {
+  width: min(640px, calc(100vw - 24px));
+  max-height: min(760px, calc(100dvh - 24px));
+  overflow: auto;
+  padding: 0;
+}
+
+.tag-creation-flow > .rin-ui-dialog-heading {
+  padding: 22px 72px 0 22px;
+}
+
+.tag-creation-flow > [aria-label="关闭"] {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.tag-creation-flow > footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 22px 18px;
+  border-top: 1px solid var(--border-color);
+}
+
+.tag-creation-flow__body {
+  display: grid;
+  gap: 16px;
+  padding: 20px 22px 22px;
+}
+
+.tag-creation-flow label {
+  display: grid;
+  gap: 7px;
+}
+
+.tag-creation-flow input,
+.tag-creation-flow textarea {
+  width: 100%;
+  padding: 11px 13px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background: var(--surface-1);
+  color: inherit;
+}
+
+.tag-creation-flow textarea {
+  min-height: 92px;
+  resize: vertical;
+}
+
+.tag-creation-flow section article {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tag-creation-flow section article p,
+.tag-creation-flow section article small {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.tag-creation-flow__status:empty {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .tag-creation-flow {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+  }
+
+  .tag-creation-flow__body {
+    padding: 18px;
+  }
+}

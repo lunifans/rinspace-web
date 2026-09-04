@@ -1,0 +1,10 @@
+.rin-rich-content {
+  overflow-wrap: anywhere;
+  color: var(--rin-ink);
+}
+.rin-rich-content :where(h1,h2,h3,h4) { scroll-margin-block-start: 5rem; }
+.rin-rich-content :where(pre, .math-display, mjx-container[display="true"], .table-responsive) { max-inline-size: 100%; overflow-x: auto; overscroll-behavior-inline: contain; }
+.rin-rich-content table { border-collapse: collapse; inline-size: 100%; }
+.rin-rich-content :where(th,td) { border-block-end: 1px solid var(--rin-border); padding: .625rem; text-align: start; }
+.rin-rich-content blockquote { margin-inline: 0; border-inline-start: 3px solid var(--rin-signal); padding-inline-start: 1rem; color: var(--rin-ink-muted); }
+.rin-rich-content :where(a) { color: var(--rin-signal); text-underline-offset: .18em; }

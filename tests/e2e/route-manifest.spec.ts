@@ -1,0 +1,35 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import { expect, test } from '@playwright/test';
+
+type PublicRoute = { order: number; path: string };
+type RouteMetadata = { schemaVersion: string; routes: PublicRoute[] };
+const metadataPath = path.resolve('contracts/route-metadata.json');
+const metadata = JSON.parse(fs.readFileSync(metadataPath, 'utf8')) as RouteMetadata;
+const activeRoutes = metadata.routes;
+const values: Record<string, string> = { postId: '254', titleSlug: 'fixture-title', slug: 'fixture', orderNo: 'fixture', tagId: '1', tagSlug: 'fixture', tagName: 'fixture', tagTitle: 'fixture', sectionId: '1', authorId: '1', username: 'fixture', questionId: '1' };
+function concretePath(pattern: string) { if (pattern === '*') return '/__rinspace_not_found__'; return pattern.replace(/:([A-Za-z]+)/g, (_, key: string) => values[key] || 'fixture'); }
+
+test('all 85 public route declarations resolve in contract order for anonymous users', async ({ page }) => {
+  test.setTimeout(240_000);
+  expect(metadata.schemaVersion).toBe('rinspace-route-metadata/v1');
+  expect(activeRoutes).toHaveLength(85);
+  for (const route of activeRoutes) {
+    const target = concretePath(route.path);
+    const probe = await page.request.get(target, { headers: { Accept: 'text/html' } });
+    expect(probe.status(), `route ${route.order} ${route.path}`).toBe(200);
+    try {
+      await page.goto(target, { waitUntil: 'domcontentloaded' });
+    } catch (error) {
+      // Canonicalization effects can replace an in-flight document navigation. The independent
+      // HTTP probe above owns status validation; only tolerate Chromium's explicit abort signal.
+      const canonicalNavigationAbort = error instanceof Error
+        && (error.message.includes('ERR_ABORTED')
+          || error.message.includes('interrupted by another navigation'));
+      if (!canonicalNavigationAbort) throw error;
+      await page.waitForLoadState('domcontentloaded').catch(() => undefined);
+    }
+    await expect(page.locator('#root > *').first(), `route ${route.order} ${route.path}`).toBeAttached();
+    await expect(page.locator('body')).not.toContainText('No routes matched location');
+  }
+});
