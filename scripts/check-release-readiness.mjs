@@ -60,7 +60,7 @@ for (const blocker of policy.blockers || [])
 if (expectBlocked) {
   if (blockers.length === 0)
     throw new Error(
-      "Release unexpectedly became ready; update the Task 4/26 evidence and remove --expect-blocked in the same reviewed change.",
+      "Release unexpectedly became ready; update the release evidence and remove --expect-blocked in the same reviewed change.",
     );
   process.stdout.write(
     `Release gate is correctly blocked (${blockers.length} reasons).\n`,

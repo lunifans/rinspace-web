@@ -124,8 +124,8 @@ jobs:
           pnpm check:readme
           pnpm check:release-budgets
           pnpm check:publication-ci
-          pnpm test:cla
-          pnpm check:cla-registry
+          pnpm test:dco
+          pnpm check:dco
           pnpm check
           pnpm lint
 

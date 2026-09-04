@@ -25,3 +25,7 @@ The private `vendor/animate-ui/` catalog is provenance and design-reference mate
 Third-party dependencies and retained binary assets are listed in [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) and `licenses/`. Any future publication blocker listed there must be resolved before release. The approved scopes for demo data, templates, visual assets, and brand assets are recorded in [`ASSET-LICENSES.md`](./ASSET-LICENSES.md) and [`TRADEMARKS.md`](./TRADEMARKS.md). New or changed material must be reviewed again and does not inherit that approval automatically.
 
 Questions about the applicable scope may be sent to `lunifans@outlook.com`.
+
+## Contributions
+
+Ordinary external contributions use the repository-local [`DCO`](./DCO) 1.1 sign-off described in [`CONTRIBUTING.md`](./CONTRIBUTING.md); no external CLA service is required. Under [`CONTRIBUTION-LICENSE.md`](./CONTRIBUTION-LICENSE.md), contributors retain copyright and license intentional submissions under Apache License 2.0. This gives Rinspace the rights needed to incorporate accepted contributions into both the `AGPL-3.0-only` community edition and separately licensed commercial editions. Large, corporate, ownership-complex, or patent-sensitive submissions may require a separate written agreement before merge.

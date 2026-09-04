@@ -26,7 +26,7 @@ Rinspace Web 由任务优先（上海）网络科技有限责任公司（下称�
 
 ## 三、不属于商业许可的材料
 
-商业许可只能覆盖 Rinspace 拥有或已取得充分商业再许可权的部分。第三方软件、字体、图片、模板、贡献者未授予商业再许可权的代码，以及其他在 LICENSING.md、ASSET-LICENSES.md 或 THIRD_PARTY_NOTICES.md 中单独标识的材料，继续受其各自条款约束。
+商业许可只能覆盖 Rinspace 拥有或已取得充分商业再许可权的部分。按照 `CONTRIBUTION-LICENSE.md` 接受的贡献以 Apache License 2.0 授予了所需许可，可以纳入商业版本；另有书面约定的贡献依该约定处理。第三方软件、字体、图片、模板、未取得充分商业再许可权的材料，以及其他在 LICENSING.md、ASSET-LICENSES.md 或 THIRD_PARTY_NOTICES.md 中单独标识的材料，继续受其各自条款约束。
 
 开源代码许可不当然授予“Rinspace”“芥子环”、Logo、域名或其他品牌标识的使用权；相关使用须遵守 TRADEMARKS.md 或取得单独书面许可。
 

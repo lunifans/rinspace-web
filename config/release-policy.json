@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "releasesEnabled": false,
+  "releasesEnabled": true,
   "repository": "lunifans/rinspace-web",
   "requiredRootLicense": "AGPL-3.0-only",
   "requiredLegalFiles": [
@@ -9,17 +9,14 @@
     "COMMERCIAL-LICENSING.md",
     "TRADEMARKS.md",
     "THIRD_PARTY_NOTICES.md",
-    "ICLA.md",
-    "CCLA.md",
-    "CLA-PRIVACY.md",
+    "DCO",
+    "CONTRIBUTION-LICENSE.md",
     "ASSET-LICENSES.md",
     "CONTRIBUTING.md",
     "CODE_OF_CONDUCT.md",
     "SECURITY.md",
     "SUPPORT.md"
   ],
-  "blockers": [
-    "Task 26 CLA intake, record backup, and repository governance are not operational or verified."
-  ],
-  "policy": "Task 4 legal inputs are approved. Changing releasesEnabled still requires completed Task 26 evidence in the same reviewed change. This file never authorizes making the repository public."
+  "blockers": [],
+  "policy": "Task 4 legal inputs and the repository-local DCO contribution policy are approved. releasesEnabled authorizes release artifact generation only; it never authorizes creating a tag, publishing a release, deploying, or making the repository public."
 }

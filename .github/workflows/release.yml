@@ -51,7 +51,7 @@ jobs:
           cache: pnpm
       - name: Install frozen dependencies
         run: pnpm install --frozen-lockfile
-      - name: Fail closed until Task 26 governance and release policy are approved
+      - name: Verify legal and contribution policy readiness
         run: pnpm check:release-readiness
       - name: Verify tag, package version, and checked-out commit
         id: metadata
@@ -79,8 +79,8 @@ jobs:
           pnpm check:route-contracts
           pnpm test:route-contracts
           pnpm test:release-shell
-          pnpm test:cla
-          pnpm check:cla-registry
+          pnpm test:dco
+          pnpm check:dco
           pnpm check:demo-seed
           pnpm check:i18n
           pnpm check:i18n:bundles

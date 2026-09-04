@@ -1,4 +1,4 @@
-name: Contributor license agreement
+name: Developer Certificate of Origin
 
 "on":
   pull_request_target:
@@ -9,8 +9,8 @@ permissions:
   pull-requests: read
 
 jobs:
-  cla:
-    name: Verify every contributor against the reviewed CLA registry
+  dco:
+    name: Verify DCO sign-offs for every commit author and coauthor
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -19,7 +19,7 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.base.sha }}
           persist-credentials: false
-      - name: Check linked commit authors and the pull request author
+      - name: Check commit messages through the read-only GitHub API
         env:
           GITHUB_TOKEN: ${{ github.token }}
-        run: node scripts/check-cla-registry.mjs --event "$GITHUB_EVENT_PATH"
+        run: node scripts/check-dco.mjs --event "$GITHUB_EVENT_PATH"

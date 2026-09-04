@@ -50,11 +50,11 @@ jobs:
           pnpm check:publication-boundary
           pnpm check:dependencies
           pnpm check:lockfile-diff
-          pnpm check:release-readiness -- --expect-blocked
+          pnpm check:release-readiness
           pnpm check:readme
           pnpm check:release-budgets
           pnpm check:publication-ci
-          pnpm test:cla
+          pnpm test:dco
           pnpm test:integration-dev
           pnpm test:release-shell
       - name: Check generated contracts and source boundaries

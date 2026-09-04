@@ -9,7 +9,8 @@ Describe the user-visible outcome and the reason for the change.
 - [ ] Demo mode still makes no unauthorized external requests.
 - [ ] No credentials, production data, private URLs, or internal repository material were added.
 - [ ] Third-party code or assets are identified with exact source and license information.
-- [ ] Once the CLA registry is operational, the required ICLA or CCLA check covers every contributor; while it is disabled, no external contribution may merge.
+- [ ] Every commit author and `Co-authored-by` contributor added a matching DCO sign-off with `git commit -s`.
+- [ ] I read `CONTRIBUTION-LICENSE.md`; third-party, large, or organization-owned material has the required authority or separate agreement.
 
 ## Compatibility and rollout
 

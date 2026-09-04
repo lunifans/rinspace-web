@@ -9,17 +9,25 @@ Thank you for helping improve Rinspace Web. This repository contains the public 
 - Never submit production data, personal information, access tokens, private endpoints, internal incident material, or third-party work that you are not entitled to contribute.
 - Report vulnerabilities through [`SECURITY.md`](./SECURITY.md), not a public issue or pull request.
 
-## Contributor agreement
+## One-command contribution sign-off
 
-Rinspace Web uses a contributor license agreement so accepted contributions can remain available under `AGPL-3.0-only` while Rinspace can also offer a separate commercial license. Contributors keep their copyright.
+Ordinary contributions do not require an external CLA service, a separate account, an identity document, or a private contributor registry. Every commit author certifies the repository's [`DCO`](./DCO) 1.1 and accepts [`CONTRIBUTION-LICENSE.md`](./CONTRIBUTION-LICENSE.md) by adding a matching sign-off:
 
-- Individuals use [`ICLA.md`](./ICLA.md).
-- A company or other organization uses [`CCLA.md`](./CCLA.md) when it owns or controls the contribution; its authorized contributors must be identified.
-- Before signing, read [`CLA-PRIVACY.md`](./CLA-PRIVACY.md), which describes the necessary identity, authority, retention, public-registry, and possible cross-border processing controls.
-- The accepted record must bind the exact agreement version and SHA-256, the contributor identity or organization authority, the time, the expression of agreement, and evidence integrity.
-- A pull request, comment, checkbox, or `Signed-off-by` trailer alone is not an accepted CLA record unless the repository's designated process explicitly captures all required evidence.
+```bash
+git commit -s
+```
 
-The automated CLA gate is installed in a deliberately disabled, fail-closed state. The signing intake, private authoritative record store, encrypted backup, applicable cross-border controls, and required branch-protection check are not yet operational. Until all of them are verified, maintainers must not merge an external contribution.
+The resulting commit message contains:
+
+```text
+Signed-off-by: Your Name <you@example.com>
+```
+
+The name and email must match the commit author. A GitHub `noreply` email is accepted. Each person named in a `Co-authored-by` trailer must add a matching `Signed-off-by` trailer. If you forgot, update the commit message—for the latest commit, use `git commit --amend --signoff`; for several commits, use an interactive rebase or ask a maintainer for help.
+
+You retain copyright. Contributions are licensed under Apache License 2.0 so Rinspace can include them in the `AGPL-3.0-only` community edition and separately licensed commercial editions. The DCO workflow reads commit metadata through GitHub's read-only API, checks every commit, and never executes code from the pull request.
+
+If an employer, customer, school, or another organization may own the work, obtain authority before submitting. Large, organization-wide, ownership-complex, or patent-sensitive contributions may require a separate written agreement before merge; open an issue first and do not include confidential material. This exception is a maintainer review, not a routine hurdle for normal fixes and features.
 
 ## Development
 

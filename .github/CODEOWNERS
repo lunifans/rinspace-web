@@ -12,11 +12,10 @@ LICENSING.md                     @lunifans
 ASSET-LICENSES.md                @lunifans
 COMMERCIAL-LICENSING.md          @lunifans
 TRADEMARKS.md                    @lunifans
-ICLA.md                          @lunifans
-CCLA.md                          @lunifans
-CLA-PRIVACY.md                   @lunifans
+DCO                              @lunifans
+CONTRIBUTION-LICENSE.md          @lunifans
 CONTRIBUTING.md                  @lunifans
 CODE_OF_CONDUCT.md               @lunifans
 SECURITY.md                      @lunifans
 SUPPORT.md                       @lunifans
-.github/workflows/cla.yml        @lunifans
+.github/workflows/dco.yml        @lunifans
