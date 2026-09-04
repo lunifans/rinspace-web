@@ -1,0 +1,27 @@
+/* PublishCreateDialog additions on top of the shared auth-dialog styles. */
+
+.publish-create-dialog .latex-blog-cover-preview.publish-dialog-book-cover {
+  aspect-ratio: 2 / 3;
+  max-inline-size: 9rem;
+}
+
+.publish-dialog-pdf-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.publish-dialog-pdf-name {
+  overflow: hidden;
+  max-inline-size: 18rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--rin-ink-muted);
+  font-size: 0.8125rem;
+}
+
+.publish-dialog-pdf-status {
+  color: var(--rin-ink-muted);
+  font-size: 0.8125rem;
+}

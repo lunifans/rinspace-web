@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="420" viewBox="0 0 1600 420" role="img" aria-label="Rinspace profile cover">
+  <defs>
+    <linearGradient id="paper" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#315f52"/>
+      <stop offset="0.58" stop-color="#173f35"/>
+      <stop offset="1" stop-color="#8a6a35"/>
+    </linearGradient>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M36 0H0V36" fill="none" stroke="#fffaf0" stroke-opacity=".13" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="420" fill="url(#paper)"/>
+  <rect width="1600" height="420" fill="url(#grid)"/>
+  <g fill="none" stroke="#fffaf0" stroke-opacity=".28" stroke-width="2">
+    <path d="M108 312C258 132 386 112 492 252s246 120 392-44 282-138 404 58 210 164 312 48"/>
+    <path d="M68 122h300m-150-86v172M1230 78h224m-112-54v164"/>
+    <circle cx="1240" cy="276" r="92"/>
+    <circle cx="1240" cy="276" r="40"/>
+  </g>
+  <g fill="#fffaf0" fill-opacity=".72" font-family="Georgia, 'Times New Roman', serif">
+    <text x="104" y="96" font-size="38">Rinspace</text>
+    <text x="104" y="148" font-size="26" fill-opacity=".56">math community profile</text>
+    <text x="1012" y="146" font-size="46">∫ f(x) dx</text>
+    <text x="1120" y="342" font-size="42">π · λ · Σ</text>
+  </g>
+</svg>

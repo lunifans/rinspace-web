@@ -1,0 +1,218 @@
+.tag-knowledge-panel,
+.tag-governance-directory {
+  --tag-knowledge-border: color-mix(in srgb, currentColor 14%, transparent);
+  --tag-knowledge-muted: color-mix(in srgb, currentColor 76%, transparent);
+}
+
+.tag-governance-directory,
+.tag-governance-directory * { --rin-ink-muted: #536171; }
+[data-theme="dark"] .tag-governance-directory,
+[data-theme="dark"] .tag-governance-directory * { --rin-ink-muted: #b7c2cf; }
+
+.tag-knowledge-actions,
+.tag-knowledge-chips,
+.tag-governance-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+
+.tag-knowledge-actions {
+  align-items: center;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .3rem;
+}
+
+.tag-knowledge-panel > .panel-heading {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.tag-knowledge-actions a,
+.tag-knowledge-actions button,
+.tag-directory-create,
+.tag-governance-toolbar button,
+.tag-directory-more button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  gap: .35rem;
+  padding: .38rem .62rem;
+  border: 1px solid var(--tag-knowledge-border);
+  border-radius: .65rem;
+  color: inherit;
+  background: color-mix(in srgb, currentColor 4%, transparent);
+  text-decoration: none;
+}
+
+.tag-knowledge-actions .tag-knowledge-icon-action {
+  width: 2.15rem;
+  min-width: 2.15rem;
+  min-height: 2.15rem;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.tag-knowledge-actions a:hover,
+.tag-knowledge-actions button:hover,
+.tag-directory-create:hover,
+.tag-governance-toolbar button:hover,
+.tag-governance-toolbar button.active {
+  border-color: color-mix(in srgb, currentColor 34%, transparent);
+  background: color-mix(in srgb, currentColor 9%, transparent);
+}
+
+.tag-knowledge-actions button[data-variant="primary"] {
+  border-color: transparent;
+  background: var(--green, #2b577a);
+  color: var(--white, #fff);
+}
+
+.tag-knowledge-actions .tag-knowledge-source {
+  border-color: transparent;
+  background: transparent;
+  color: var(--tag-knowledge-muted);
+}
+
+.tag-knowledge-actions :is(a, button):focus-visible,
+.tag-governance-directory :is(a, button, input):focus-visible {
+  outline: 3px solid color-mix(in srgb, #4789ff 60%, transparent);
+  outline-offset: 2px;
+}
+
+.tag-knowledge-repository-state { margin: 0; padding: .6rem 1rem; border-bottom: 1px solid var(--tag-knowledge-border); color: var(--tag-knowledge-muted); font-size: .76rem; }
+.tag-knowledge-repository-state[data-state="failed"] { color: #c34a4a; }
+
+.tag-knowledge-section { padding: .9rem 1rem; border-top: 1px solid var(--tag-knowledge-border); }
+.tag-knowledge-section h3 { margin: 0 0 .6rem; font-size: .82rem; letter-spacing: .02em; }
+.tag-knowledge-section > button { margin-top: .65rem; color: var(--tag-knowledge-muted); }
+.tag-knowledge-empty,
+.tag-knowledge-placeholder,
+.tag-knowledge-warning { margin: .5rem 0; color: var(--tag-knowledge-muted); font-size: .78rem; }
+.tag-knowledge-warning { padding: .65rem 1rem; color: #a76328; }
+.tag-knowledge-placeholder { display: flex; align-items: center; gap: .35rem; }
+.tag-relation-list { margin: 0; }
+.tag-relation-list > div { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); align-items: start; gap: .7rem; padding: .55rem 0; }
+.tag-relation-list > div + div { border-top: 1px solid var(--tag-knowledge-border); }
+.tag-relation-list dt { padding-top: .25rem; color: var(--tag-knowledge-muted); font-size: .72rem; }
+.tag-relation-list dd { min-width: 0; margin: 0; }
+.tag-relation-list small { margin-left: .3rem; color: var(--tag-knowledge-muted); }
+.tag-candidate-diagnostics { margin: .75rem; padding: .75rem; border: 1px solid var(--tag-knowledge-border); border-radius: .75rem; }
+.tag-candidate-diagnostics > div { display: flex; align-items: center; gap: .4rem; }
+.tag-candidate-diagnostics > div code { margin-left: auto; }
+.tag-candidate-diagnostics p { color: var(--tag-knowledge-muted); font-size: .76rem; }
+.tag-candidate-diagnostics ul { display: grid; gap: .45rem; margin: .55rem 0 0; padding: 0; list-style: none; }
+.tag-candidate-diagnostics li { display: grid; gap: .15rem; overflow-wrap: anywhere; }
+.tag-candidate-diagnostics small { color: var(--tag-knowledge-muted); }
+.tag-governance-dialog { width: min(calc(100vw - 2rem), 45rem); padding: 0; overflow: hidden; }
+.tag-governance-dialog > header { padding: 1rem 1.15rem; border-bottom: 1px solid var(--tag-knowledge-border); }
+.tag-governance-dialog > header h2 { margin: 0; font-size: 1.05rem; }
+.tag-governance-dialog > header button { flex: none; }
+.tag-governance-dialog > div { max-height: min(74dvh, 43rem); padding: 1rem 1.15rem 1.15rem; overflow: auto; }
+.tag-governance-dialog form { display: grid; gap: .85rem; margin-top: .9rem; }
+.tag-governance-dialog .rin-ui-field { display: grid; gap: .35rem; }
+.tag-governance-dialog .rin-ui-field > label,
+.tag-governance-label { color: var(--tag-knowledge-muted); font-size: .76rem; }
+.tag-governance-dialog :is(input, textarea) { width: 100%; }
+.tag-governance-dialog textarea { min-height: 4.5rem; resize: vertical; }
+.tag-governance-tabs .rin-animate-tabs { margin-bottom: .35rem; overflow-x: auto; }
+.tag-governance-form-actions { display: flex; justify-content: flex-end; gap: .55rem; padding-top: .25rem; }
+.tag-alias-form { grid-template-columns: minmax(0, 1fr) auto; align-items: end; padding-top: .85rem; border-top: 1px solid var(--tag-knowledge-border); }
+.tag-alias-form > button { align-self: end; }
+.tag-impact-grid { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 0 .85rem; }
+.tag-impact-grid div { padding: .45rem; border-radius: .55rem; background: color-mix(in srgb, currentColor 6%, transparent); }
+.tag-impact-grid dt { color: var(--tag-knowledge-muted); font-size: .68rem; }
+.tag-impact-grid dd { display: inline; margin: 0 0 0 .35rem; font-variant-numeric: tabular-nums; }
+.tag-impact-grid dt { display: inline; }
+.tag-governance-status { overflow-wrap: anywhere; color: var(--tag-knowledge-muted); font-size: .76rem; }
+.tag-governance-history { margin-top: .9rem; }
+.tag-governance-history h3 { margin: 0 0 .5rem; font-size: .82rem; }
+.tag-governance-history ol { display: grid; gap: .4rem; margin: 0; padding: 0; list-style: none; }
+.tag-governance-history li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .15rem .7rem; padding: .5rem .6rem; border-radius: .55rem; background: color-mix(in srgb, currentColor 5%, transparent); }
+.tag-governance-history li span,
+.tag-governance-history li p { color: var(--tag-knowledge-muted); font-size: .72rem; }
+.tag-governance-history li p { grid-column: 1 / -1; margin: 0; overflow-wrap: anywhere; }
+.tag-alias-list { display: flex; flex-wrap: wrap; gap: .4rem; margin: .65rem 0 0; padding: 0; list-style: none; }
+.tag-alias-list li { display: inline-flex; gap: .35rem; padding: .3rem .45rem; border: 1px solid var(--tag-knowledge-border); border-radius: .5rem; }
+.tag-alias-list small { color: var(--tag-knowledge-muted); }
+
+.tag-knowledge-chips a,
+.tag-knowledge-chips span,
+.tag-governance-status span {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  padding: .25rem .45rem;
+  border-radius: .48rem;
+  background: color-mix(in srgb, currentColor 7%, transparent);
+  color: inherit;
+  font-size: .72rem;
+  text-decoration: none;
+}
+
+.tag-knowledge-chips.children { margin-top: .45rem; }
+.tag-knowledge-list,
+.tag-anchor-list { display: grid; gap: .55rem; margin: 0; padding: 0; list-style: none; }
+.tag-knowledge-list li { min-width: 0; }
+.tag-knowledge-list li > div { display: flex; align-items: center; gap: .4rem; min-width: 0; }
+.tag-knowledge-list a { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tag-knowledge-list small { display: block; margin-top: .15rem; overflow-wrap: anywhere; color: var(--tag-knowledge-muted); }
+.tag-knowledge-relation { flex: none; font-size: .68rem; color: var(--tag-knowledge-muted); }
+.tag-anchor-list li { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto; align-items: center; gap: .4rem; }
+.tag-anchor-list code { overflow: hidden; text-overflow: ellipsis; }
+.tag-anchor-list span { color: var(--tag-knowledge-muted); font-size: .7rem; }
+
+.tag-governance-directory { margin-bottom: 1rem; }
+.tag-governance-directory > .panel-heading { align-items: flex-start; }
+.tag-governance-directory .panel-heading h1 { margin: 0; }
+#tag-governance-directory .panel-heading p { margin: .25rem 0 0; color: #536171 !important; font-size: .82rem; }
+.tag-governance-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: .85rem 1rem; border-top: 1px solid var(--tag-knowledge-border); border-bottom: 1px solid var(--tag-knowledge-border); }
+.tag-governance-toolbar nav,
+.tag-governance-toolbar form { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; }
+.tag-governance-toolbar label { font-size: .78rem; color: var(--tag-knowledge-muted); }
+.tag-governance-toolbar input { width: 8rem; min-height: 2.25rem; padding: .35rem .55rem; border: 1px solid var(--tag-knowledge-border); border-radius: .55rem; color: inherit; background: transparent; }
+.tag-directory-context { display: flex; align-items: center; gap: .35rem; margin: 0; padding: .65rem 1rem; color: var(--tag-knowledge-muted); }
+.tag-governance-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; padding: 1rem; }
+.tag-governance-card { min-width: 0; padding: .85rem; border: 1px solid var(--tag-knowledge-border); border-radius: .85rem; }
+.tag-governance-card-heading { display: flex; justify-content: space-between; gap: .5rem; }
+.tag-governance-card-heading a { overflow: hidden; font-weight: 650; text-overflow: ellipsis; white-space: nowrap; }
+.tag-governance-card-heading code { color: var(--tag-knowledge-muted); }
+#tag-governance-directory .tag-governance-card > p { min-height: 2.5em; color: #536171 !important; font-size: .8rem; }
+.tag-governance-card .tag-knowledge-chips { margin-top: .65rem; }
+.tag-governance-status span[data-state="failed"],
+.tag-governance-status span[data-state="contested"] { color: #c34a4a; }
+.tag-directory-more { display: flex; justify-content: center; padding: 0 1rem 1rem; }
+
+[data-theme="dark"] #tag-governance-directory .panel-heading p,
+[data-theme="dark"] #tag-governance-directory .tag-governance-card > p { color: #b7c2cf !important; }
+
+@layer rin-dark-important {
+  #tag-governance-directory .panel-heading p,
+  #tag-governance-directory .tag-governance-card > p { color: #536171 !important; }
+  [data-theme="dark"] #tag-governance-directory .panel-heading p,
+  [data-theme="dark"] #tag-governance-directory .tag-governance-card > p { color: #b7c2cf !important; }
+}
+
+@media (max-width: 900px) {
+  .tag-governance-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tag-governance-toolbar { align-items: stretch; flex-direction: column; }
+}
+
+@media (max-width: 600px) {
+  .tag-governance-grid { grid-template-columns: 1fr; padding: .75rem; }
+  .tag-governance-directory > .panel-heading { gap: .75rem; }
+  .tag-governance-toolbar nav { display: grid; grid-template-columns: 1fr 1fr; }
+  .tag-governance-toolbar nav button { width: 100%; }
+  .tag-knowledge-actions > * { flex: none; }
+  .tag-governance-dialog { width: calc(100vw - 1rem); max-height: calc(100dvh - 1rem); }
+  .tag-governance-dialog > div { max-height: calc(100dvh - 5rem); padding: .85rem; }
+  .tag-alias-form { grid-template-columns: 1fr; }
+  .tag-relation-list > div { grid-template-columns: 4rem minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tag-knowledge-panel *, .tag-governance-directory * { scroll-behavior: auto !important; }
+}

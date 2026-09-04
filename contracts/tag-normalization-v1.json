@@ -1,0 +1,11 @@
+{
+  "schema": "tag-normalization/v1",
+  "vectors": [
+    { "input": "  Category   Theory  ", "normalized": "category theory" },
+    { "input": "Ｃａｔｅｇｏｒｙ　Ｔｈｅｏｒｙ", "normalized": "category theory" },
+    { "input": "Straße", "normalized": "strasse" },
+    { "input": "ΟΣ  ς", "normalized": "οσ σ" },
+    { "input": "层\n  范畴", "normalized": "层 范畴" },
+    { "input": "Ångström", "normalized": "ångström" }
+  ]
+}

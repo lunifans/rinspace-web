@@ -1,0 +1,23 @@
+[data-rin-ui="v2"] {
+  font-family: var(--rin-font-interface);
+  font-size: 1rem;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+}
+
+[data-rin-ui="v2"] :where(h1, h2, h3, .rin-editorial-title) {
+  font-family: var(--rin-font-editorial);
+  font-optical-sizing: auto;
+  text-wrap: balance;
+}
+
+[data-rin-ui="v2"] :where(code, kbd, samp, .rin-metadata) {
+  font-family: var(--rin-font-mono);
+}
+
+[data-rin-ui="v2"] .rin-reading-axis {
+  inline-size: min(100%, var(--rin-reading-max));
+  font-family: var(--rin-font-editorial);
+  font-size: clamp(1.05rem, .98rem + .25vw, 1.2rem);
+  line-height: 1.85;
+}

@@ -1,0 +1,729 @@
+[data-rin-ui="v2"] .rin-ui-badge { display: inline-flex; align-items: center; min-block-size: 1.5rem; border: 1px solid var(--rin-border); border-radius: 999px; background: var(--rin-surface-subtle); color: var(--rin-ink-muted); padding: .125rem .5rem; font-size: .75rem; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+[data-rin-ui="v2"] .rin-ui-badge[data-tone="info"] { border-color: color-mix(in srgb, var(--rin-signal) 42%, var(--rin-border)); color: var(--rin-signal); }
+[data-rin-ui="v2"] .rin-ui-badge[data-tone="success"] { border-color: color-mix(in srgb, var(--rin-success) 42%, var(--rin-border)); color: var(--rin-success); }
+[data-rin-ui="v2"] .rin-ui-badge[data-tone="warning"] { border-color: color-mix(in srgb, var(--rin-warning) 42%, var(--rin-border)); color: var(--rin-warning); }
+[data-rin-ui="v2"] .rin-ui-badge[data-tone="destructive"] { border-color: color-mix(in srgb, var(--rin-destructive) 42%, var(--rin-border)); color: var(--rin-destructive); }
+[data-rin-ui="v2"] .rin-ui-surface { border: 1px solid var(--rin-border); border-radius: var(--rin-radius-lg); background: var(--rin-surface); color: var(--rin-ink); }
+[data-rin-ui="v2"] .rin-ui-empty-state { display: grid; min-block-size: 8rem; place-content: center; justify-items: start; gap: .5rem; border-block: 1px solid var(--rin-border); padding: 1.5rem; }
+[data-rin-ui="v2"] .rin-ui-segmented { display: inline-flex; align-items: stretch; border: 1px solid var(--rin-border); border-radius: var(--rin-radius-md); background: var(--rin-surface-subtle); padding: .1875rem; }
+[data-rin-ui="v2"] .rin-ui-segmented-item { min-block-size: 2.25rem; border: 0; border-radius: calc(var(--rin-radius-md) - .1875rem); background: transparent; color: var(--rin-ink-muted); padding: .375rem .75rem; cursor: pointer; }
+[data-rin-ui="v2"] .rin-ui-segmented-item[aria-pressed="true"] { background: var(--rin-surface); color: var(--rin-ink); box-shadow: inset 0 0 0 1px var(--rin-border); }
+[data-rin-ui="v2"] .rin-ui-segmented-item:disabled { opacity: .5; cursor: not-allowed; }
+
+[data-rin-ui="v2"] .admin-workspace-shell {
+  min-inline-size: 0;
+}
+
+[data-rin-ui="v2"] .admin-workspace-sidebar-header {
+  justify-content: space-between;
+}
+
+[data-rin-ui="v2"] .admin-workspace-brand {
+  overflow: hidden;
+  min-inline-size: 0;
+  border: 0;
+  background: transparent;
+  color: var(--rin-ink);
+  font-family: var(--rin-font-interface);
+  font-size: .9rem;
+  font-weight: 760;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+[data-rin-ui="v2"] .admin-workspace-shell[data-sidebar-state="collapsed"] .admin-workspace-brand,
+[data-rin-ui="v2"] .admin-workspace-shell[data-sidebar-state="collapsed"] .admin-workspace-sidebar-footer .rin-ui-badge {
+  display: none;
+}
+
+[data-rin-ui="v2"] .admin-workspace-sidebar-footer {
+  min-inline-size: 0;
+}
+
+[data-rin-ui="v2"] .admin-workspace-main {
+  min-block-size: calc(100dvh - 64px);
+  overflow: clip;
+}
+
+[data-rin-ui="v2"] .admin-workspace-mobile-toolbar {
+  display: none;
+}
+
+[data-rin-ui="v2"] .admin-workspace-view,
+[data-rin-ui="v2"] .admin-content-management {
+  inline-size: min(100%, 78rem);
+  min-inline-size: 0;
+  padding: clamp(1.25rem, 3vw, 2.75rem);
+}
+
+[data-rin-ui="v2"] .admin-workspace-heading {
+  display: grid;
+  gap: .25rem;
+  margin-block-end: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+[data-rin-ui="v2"] .admin-workspace-heading h1 {
+  margin: 0;
+  font-family: var(--rin-font-editorial);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 650;
+}
+
+[data-rin-ui="v2"] .admin-home-list {
+  display: grid;
+  max-inline-size: 52rem;
+}
+
+[data-rin-ui="v2"] .admin-home-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 1rem;
+  border-inline: 0;
+  border-block-end: 0;
+  border-radius: 0;
+  padding: 1rem 0;
+}
+
+[data-rin-ui="v2"] .admin-home-row:last-child {
+  border-block-end: 1px solid var(--rin-border);
+}
+
+[data-rin-ui="v2"] .admin-home-row > svg {
+  color: var(--rin-ink-muted);
+}
+
+[data-rin-ui="v2"] .admin-home-row .rin-ui-button {
+  min-block-size: 2.25rem;
+  padding: .375rem .625rem;
+}
+
+[data-rin-ui="v2"] .admin-workspace-route-state {
+  display: grid;
+  min-block-size: calc(100dvh - 64px);
+  place-content: center;
+  padding: 1.5rem;
+}
+
+[data-rin-ui="v2"] .admin-content-management .admin-shell {
+  inline-size: 100%;
+  min-block-size: auto;
+  max-inline-size: none;
+  margin: 0;
+  padding: 0;
+}
+
+[data-rin-ui="v2"] .admin-content-management .admin-tabs {
+  position: sticky;
+  z-index: 8;
+  inset-block-start: 64px;
+  display: flex;
+  max-inline-size: 100%;
+  overflow-x: auto;
+  border: 0;
+  border-block-end: 1px solid var(--rin-border);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--rin-canvas) 92%, transparent);
+  padding: .5rem 0;
+  box-shadow: none;
+  backdrop-filter: blur(12px);
+}
+
+[data-rin-ui="v2"] .admin-content-management .admin-tabs .rin-animate-tab {
+  flex: 0 0 auto;
+}
+
+[data-rin-ui="v2"] .admin-content-management .admin-board {
+  margin-block-start: 1.25rem;
+}
+
+[data-rin-ui="v2"] .admin-content-management .admin-panel {
+  overflow: hidden;
+  border-color: var(--rin-border);
+  background: var(--rin-surface);
+  color: var(--rin-ink);
+  padding: clamp(1rem, 2vw, 1.5rem);
+  box-shadow: none;
+}
+
+[data-rin-ui="v2"] .admin-content-management :is(.admin-row, .admin-user-profile-grid, .admin-user-controls) {
+  border-color: var(--rin-border);
+  background: transparent;
+  color: var(--rin-ink);
+}
+
+[data-rin-ui="v2"] .admin-content-management .admin-row-action-menu {
+  background: transparent;
+}
+
+[data-rin-ui="v2"] .admin-content-management .content-admin-actions {
+  align-items: center;
+}
+
+[data-rin-ui="v2"] .admin-content-management .content-admin-actions > .rin-ui-button,
+[data-rin-ui="v2"] .admin-content-management .content-admin-actions > .rin-ui-segmented {
+  flex: 0 0 auto;
+}
+
+[data-rin-ui="v2"] .admin-content-management .admin-filter-form {
+  align-items: center;
+}
+
+[data-rin-ui="v2"] .admin-content-management .admin-filter-form .rin-ui-control {
+  min-inline-size: 10rem;
+}
+
+[data-rin-ui="v2"] .admin-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .625rem;
+  margin-block-start: 1.25rem;
+}
+
+[data-rin-ui="v2"] .admin-review-counts,
+[data-rin-ui="v2"] .admin-review-row-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .375rem;
+}
+
+[data-rin-ui="v2"] .admin-review-counts {
+  min-block-size: 2.5rem;
+}
+
+[data-rin-ui="v2"] .admin-review-refresh {
+  margin-inline-start: auto;
+}
+
+[data-rin-ui="v2"] .admin-review-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(10rem, 14rem) minmax(15rem, 1fr);
+  align-items: center;
+  gap: .75rem;
+  margin-block: 1rem 1.25rem;
+  padding-block: .875rem;
+  border-block: 1px solid var(--rin-border);
+}
+
+[data-rin-ui="v2"] .admin-review-id-search {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto;
+  justify-self: end;
+  inline-size: min(100%, 22rem);
+}
+
+[data-rin-ui="v2"] .admin-review-id-search .rin-ui-control {
+  border-start-end-radius: 0;
+  border-end-end-radius: 0;
+}
+
+[data-rin-ui="v2"] .admin-review-id-search .rin-ui-button {
+  border-start-start-radius: 0;
+  border-end-start-radius: 0;
+}
+
+[data-rin-ui="v2"] .admin-review-list {
+  display: grid;
+  border-block-start: 1px solid var(--rin-border);
+}
+
+[data-rin-ui="v2"] .admin-review-row {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr) auto;
+  align-items: start;
+  gap: .4rem 1rem;
+  inline-size: 100%;
+  border: 0;
+  border-block-end: 1px solid var(--rin-border);
+  background: transparent;
+  color: var(--rin-ink);
+  padding: 1rem 0;
+  text-align: start;
+  cursor: pointer;
+}
+
+[data-rin-ui="v2"] .admin-review-row:hover {
+  background: color-mix(in srgb, var(--rin-signal) 5%, transparent);
+}
+
+[data-rin-ui="v2"] .admin-review-row-id {
+  grid-row: span 3;
+  color: var(--rin-ink-muted);
+  font-family: var(--rin-font-mono);
+  font-size: .75rem;
+}
+
+[data-rin-ui="v2"] .admin-review-row > strong {
+  grid-column: 2;
+  overflow: hidden;
+  font-family: var(--rin-font-editorial);
+  font-size: 1.05rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-rin-ui="v2"] .admin-review-row-badges {
+  grid-column: 2;
+}
+
+[data-rin-ui="v2"] .admin-review-row-excerpt {
+  grid-column: 2;
+  overflow: hidden;
+  color: var(--rin-ink-muted);
+  font-size: .875rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+[data-rin-ui="v2"] .admin-review-row-meta {
+  grid-column: 3;
+  grid-row: 1 / span 3;
+  align-self: center;
+  color: var(--rin-ink-muted);
+  font-family: var(--rin-font-mono);
+  font-size: .72rem;
+  white-space: nowrap;
+}
+
+[data-rin-ui="v2"] .admin-review-skeletons,
+[data-rin-ui="v2"] .admin-review-case-loading {
+  display: grid;
+  gap: .75rem;
+}
+
+[data-rin-ui="v2"] .admin-review-skeletons .rin-ui-skeleton {
+  min-block-size: 5.5rem;
+}
+
+[data-rin-ui="v2"] .admin-review-case-loading .rin-ui-skeleton {
+  min-block-size: 14rem;
+}
+
+[data-rin-ui="v2"] .admin-review-case-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-block-end: 1rem;
+  border-block-end: 1px solid var(--rin-border);
+  padding-block-end: .75rem;
+}
+
+[data-rin-ui="v2"] .admin-review-case-nav > div {
+  display: flex;
+  gap: .375rem;
+}
+
+[data-rin-ui="v2"] .admin-review-case-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(18rem, 20rem);
+  align-items: start;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+[data-rin-ui="v2"] .admin-review-reader {
+  display: grid;
+  min-inline-size: 0;
+  gap: 1.5rem;
+}
+
+[data-rin-ui="v2"] .admin-review-reader > header {
+  display: grid;
+  gap: .625rem;
+}
+
+[data-rin-ui="v2"] .admin-review-reader > header .admin-review-row-id {
+  grid-row: auto;
+}
+
+[data-rin-ui="v2"] .admin-review-reader h1 {
+  margin: 0;
+  font-family: var(--rin-font-editorial);
+  font-size: clamp(1.7rem, 3.5vw, 2.75rem);
+  line-height: 1.2;
+}
+
+[data-rin-ui="v2"] .admin-review-snapshot {
+  display: grid;
+  gap: .75rem;
+  border-inline: 0;
+  border-radius: 0;
+  padding: 1.25rem 0;
+}
+
+[data-rin-ui="v2"] .admin-review-snapshot :is(h2, p) {
+  margin: 0;
+}
+
+[data-rin-ui="v2"] .admin-review-snapshot p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.75;
+}
+
+[data-rin-ui="v2"] .admin-review-evidence-list {
+  display: grid;
+}
+
+[data-rin-ui="v2"] .admin-review-evidence-list article {
+  display: grid;
+  gap: .5rem;
+  border-block-end: 1px solid var(--rin-border);
+  padding-block: 1rem;
+}
+
+[data-rin-ui="v2"] .admin-review-evidence-list article > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .375rem;
+}
+
+[data-rin-ui="v2"] .admin-review-evidence-list :is(p, time),
+[data-rin-ui="v2"] .admin-review-timeline :is(p, time) {
+  margin: 0;
+  color: var(--rin-ink-muted);
+  font-size: .8125rem;
+}
+
+[data-rin-ui="v2"] .admin-review-timeline {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+[data-rin-ui="v2"] .admin-review-timeline li {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: .25rem 1rem;
+  border-block-end: 1px solid var(--rin-border);
+  padding-block: .875rem;
+}
+
+[data-rin-ui="v2"] .admin-review-timeline p {
+  grid-column: 2;
+}
+
+[data-rin-ui="v2"] .admin-review-technical {
+  display: grid;
+  gap: .625rem;
+}
+
+[data-rin-ui="v2"] .admin-review-technical > div {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 1rem;
+}
+
+[data-rin-ui="v2"] .admin-review-technical :is(dt, dd) {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+[data-rin-ui="v2"] .admin-review-technical dt {
+  color: var(--rin-ink-muted);
+}
+
+[data-rin-ui="v2"] .admin-review-decision {
+  position: sticky;
+  inset-block-start: 5.25rem;
+  display: grid;
+  gap: 1rem;
+  border-block-start: 3px solid var(--rin-accent);
+  background: var(--rin-surface);
+  padding: 1.25rem;
+}
+
+[data-rin-ui="v2"] .admin-review-decision :is(h2, h3) {
+  margin: 0;
+  font-family: var(--rin-font-editorial);
+}
+
+[data-rin-ui="v2"] .admin-review-decision h3 {
+  border-block-start: 1px solid var(--rin-border);
+  padding-block-start: 1rem;
+  font-size: 1rem;
+}
+
+[data-rin-ui="v2"] .admin-review-decision-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .375rem;
+}
+
+[data-rin-ui="v2"] .admin-review-decision-list .rin-ui-button {
+  min-inline-size: 0;
+  padding-inline: .5rem;
+}
+
+[data-rin-ui="v2"] .admin-review-action-list {
+  display: grid;
+  gap: .5rem;
+}
+
+[data-rin-ui="v2"] .admin-review-action-list .rin-ui-button {
+  justify-content: flex-start;
+}
+
+[data-rin-ui="v2"] .admin-review-note-field {
+  display: grid;
+  gap: .375rem;
+  font-weight: 650;
+}
+
+[data-rin-ui="v2"] .admin-review-confirmation {
+  display: grid;
+  gap: .75rem;
+  margin: 0;
+}
+
+[data-rin-ui="v2"] .admin-review-confirmation > div {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 1rem;
+}
+
+[data-rin-ui="v2"] .admin-system-view {
+  display: grid;
+  align-content: start;
+  gap: 1.25rem;
+}
+
+[data-rin-ui="v2"] .admin-system-toolbar {
+  display: flex;
+  min-inline-size: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-block-end: 1px solid var(--rin-border);
+  padding-block-end: .75rem;
+}
+
+[data-rin-ui="v2"] .admin-system-toolbar .rin-animate-tabs {
+  min-inline-size: 0;
+}
+
+[data-rin-ui="v2"] .admin-system-tracks,
+[data-rin-ui="v2"] .admin-system-list,
+[data-rin-ui="v2"] .admin-system-records,
+[data-rin-ui="v2"] .admin-system-loading {
+  display: grid;
+  border-block-start: 1px solid var(--rin-border);
+}
+
+[data-rin-ui="v2"] .admin-system-section {
+  display: grid;
+  gap: 1rem;
+}
+
+[data-rin-ui="v2"] .admin-system-section > .rin-ui-control {
+  inline-size: min(14rem, 100%);
+}
+
+[data-rin-ui="v2"] .admin-system-row,
+[data-rin-ui="v2"] .admin-system-track {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  min-block-size: 3.5rem;
+  gap: 1rem;
+  border: 0;
+  border-block-end: 1px solid var(--rin-border);
+  border-radius: 0;
+  background: transparent;
+  padding: .75rem 0;
+}
+
+[data-rin-ui="v2"] .admin-system-track {
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  justify-content: stretch;
+  text-align: start;
+}
+
+[data-rin-ui="v2"] .admin-system-records article {
+  display: grid;
+  gap: .375rem;
+  border-block-end: 1px solid var(--rin-border);
+  padding-block: 1rem;
+}
+
+[data-rin-ui="v2"] .admin-system-records article > div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem;
+  color: var(--rin-ink-muted);
+  font-size: .75rem;
+}
+
+[data-rin-ui="v2"] .admin-system-records .admin-system-record-actions {
+  justify-content: flex-end;
+}
+
+[data-rin-ui="v2"] .admin-system-command-facts {
+  display: grid;
+  gap: .625rem;
+  margin: 0;
+}
+
+[data-rin-ui="v2"] .admin-system-command-facts > div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 1rem;
+}
+
+[data-rin-ui="v2"] .admin-system-command-facts :is(dt, dd) {
+  min-inline-size: 0;
+  margin: 0;
+}
+
+[data-rin-ui="v2"] .admin-system-command-facts dt {
+  color: var(--rin-ink-muted);
+}
+
+[data-rin-ui="v2"] .admin-system-command-facts code {
+  overflow-wrap: anywhere;
+}
+
+[data-rin-ui="v2"] .admin-system-command-reason {
+  display: grid;
+  gap: .375rem;
+  margin-block-start: 1rem;
+  font-weight: 650;
+}
+
+[data-rin-ui="v2"] .admin-system-command-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .625rem;
+  margin-block-start: 1.25rem;
+}
+
+[data-rin-ui="v2"] .admin-system-records :is(span, code),
+[data-rin-ui="v2"] .admin-system-sampled {
+  color: var(--rin-ink-muted);
+  font-family: var(--rin-font-mono);
+  font-size: .75rem;
+  overflow-wrap: anywhere;
+}
+
+[data-rin-ui="v2"] .admin-system-sampled {
+  justify-self: end;
+}
+
+[data-rin-ui="v2"] .admin-review-confirmation :is(dt, dd) {
+  margin: 0;
+}
+
+[data-rin-ui="v2"] .admin-review-confirmation dt {
+  color: var(--rin-ink-muted);
+}
+
+[data-rin-ui="v2"] .admin-review-confirmation-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: .625rem;
+  margin-block-start: 1.25rem;
+}
+
+@media (max-width: 1100px) {
+  [data-rin-ui="v2"] .admin-review-toolbar {
+    grid-template-columns: 1fr 12rem;
+  }
+
+  [data-rin-ui="v2"] .admin-review-id-search {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 960px) {
+  [data-rin-ui="v2"] .admin-review-case-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  [data-rin-ui="v2"] .admin-review-decision {
+    position: static;
+  }
+}
+
+@media (max-width: 840px) {
+  [data-rin-ui="v2"] .admin-workspace-mobile-toolbar {
+    display: flex;
+    min-block-size: 3.5rem;
+    align-items: center;
+    border-block-end: 1px solid var(--rin-border);
+    padding-inline: 1rem;
+  }
+
+  [data-rin-ui="v2"] .admin-home-row {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+
+  [data-rin-ui="v2"] .admin-home-row .rin-ui-button {
+    grid-column: 2 / -1;
+    justify-self: start;
+  }
+
+  [data-rin-ui="v2"] .admin-content-management .admin-tabs {
+    inset-block-start: 3.5rem;
+  }
+
+  [data-rin-ui="v2"] .admin-review-toolbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  [data-rin-ui="v2"] .admin-review-toolbar .rin-ui-segmented {
+    max-inline-size: 100%;
+    overflow-x: auto;
+  }
+
+  [data-rin-ui="v2"] .admin-review-id-search {
+    grid-column: auto;
+  }
+
+  [data-rin-ui="v2"] .admin-review-row {
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+  }
+
+  [data-rin-ui="v2"] .admin-review-row-meta {
+    grid-column: 2;
+    grid-row: auto;
+    justify-self: start;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 560px) {
+  [data-rin-ui="v2"] .admin-workspace-view,
+  [data-rin-ui="v2"] .admin-content-management {
+    padding: 1rem;
+  }
+
+  [data-rin-ui="v2"] .admin-review-case-nav {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  [data-rin-ui="v2"] .admin-system-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  [data-rin-ui="v2"] .admin-review-case-nav > div {
+    justify-content: space-between;
+  }
+
+  [data-rin-ui="v2"] .admin-review-timeline li,
+  [data-rin-ui="v2"] .admin-review-technical > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  [data-rin-ui="v2"] .admin-review-timeline p {
+    grid-column: 1;
+  }
+}

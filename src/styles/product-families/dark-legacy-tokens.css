@@ -1,0 +1,25 @@
+/* Dark theme overrides for the legacy route-family token block.
+   The six minimized family files define these tokens on :root inside the
+   low-priority `route-foundation` layer; this file is intentionally unlayered
+   and uses the higher-specificity [data-theme="dark"] :root selector so it
+   wins regardless of layer order. Values mirror tokens.css [data-theme="dark"]. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0b1218;
+  --paper-deep: #0f1921;
+  --white: #111c25;
+  --ink: #e8f0f5;
+  --muted: #a8b6c2;
+  --line: #40515e;
+  --green: #83b4d4;
+  --rust: #a8b6c2;
+  --danger: #ff8a80;
+}
+
+/* Body grid backdrop: legacy gradient uses hardcoded dark grid lines that
+   vanish on the dark canvas; repaint them faint light in dark theme. */
+[data-theme="dark"] body {
+  background: linear-gradient(90deg, rgb(232 240 245 / 4%) 1px, transparent 1px),
+    linear-gradient(180deg, rgb(232 240 245 / 3%) 1px, transparent 1px), var(--paper);
+  background-size: 36px 36px;
+}

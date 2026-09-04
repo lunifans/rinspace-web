@@ -1,0 +1,450 @@
+.book-reader-shell {
+  width: min(1760px, calc(100vw - 32px));
+  max-width: min(1760px, calc(100vw - 32px));
+  padding-top: 18px;
+  overflow-x: clip;
+  --book-reading-column-max: 1040px;
+  --book-reading-toc: 200px;
+  --book-reader-side-column: 240px;
+}
+
+.book-reader-shell .book-reader-grid,
+.book-reader-shell .book-reader-no-toc {
+  grid-template-columns:
+    var(--book-reader-side-column) minmax(760px, var(--book-reading-column-max))
+    var(--book-reader-side-column);
+  gap: clamp(16px, 1.4vw, 26px);
+  justify-content: center;
+  margin-top: 0;
+}
+
+.book-reader-shell .book-reader-toc-side {
+  width: var(--book-reading-toc);
+  justify-self: end;
+}
+
+.book-reader-shell .detail-main {
+  width: 100%;
+  max-width: var(--book-reading-column-max);
+  min-width: 0;
+  justify-self: center;
+}
+
+.book-reader-shell .book-reader-no-toc .detail-main {
+  grid-column: 2;
+}
+
+.book-reader-shell .book-reader-article {
+  width: 100%;
+  max-width: 100%;
+  padding: clamp(22px, 3.8vw, 42px);
+  border-color: rgba(15, 23, 42, 0.08);
+  background: var(--rin-surface, #fff);
+  box-shadow: 0 4px 6px rgba(10, 10, 10, 0.04);
+}
+
+.book-reader-shell .book-reader-article .detail-body,
+.book-reader-shell .book-reader-article .rin-writer-article,
+.book-reader-shell .book-reader-article .rin-writer-html {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.book-reader-shell .book-reader-article .rin-writer-html {
+  font-family:
+    "Rinspace Newsreader", "Rinspace Noto Serif SC", Georgia, "Noto Serif SC",
+    "Source Han Serif SC", "Songti SC", serif;
+}
+
+.book-reader-shell .book-reader-header,
+.book-reader-shell .book-detail-side {
+  display: none !important;
+}
+
+.book-annotations-layer {
+  position: relative;
+  min-width: 0;
+  min-height: var(--book-annotation-rail-height, 0);
+  padding-left: 0;
+}
+
+.book-annotation-cross-trigger {
+  position: fixed;
+  z-index: 72;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--rin-ink-muted, #64748b);
+  cursor: pointer;
+}
+
+.book-annotation-cross-trigger::before {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border: 1px solid color-mix(in srgb, var(--rin-ink, #243447) 16%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--rin-surface, #fff) 94%, transparent);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  content: "";
+}
+
+.book-annotation-cross-trigger > span,
+.book-annotation-cross-trigger svg {
+  position: relative;
+  z-index: 1;
+}
+
+.book-annotation-cross-trigger:hover,
+.book-annotation-cross-trigger:focus-visible {
+  color: var(--rin-accent, #2b577a);
+}
+
+.book-annotation-cross-trigger:focus-visible {
+  outline: 2px solid var(--rin-accent, #2b577a);
+  outline-offset: -5px;
+}
+
+.book-annotation-margin-rail {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: var(--book-annotation-rail-height, 0);
+}
+
+.book-annotation-margin-group {
+  position: absolute;
+  right: 0;
+  left: 0;
+  transition: top 160ms ease;
+}
+
+.book-annotation-margin-group::before {
+  position: absolute;
+  top: 18px;
+  left: -14px;
+  width: 8px;
+  border-top: 1px solid
+    color-mix(in srgb, var(--rin-ink-muted, #64748b) 32%, transparent);
+  content: "";
+}
+
+.book-annotation-card {
+  display: grid;
+  width: 100%;
+  gap: 7px;
+  padding: 12px 13px;
+  border: 1px solid color-mix(in srgb, var(--rin-ink, #243447) 11%, transparent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--rin-surface, #fff) 96%, transparent);
+  color: var(--rin-ink, #243447);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.04);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.book-annotation-card:hover,
+.book-annotation-card:focus-visible,
+.book-annotation-margin-group.is-active .book-annotation-card {
+  border-color: color-mix(in srgb, var(--rin-accent, #2b577a) 34%, transparent);
+}
+
+.book-annotation-card-meta,
+.book-annotation-thread-head {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--rin-ink-muted, #64748b);
+  font-family: "Rinspace Code", "IBM Plex Mono", "Noto Sans SC", monospace;
+  font-size: 0.7rem;
+  font-weight: 760;
+}
+
+.book-annotation-card-meta strong {
+  color: var(--rin-accent, #2b577a);
+}
+
+.book-annotation-card-text {
+  display: -webkit-box;
+  overflow: hidden;
+  color: var(--rin-ink, #243447);
+  font-family: "Rinspace Newsreader", "Noto Serif SC", serif;
+  font-size: 0.86rem;
+  line-height: 1.52;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.book-annotation-thread,
+.book-annotation-composer {
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid
+    color-mix(in srgb, var(--rin-accent, #2b577a) 28%, transparent);
+  border-radius: 7px;
+  background: var(--rin-surface, #fff);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+}
+
+.book-annotation-composer > strong,
+.book-annotation-composer label > span {
+  font-family: "Rinspace Code", "IBM Plex Mono", "Noto Sans SC", monospace;
+  font-size: 0.72rem;
+  color: var(--rin-ink-muted, #64748b);
+}
+
+.book-annotation-composer label {
+  display: grid;
+  gap: 6px;
+}
+
+.book-annotation-composer .cm-editor,
+.book-annotation-reply .cm-editor {
+  font-size: 0.82rem;
+}
+
+.book-annotation-actions,
+.book-annotation-root-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.book-annotation-root-actions button,
+.book-annotation-root-tabs button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--rin-ink-muted, #64748b);
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.book-annotation-root-tabs {
+  display: flex;
+  min-width: 0;
+  gap: 10px;
+  overflow-x: auto;
+}
+
+.book-annotation-root-tabs button[aria-selected="true"] {
+  color: var(--rin-accent, #2b577a);
+  font-weight: 750;
+}
+
+.book-annotation-root-body,
+.book-annotation-correction,
+.book-annotation-comments article > div {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--rin-ink, #243447);
+  font-family: "Rinspace Newsreader", "Noto Serif SC", serif;
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.book-annotation-correction {
+  padding-left: 10px;
+  border-left: 2px solid
+    color-mix(in srgb, var(--rin-accent, #2b577a) 48%, transparent);
+}
+
+.book-annotation-comments {
+  display: grid;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid
+    color-mix(in srgb, var(--rin-ink, #243447) 10%, transparent);
+}
+
+.book-annotation-comments article {
+  display: grid;
+  gap: 4px;
+}
+
+.book-annotation-comments article > strong {
+  color: var(--rin-ink-muted, #64748b);
+  font-family: "Rinspace Code", "IBM Plex Mono", "Noto Sans SC", monospace;
+  font-size: 0.68rem;
+}
+
+.book-annotation-reply {
+  display: grid;
+  gap: 8px;
+}
+
+.book-annotation-reply > button {
+  justify-self: end;
+}
+
+.book-annotation-error {
+  margin: 0;
+  color: var(--rin-danger, #9d2f25);
+  font-family: "Rinspace Code", "IBM Plex Mono", "Noto Sans SC", monospace;
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+.book-reader-shell [data-rin-block-id] {
+  transition: background-color 140ms ease;
+}
+
+.book-reader-shell [data-rin-block-id].is-rin-annotation-target {
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--rin-accent, #2b577a) 5%, transparent);
+}
+
+.book-annotation-thread-byline,
+.book-annotation-comments article > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--rin-ink-muted, #64748b);
+  font-family: "Rinspace Code", "IBM Plex Mono", "Noto Sans SC", monospace;
+  font-size: 0.68rem;
+}
+
+.book-annotation-comments article > header strong {
+  color: inherit;
+  font-size: inherit;
+}
+
+.book-annotation-narrow-marker {
+  position: fixed;
+  right: max(8px, env(safe-area-inset-right));
+  z-index: 60;
+  display: none;
+  width: 32px;
+  height: 32px;
+  place-items: center;
+  border: 1px solid
+    color-mix(in srgb, var(--rin-accent, #2b577a) 24%, transparent);
+  border-radius: 999px;
+  background: var(--rin-surface, #fff);
+  color: var(--rin-accent, #2b577a);
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.08);
+  font-family: "Rinspace Code", "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 780;
+}
+
+.book-annotation-sheet {
+  position: fixed;
+  z-index: 1001;
+  display: grid;
+  width: min(390px, calc(100vw - 20px));
+  max-height: calc(100dvh - 20px);
+  gap: 14px;
+  overflow-y: auto;
+  padding: 18px;
+}
+
+.book-annotation-sheet > .rin-editorial-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.book-annotation-sheet .book-annotation-thread,
+.book-annotation-sheet .book-annotation-composer {
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+@media (max-width: 1439px) {
+  .book-reader-shell {
+    width: min(1340px, calc(100vw - 24px));
+    max-width: min(1340px, calc(100vw - 24px));
+  }
+
+  .book-reader-shell .book-reader-grid,
+  .book-reader-shell .book-reader-no-toc {
+    grid-template-columns: minmax(184px, 208px) minmax(
+        0,
+        var(--book-reading-column-max)
+      );
+    gap: clamp(16px, 2vw, 26px);
+  }
+
+  .book-reader-shell .book-reader-no-toc .detail-main {
+    grid-column: 2;
+  }
+
+  .book-annotations-layer {
+    position: static;
+    min-height: 0;
+    padding: 0;
+  }
+
+  .book-annotation-margin-rail {
+    display: none;
+  }
+
+  .book-annotation-narrow-marker {
+    display: grid;
+  }
+}
+
+@media (max-width: 1119px) {
+  .book-reader-shell .book-reader-grid,
+  .book-reader-shell .book-reader-no-toc {
+    grid-template-columns: minmax(0, var(--book-reading-column-max));
+  }
+
+  .book-reader-shell .book-reader-no-toc .detail-main,
+  .book-reader-shell .detail-main {
+    grid-column: 1;
+  }
+
+  .book-reader-toc-side {
+    display: none;
+  }
+}
+
+@media (max-width: 899px) {
+  .book-annotation-sheet[data-side="bottom"] {
+    inset: auto 0 0;
+    width: 100%;
+    max-height: min(78dvh, 720px);
+    border-radius: 14px 14px 0 0;
+  }
+
+  .book-annotation-narrow-marker {
+    right: max(6px, env(safe-area-inset-right));
+  }
+}
+
+@media (max-width: 620px) {
+  .book-reader-shell {
+    width: 100%;
+    max-width: 100%;
+    padding-right: max(6px, env(safe-area-inset-right));
+    padding-left: max(6px, env(safe-area-inset-left));
+  }
+
+  .book-reader-shell .book-reader-article {
+    padding: 18px clamp(13px, 4.4vw, 18px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .book-annotation-margin-group,
+  .book-reader-shell [data-rin-block-id] {
+    transition: none;
+  }
+}

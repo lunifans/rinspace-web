@@ -1,0 +1,47 @@
+{
+  "$schema": "../schemas/cla-registry.schema.json",
+  "schemaVersion": 1,
+  "status": "disabled",
+  "repository": "lunifans/rinspace-web",
+  "agreements": {
+    "individual": {
+      "path": "ICLA.md",
+      "version": "1.0",
+      "sha256": "6aeada8d18acabfb7fac2c4ac1127eae3f79b09e7a42634492aadf5d3ae09b54"
+    },
+    "corporate": {
+      "path": "CCLA.md",
+      "version": "1.0",
+      "sha256": "bdcdceda7560a9dd15c592d548eb2c9eb1c660091d73c171f5dc45165113fa29"
+    },
+    "privacyNotice": {
+      "path": "CLA-PRIVACY.md",
+      "version": "1.0",
+      "sha256": "484833a9702f8fdad2fdad978c597e97f75195f996f822476f4978568d2a8d4f"
+    }
+  },
+  "publicRegistryFields": [
+    "githubLogin",
+    "githubUserId",
+    "agreementType",
+    "agreementSha256",
+    "privacyNoticeSha256",
+    "acceptedAt",
+    "evidenceRef"
+  ],
+  "records": [],
+  "botExemptions": [],
+  "operationalEvidence": {
+    "signingIntake": null,
+    "privateRecordStore": null,
+    "encryptedBackup": null,
+    "crossBorderControl": null,
+    "branchProtection": null
+  },
+  "blockers": [
+    "The signing intake and identity or organization-authority verification are not operational.",
+    "The private authoritative record store and encrypted backup have not been tested.",
+    "Applicable personal-information public-disclosure and cross-border controls have not been completed.",
+    "The CLA status check has not been made a required branch-protection check."
+  ]
+}

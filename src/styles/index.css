@@ -1,0 +1,23 @@
+/* Declared before the route-family `route-foundation` layer so that important
+   declarations here win (important declarations resolve in reverse layer
+   order). See scripts/generate-dark-legacy-overrides.mjs. */
+@layer rin-dark-important;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@import "./tokens.css";
+@import "./typography.css";
+@import "./motion.css";
+@import "./foundations.css";
+@import "./animate-ui.css";
+@import "./cultivation.css";
+@import "./contextual-previews.css";
+@import "./topbar-shell.css";
+@import "./content.css";
+@import "./migrated-pages.css";
+@import "./home-community-content-cards.css";
+@import "./reporting.css";
+@import "./dark-code.css";
+@import "../features/tags/tag-creation-flow.css";
+@import "../features/tags/tag-knowledge-connections.css";
+
+/* Tailwind Preflight is intentionally omitted; the v2 reset is scoped by styles/foundations.css. */

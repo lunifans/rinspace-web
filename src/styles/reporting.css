@@ -1,0 +1,47 @@
+.rin-report-dialog {
+  width: min(30rem, calc(100vw - 2rem));
+}
+
+.rin-report-sheet {
+  max-height: min(88vh, 38rem);
+  border-radius: 0.75rem 0.75rem 0 0;
+}
+
+.rin-report-form {
+  display: grid;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.rin-report-target {
+  overflow: hidden;
+  color: var(--rin-ink);
+  font-family: var(--rin-font-editorial);
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rin-report-error {
+  color: var(--rin-destructive);
+  font-size: 0.8rem;
+  line-height: 1.45;
+}
+
+.rin-report-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+@media (max-width: 560px) {
+  .rin-report-sheet {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  .rin-report-actions > button {
+    flex: 1;
+  }
+}

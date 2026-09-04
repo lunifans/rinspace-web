@@ -1,0 +1,60 @@
+{
+  "landmark": "频道与账户",
+  "brandName": "芥子环",
+  "brandHome": "{{brandName}}首页",
+  "search": {
+    "label": "搜索",
+    "placeholder": "搜索",
+    "community": "搜索社区内容",
+    "allResults": "查看完整搜索",
+    "open": "打开搜索",
+    "liveIndex": "即时索引",
+    "loading": "加载中",
+    "resultCount": "{{count}} 条",
+    "noResults": "暂无结果",
+    "relatedCount": "{{count}} 相关",
+    "answerCount_one": "{{count}} 回答",
+    "answerCount_other": "{{count}} 回答",
+    "voteCount_one": "{{count}} 赞同",
+    "voteCount_other": "{{count}} 赞同"
+  },
+  "account": {
+    "signInOrRegister": "登录 / 注册",
+    "profile": "个人主页",
+    "settings": "设置",
+    "notifications": "通知",
+    "creator": "创作中心",
+    "admin": "管理台",
+    "menu": "账户菜单",
+    "accountSettings": "账户设置",
+    "signOut": "退出登录",
+    "signingOut": "退出中",
+    "anonymousName": "Rin 用户"
+  },
+  "publish": {
+    "label": "创作",
+    "blog": "博客",
+    "book": "书籍",
+    "question": "问题",
+    "discussion": "讨论",
+    "dynamic": "动态",
+    "tag": "标签",
+    "announcement": "公告"
+  },
+  "theme": {
+    "toDark": "切换到深色主题",
+    "toLight": "切换到浅色主题"
+  },
+  "contentTypes": {
+    "answer": "回答",
+    "announcement": "公告",
+    "blog": "博客",
+    "book": "书籍",
+    "discussion": "讨论",
+    "dynamic": "动态",
+    "post": "内容",
+    "question": "问答",
+    "tag": "标签",
+    "user": "用户"
+  }
+}

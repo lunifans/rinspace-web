@@ -1,0 +1,60 @@
+{
+  "landmark": "Channels and account",
+  "brandName": "Rinspace",
+  "brandHome": "{{brandName}} home",
+  "search": {
+    "label": "Search",
+    "placeholder": "Search",
+    "community": "Search community content",
+    "allResults": "View full search",
+    "open": "Open search",
+    "liveIndex": "Live index",
+    "loading": "Loading",
+    "resultCount": "{{count}} results",
+    "noResults": "No results",
+    "relatedCount": "{{count}} related",
+    "answerCount_one": "{{count}} answer",
+    "answerCount_other": "{{count}} answers",
+    "voteCount_one": "{{count}} upvote",
+    "voteCount_other": "{{count}} upvotes"
+  },
+  "account": {
+    "signInOrRegister": "Sign in / Register",
+    "profile": "Profile",
+    "settings": "Settings",
+    "notifications": "Notifications",
+    "creator": "Creator Center",
+    "admin": "Admin console",
+    "menu": "Account menu",
+    "accountSettings": "Account settings",
+    "signOut": "Sign out",
+    "signingOut": "Signing out",
+    "anonymousName": "Rin user"
+  },
+  "publish": {
+    "label": "Create",
+    "blog": "Blog",
+    "book": "Book",
+    "question": "Question",
+    "discussion": "Discussion",
+    "dynamic": "Update",
+    "tag": "Tag",
+    "announcement": "Announcement"
+  },
+  "theme": {
+    "toDark": "Switch to dark theme",
+    "toLight": "Switch to light theme"
+  },
+  "contentTypes": {
+    "answer": "Answer",
+    "announcement": "Announcement",
+    "blog": "Blog",
+    "book": "Book",
+    "discussion": "Discussion",
+    "dynamic": "Update",
+    "post": "Content",
+    "question": "Question",
+    "tag": "Tag",
+    "user": "User"
+  }
+}

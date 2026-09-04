@@ -1,0 +1,112 @@
+/* Shared cultivation semantics. Route-family styles own the badge shape, while
+   this file keeps realm palettes and phase progress consistent everywhere the
+   shared identity components render. */
+
+.cultivation-badge.phase-q1 { --phase-fill: 7.7%; }
+.cultivation-badge.phase-q2 { --phase-fill: 15.4%; }
+.cultivation-badge.phase-q3 { --phase-fill: 23.1%; }
+.cultivation-badge.phase-q4 { --phase-fill: 30.8%; }
+.cultivation-badge.phase-q5 { --phase-fill: 38.5%; }
+.cultivation-badge.phase-q6 { --phase-fill: 46.2%; }
+.cultivation-badge.phase-q7 { --phase-fill: 53.9%; }
+.cultivation-badge.phase-q8 { --phase-fill: 61.6%; }
+.cultivation-badge.phase-q9 { --phase-fill: 69.3%; }
+.cultivation-badge.phase-q10 { --phase-fill: 77%; }
+.cultivation-badge.phase-q11 { --phase-fill: 84.7%; }
+.cultivation-badge.phase-q12 { --phase-fill: 92.4%; }
+.cultivation-badge.phase-q13 { --phase-fill: 100%; }
+.cultivation-badge.phase-early { --phase-fill: 25%; }
+.cultivation-badge.phase-middle { --phase-fill: 50%; }
+.cultivation-badge.phase-late { --phase-fill: 75%; }
+.cultivation-badge.phase-complete { --phase-fill: 100%; }
+
+.cultivation-badge.realm-qi {
+  --cultivation-border: rgb(100 116 139 / 28%);
+  --cultivation-surface: linear-gradient(180deg, #f8fafc, #edf2f7);
+  --cultivation-color: #475569;
+  --cultivation-phase-ring: #f8fafc;
+}
+
+.cultivation-badge.realm-foundation {
+  --cultivation-border: rgb(22 163 74 / 28%);
+  --cultivation-surface: linear-gradient(180deg, #f0fdf4, #dcfce7);
+  --cultivation-color: #166534;
+  --cultivation-phase-ring: #f0fdf4;
+}
+
+.cultivation-badge.realm-dan {
+  --cultivation-border: rgb(37 99 235 / 28%);
+  --cultivation-surface: linear-gradient(180deg, #eff6ff, #dbeafe);
+  --cultivation-color: #1d4ed8;
+  --cultivation-phase-ring: #eff6ff;
+}
+
+.cultivation-badge.realm-yuanying {
+  --cultivation-border: rgb(124 58 237 / 28%);
+  --cultivation-surface: linear-gradient(180deg, #f5f3ff, #ede9fe);
+  --cultivation-color: #6d28d9;
+  --cultivation-phase-ring: #f5f3ff;
+}
+
+.cultivation-badge.realm-huashen {
+  --cultivation-border: rgb(234 88 12 / 28%);
+  --cultivation-surface: linear-gradient(180deg, #fff7ed, #ffedd5);
+  --cultivation-color: #c2410c;
+  --cultivation-phase-ring: #fff7ed;
+}
+
+.cultivation-badge.realm-lianxu {
+  --cultivation-border: rgb(202 138 4 / 30%);
+  --cultivation-surface: linear-gradient(180deg, #fffbeb, #fef3c7);
+  --cultivation-color: #a16207;
+  --cultivation-phase-ring: #fffbeb;
+}
+
+.cultivation-badge.realm-heti {
+  --cultivation-border: rgb(220 38 38 / 28%);
+  --cultivation-surface: linear-gradient(180deg, #fef2f2, #fee2e2);
+  --cultivation-color: #b91c1c;
+  --cultivation-phase-ring: #fef2f2;
+}
+
+.cultivation-badge.realm-dacheng {
+  --cultivation-border: rgb(153 27 27 / 34%);
+  --cultivation-surface: linear-gradient(180deg, #fff1f2, #ffe4e6);
+  --cultivation-color: #9f1239;
+  --cultivation-phase-ring: #fff1f2;
+}
+
+.cultivation-badge.realm-zhenxian {
+  --cultivation-border: rgb(13 148 136 / 30%);
+  --cultivation-surface: linear-gradient(180deg, #f0fdfa, #ccfbf1);
+  --cultivation-color: #0f766e;
+  --cultivation-phase-ring: #f0fdfa;
+}
+
+.cultivation-badge.realm-jinxian {
+  --cultivation-border: rgb(180 83 9 / 34%);
+  --cultivation-surface: linear-gradient(180deg, #fff7ed, #fed7aa);
+  --cultivation-color: #92400e;
+  --cultivation-phase-ring: #fff7ed;
+}
+
+.cultivation-badge.realm-taiyi {
+  --cultivation-border: rgb(2 132 199 / 30%);
+  --cultivation-surface: linear-gradient(180deg, #f0f9ff, #e0f2fe);
+  --cultivation-color: #0369a1;
+  --cultivation-phase-ring: #f0f9ff;
+}
+
+.cultivation-badge.realm-daluo {
+  --cultivation-border: rgb(190 24 93 / 32%);
+  --cultivation-surface: linear-gradient(180deg, #fff1f2, #fce7f3);
+  --cultivation-color: #9f1239;
+  --cultivation-phase-ring: #fff1f2;
+}
+
+.cultivation-badge.realm-daozu {
+  --cultivation-border: rgb(212 175 55 / 64%);
+  --cultivation-surface: linear-gradient(180deg, #27272a, #18181b);
+  --cultivation-color: #fde68a;
+  --cultivation-phase-ring: #27272a;
+}

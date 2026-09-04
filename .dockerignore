@@ -1,0 +1,9 @@
+.git
+.env*
+build
+node_modules
+package
+package-*
+playwright-report
+test-results
+config/*.generated.json

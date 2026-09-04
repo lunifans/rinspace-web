@@ -1,0 +1,653 @@
+{
+  "title": "Create",
+  "actions": {
+    "publish": "Publish",
+    "saveDraft": "Save draft"
+  },
+  "tagPicker": {
+    "label": "Tags",
+    "searchFailed": "Tags could not be searched.",
+    "searching": "Searching",
+    "related_one": "{{displayCount}} related item",
+    "related_other": "{{displayCount}} related items",
+    "newTag": "New tag: {{tag}}",
+    "createTag": "Create “{{tag}}”"
+  },
+  "tagCreation": {
+    "title": "Create tag",
+    "name": "Name",
+    "usageContext": "Usage context",
+    "usageContextPlaceholder": "What does it mean in this context?",
+    "parentTagsOptional": "Parent tags (optional)",
+    "searchParentTags": "Search parent tags",
+    "sameNameTags": "Tags with the same name",
+    "parents": "Parents: {{parents}}",
+    "uncategorized": "Uncategorized",
+    "creatingAction": "Creating",
+    "createAction": "Create tag",
+    "retry": "Retry",
+    "status": {
+      "created": "Tag created.",
+      "incompleteRetryable": "Creation is not complete yet. You can retry.",
+      "progressUnavailable": "Creation progress is temporarily unavailable. Try again shortly.",
+      "creating": "Creating tag…",
+      "pending": "Tag creation is in progress…",
+      "failed": "Creation could not be completed.",
+      "retrying": "Retrying tag creation."
+    }
+  },
+  "publishDialog": {
+    "fields": {
+      "title": "Title",
+      "excerpt": "Summary",
+      "tags": "Tags",
+      "tagPlaceholder": "Search or enter a new tag"
+    },
+    "cover": {
+      "upload": "Upload cover",
+      "replace": "Replace cover",
+      "remove": "Remove",
+      "uploading": "Uploading cover…",
+      "uploaded": "Cover uploaded.",
+      "imageOnly": "Choose an image file.",
+      "cropBook": "Crop book cover",
+      "cropBlog": "Crop blog cover"
+    },
+    "bookProfile": {
+      "title": "Edit profile",
+      "close": "Close book profile editor",
+      "titleRequired": "Enter a title.",
+      "saving": "Saving book profile…",
+      "activationPending": "The change was committed to the repository and is awaiting validation and activation. The page still shows the previous active version.",
+      "saved": "Book profile saved.",
+      "savingAction": "Saving…",
+      "saveAction": "Save profile"
+    },
+    "capabilities": {
+      "demoBoundary": "Demo creation and image uploads stay in this browser; remote repositories, workspaces, Renderer, PDF uploads, and archive uploads remain disabled.",
+      "pdfUnavailable": "Demo mode does not upload PDFs. Use local Markdown/LaTeX creation or configure real upload and Renderer services in an integration deployment."
+    },
+    "create": {
+      "titles": {
+        "blog": "Create LaTeX blog",
+        "latexBook": "Create LaTeX book",
+        "markdownBook": "Create Markdown book",
+        "pdfBook": "Upload PDF book"
+      },
+      "close": "Close creation dialog",
+      "visibility": "Visibility",
+      "public": "Public",
+      "private": "Private",
+      "titleRequired": "Enter a title.",
+      "excerptRequired": "Enter a summary.",
+      "pdfRequired": "Upload a PDF file first.",
+      "initialChapter": "Getting started",
+      "creatingAction": "Creating…",
+      "createAction": "Create and edit",
+      "creating": {
+        "blog": "Creating LaTeX blog…",
+        "latexBook": "Creating LaTeX book…",
+        "markdownBook": "Creating Markdown book…",
+        "pdfBook": "Uploading PDF book…"
+      },
+      "openingRepository": "Opening Git repository…",
+      "activationPending": "The content was committed to Gitea and is waiting for exact-commit validation and activation. It stays unavailable or on the previous version until then.",
+      "moderation": {
+        "pending": "Content submitted for review.",
+        "published": "Content published.",
+        "rejected": "Content did not pass review."
+      }
+    },
+    "pdf": {
+      "upload": "Upload PDF (≤80 MB)",
+      "replace": "Replace PDF",
+      "fileOnly": "Only PDF files can be uploaded.",
+      "tooLarge": "The PDF must be 80 MB or smaller.",
+      "extractingToc": "Extracting the PDF table of contents",
+      "tocExtracted_one": "Extracted {{displayCount}} table-of-contents entry",
+      "tocExtracted_other": "Extracted {{displayCount}} table-of-contents entries",
+      "tocUnavailable": "No table of contents could be read from the PDF",
+      "keepingCover": "Keeping the uploaded cover",
+      "generatingCover": "Generating a cover from the first page",
+      "coverGenerated": "Generated a cover from the first PDF page",
+      "coverUnavailable": "A cover could not be generated from the first PDF page"
+    }
+  },
+  "bookWorkspace": {
+    "fallbackTitle": "Book workspace",
+    "documentTitle": "{{title}} workspace",
+    "notBook": "This content is not a book.",
+    "externalBookManagement": "Manage external and PDF books from the profile editor.",
+    "editBookProfile": "Edit book profile",
+    "capabilities": {
+      "demoBoundary": "Local chapter and profile editing remain available; production repositories, code-server, whole-book uploads, and Renderer never start in the demo.",
+      "rendererUnavailable": "The demo does not upload archives or submit production render jobs. Local chapter editing remains available."
+    },
+    "markdownWorkspace": "Markdown book workspace",
+    "latexWorkspace": "LaTeX book workspace",
+    "defaultMarkdownExcerpt": "A lightweight Markdown web book.",
+    "defaultBookExcerpt": "This book does not have a summary yet.",
+    "publishStatus": {
+      "draft": "Draft",
+      "private": "Private",
+      "published": "Published"
+    },
+    "counts": {
+      "page_one": "{{displayCount}} page",
+      "page_other": "{{displayCount}} pages",
+      "file_one": "{{displayCount}} file",
+      "file_other": "{{displayCount}} files",
+      "chapter_one": "{{displayCount}} chapter",
+      "chapter_other": "{{displayCount}} chapters",
+      "node_one": "{{displayCount}} node",
+      "node_other": "{{displayCount}} nodes"
+    },
+    "reader": {
+      "generated": "Web book generated",
+      "notGenerated": "Web book not generated"
+    },
+    "actions": {
+      "label": "Book actions",
+      "ratingPage": "Rating page",
+      "readingPage": "Reading page",
+      "readingPending": "Reading page pending",
+      "editProfile": "Edit profile",
+      "authorOnly": "Only the author can edit",
+      "openingRepository": "Opening",
+      "openRepository": "Open repository",
+      "uploading": "Uploading",
+      "rendering": "Rendering in the background",
+      "loading": "Loading",
+      "importAndPublish": "Import and publish book"
+      ,"rendererUnavailable": "Renderer unavailable"
+    },
+    "markdown": {
+      "chapters": "Markdown chapters",
+      "newChapter": "New chapter",
+      "newChapterTitle": "New chapter title",
+      "createChapter": "Create chapter",
+      "chapter": "Chapter",
+      "section": "Section",
+      "newSectionTitle": "New section in “{{title}}”",
+      "createSection": "Create section",
+      "reorder": "Drag to reorder",
+      "edit": "Edit",
+      "read": "Read",
+      "empty": "No Markdown chapters yet"
+    },
+    "original": {
+      "noChapters": "No chapters",
+      "workspace": "Chapter workspace",
+      "indexing": "Indexing",
+      "emptyDirectory": "Empty directory",
+      "renderingImport": "Rendering {{filename}} in the background. This page will refresh when it is complete.",
+      "wholeBook": "the complete book",
+      "sources": {
+        "reader": "Web book contents",
+        "toc": "Book contents",
+        "tex": "TeX source",
+        "sameFile": "Node in the same file"
+      },
+      "emptyGroup": "No chapters yet",
+      "empty": "No visible chapters yet"
+    },
+    "matter": {
+      "front": "Front matter",
+      "main": "Main matter",
+      "back": "Back matter"
+    },
+    "notices": {
+      "renderPublished": "The complete book was rendered and published in the background.",
+      "chapterCreated": "Created chapter: {{title}}",
+      "sectionCreated": "Created section: {{title}}",
+      "orderUpdated": "Chapter order updated.",
+      "renderSubmitted": "Background rendering submitted. The upload is complete, so you can close this page."
+    }
+  },
+  "publishPage": {
+    "documentTitle": "{{heading}}",
+    "modes": {
+      "question": {
+        "eyebrow": "Ask",
+        "heading": "Ask a mathematics question",
+        "editHeading": "Edit question",
+        "submit": "Post question",
+        "bodyLabel": "Question",
+        "bodyPlaceholder": "Describe the context, what you tried, and where you are stuck. Markdown and LaTeX mathematics are supported."
+      },
+      "discussion": {
+        "eyebrow": "Discussion",
+        "heading": "Start a discussion",
+        "editHeading": "Edit discussion",
+        "submit": "Post discussion",
+        "bodyLabel": "Opening post",
+        "bodyPlaceholder": "Describe the context, your perspective, and what you would like others to respond to."
+      },
+      "announcement": {
+        "eyebrow": "Announcement",
+        "heading": "Post announcement",
+        "editHeading": "Edit announcement",
+        "submit": "Post announcement",
+        "bodyLabel": "Announcement",
+        "bodyPlaceholder": "State the announcement, its scope, and any dates the community should note."
+      },
+      "dynamic": {
+        "eyebrow": "Update",
+        "heading": "Post an update",
+        "editHeading": "Edit update",
+        "submit": "Post update",
+        "bodyLabel": "Update",
+        "bodyPlaceholder": "Write a short update about a derivation, link, milestone, or passing idea.",
+        "fallbackTitle": "New update"
+      },
+      "book": {
+        "eyebrow": "Book",
+        "submit": "Create LaTeX workspace",
+        "bodyLabel": "Book summary",
+        "bodyPlaceholder": "Describe what this LaTeX book covers, who it is for, its prerequisites, and its highlights."
+      }
+    },
+    "bookHeadings": {
+      "latex": "Create LaTeX book profile",
+      "pdf": "Upload PDF book",
+      "markdown": "Create Markdown book profile",
+      "copyrighted": "Submit external or PDF book"
+    },
+    "bookEditHeadings": {
+      "latex": "Edit LaTeX book profile",
+      "pdf": "Edit PDF book",
+      "markdown": "Edit Markdown book profile",
+      "copyrighted": "Edit external or PDF book"
+    },
+    "bookPlaceholders": {
+      "pdf": "Describe what this PDF book covers, who it is for, its prerequisites, and its highlights.",
+      "markdown": "Describe what this Markdown book covers, who it is for, its prerequisites, and its highlights."
+    },
+    "fields": {
+      "title": "Title",
+      "titlePlaceholder": "Title",
+      "tags": "Tags",
+      "contentTags": "Content tags"
+    },
+    "signIn": "Sign in",
+    "chapterContext": {
+      "source": "From a book chapter",
+      "bookFallback": "Book",
+      "chapterFallback": "Chapter"
+    },
+    "similar": {
+      "title": "Similar questions",
+      "searching": "Searching",
+      "resultCount_one": "{{displayCount}} result",
+      "resultCount_other": "{{displayCount}} results",
+      "noResults": "No results",
+      "related_one": "{{displayCount}} related item",
+      "related_other": "{{displayCount}} related items",
+      "answers_one": "{{displayCount}} answer",
+      "answers_other": "{{displayCount}} answers",
+      "upvotes_one": "{{displayCount}} upvote",
+      "upvotes_other": "{{displayCount}} upvotes"
+    },
+    "book": {
+      "kindLabel": "Book type",
+      "original": "Original book",
+      "originalPdf": "Original PDF",
+      "external": "External or PDF book",
+      "externalPdf": "External PDF",
+      "authors": "Authors",
+      "removeAuthor": "Remove {{name}}",
+      "authorPlaceholder": "Search or create an author, such as Robin Hartshorne",
+      "authorSearching": "Searching",
+      "authorBookCount_one": "{{displayCount}} book",
+      "authorBookCount_other": "{{displayCount}} books",
+      "authorCreating": "Creating",
+      "createAuthor": "Create author: {{name}}",
+      "duplicateAuthors": "Authors with the same name can have separate entries",
+      "officialUrl": "Source URL",
+      "cover": "Cover",
+      "bookTitleFallback": "Book title",
+      "viewPdf": "View PDF",
+      "tocLoaded_one": "Loaded {{displayCount}} table-of-contents entry",
+      "tocLoaded_other": "Loaded {{displayCount}} table-of-contents entries",
+      "metadata": {
+        "seriesTitle": "Series title",
+        "doi": "DOI",
+        "publisher": "Publisher",
+        "ebookPackages": "eBook packages",
+        "copyright": "Copyright information",
+        "hardcoverIsbn": "Hardcover ISBN",
+        "hardcoverPublished": "Hardcover publication date",
+        "softcoverIsbn": "Softcover ISBN",
+        "softcoverPublished": "Softcover publication date",
+        "ebookIsbn": "eBook ISBN",
+        "ebookPublished": "eBook publication date",
+        "seriesIssn": "Series ISSN",
+        "seriesEissn": "Series E-ISSN",
+        "edition": "Edition number",
+        "pages": "Number of pages",
+        "topics": "Topics",
+        "keywords": "Keywords"
+      }
+    },
+    "images": {
+      "label": "Images",
+      "hint": "Upload up to 9 images. Tags organize discussion content.",
+      "uploading": "Uploading",
+      "upload": "Upload images",
+      "preview": "Discussion image preview",
+      "remove": "Remove image"
+    },
+    "tagHints": {
+      "question": "Questions require at least 1 tag.",
+      "book": "Books require 1–6 tags for discovery, recommendations, and cultivation statistics.",
+      "default": "Separate up to 6 tags with commas or spaces."
+    },
+    "answer": {
+      "toggle": "Write an answer too",
+      "label": "Answer",
+      "placeholder": "Write the solution, approach, or partial proof you already know."
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "saving": "Saving",
+      "publishing": "Publishing",
+      "save": "Save",
+      "saveChanges": "Save changes",
+      "create": "Create",
+      "uploadOriginalPdf": "Upload original PDF",
+      "uploadExternalPdf": "Upload external PDF",
+      "submitBook": "Submit book"
+    },
+	"status": {
+	  "activationPending": "The content was committed to Gitea and is waiting for exact-commit validation and activation. The new version is not public until activation succeeds."
+	},
+    "check": {
+      "title": "Publish check",
+      "signedIn": "Signed in",
+      "signInRequired": "Sign-in required",
+      "body": "Body"
+    },
+    "validation": {
+      "typeMismatch": "This content type does not match the editor.",
+      "signInToPublish": "Sign in to publish.",
+      "signInToUploadImage": "Sign in to upload images.",
+      "imageLimit": "You can upload up to 9 images.",
+      "imageOnly": "Only image files can be uploaded.",
+      "imageTooLarge": "Each image must be 8 MB or smaller.",
+      "authorNameLength": "Author names must contain at least 2 characters.",
+      "signInToUploadPdf": "Sign in to upload a PDF.",
+      "signInToUploadCover": "Sign in to upload a cover.",
+      "coverImageOnly": "Only image files can be used as a cover.",
+      "coverTooLarge": "The cover image must be 8 MB or smaller."
+    },
+    "status": {
+      "chapterLinkFailed": "The content was published, but it could not be linked to the chapter automatically."
+    }
+  },
+  "writer": {
+    "documentTitle": {
+      "article": "LaTeX writing",
+      "book": "LaTeX book writing"
+    },
+    "fallbacks": {
+      "bookProject": "Book project",
+      "currentChapter": "Current chapter",
+      "book": "Book",
+      "chapter": "Chapter"
+    },
+    "template": {
+      "bibliographyComment": "% Add BibTeX bibliography entries here."
+    },
+    "labels": {
+      "articleTitle": "Article title",
+      "bookTitle": "Book title",
+      "tags": "Topic tags",
+      "cover": "Cover"
+    },
+    "profile": {
+      "workspace": "Book content workspace",
+      "tagsManaged": "Manage tags from the profile",
+      "fromChapter": "From a book chapter",
+      "chapterEntry": "Chapter editor",
+      "updatesWholeBook": "Saving or publishing still updates the complete book project",
+      "edit": "Edit profile",
+      "openWorkspace": "Workspace"
+    },
+    "cover": {
+      "change": "Change",
+      "upload": "Upload",
+      "remove": "Remove",
+      "cropArticle": "Crop blog cover",
+      "cropBook": "Crop book cover"
+    },
+    "import": {
+      "importing": "Importing",
+      "merge": "Merge import",
+      "replace": "Replace project"
+    },
+    "actions": {
+      "save": "Save",
+      "saving": "Saving",
+      "publish": "Publish",
+      "publishBook": "Publish book",
+      "publishing": "Publishing",
+      "diagnostics": "Diagnostics"
+    },
+    "editor": "Rin editor",
+    "autosave": {
+      "sources": {
+        "remote": "cloud",
+        "local": "local"
+      },
+      "remoteReadFailed": "The cloud draft could not be loaded.",
+      "restored": "Restored the {{source}} draft from {{time}}.",
+      "savedSynced": "Draft autosaved and synced at {{time}}.",
+      "savedLocal": "Draft autosaved locally at {{time}}.",
+      "cloudSyncFailed": "The draft was autosaved locally, but cloud sync failed.",
+      "localSaveFailed": "Local autosave failed.",
+      "remoteConflict": "A newer draft was found in another browser. This window has unsaved input, so it was not replaced.",
+      "remoteSynced": "Synced the draft from another browser at {{time}}.",
+      "pollFailed": "The cloud draft sync check failed."
+    },
+    "loading": {
+      "bookProject": "Loading book project…",
+      "articleSource": "Loading source archive…",
+      "sourceArchive": "Sending the TeX source archive to Rin…",
+      "articleTemplate": "Loading LaTeX blog template…",
+      "bookTemplate": "Loading LaTeX book template…"
+    },
+    "status": {
+      "bookProfileLoaded": "Book profile loaded. The first save will create a Rin source project.",
+      "archiveEditing": "Loaded {{filename}}. Editing {{path}}.",
+      "archiveReady": "Loaded {{filename}}. You can continue editing.",
+      "articleTemplateLoaded": "LaTeX blog template loaded.",
+      "bookTemplateLoaded": "LaTeX book template loaded.",
+      "articleDraftSaved": "Draft saved. You can continue editing it in Creator Center.",
+      "bookDraftSaved": "Book draft saved. You can continue editing it in Creator Center.",
+      "published": "Published: {{title}}",
+	  "activationPending": "The change was committed to Gitea and is waiting for exact-commit validation and activation. The site still shows the previous version.",
+      "chapterLinkFailed": "Published, but the chapter could not be linked automatically.",
+      "coverUploading": "Uploading cover…",
+      "coverUploaded": "Cover uploaded. It will take effect after saving or publishing.",
+      "merging": "Merging {{filename}}…",
+      "replacing": "Replacing the project with {{filename}}…",
+      "merged": "Merged {{filename}}. Files at matching paths were replaced and other existing files were kept. Save or publish to apply the changes.",
+      "replaced": "Replaced the project with {{filename}}. Save or publish to write it to the current book."
+    },
+    "validation": {
+      "contentType": "Only Rin articles or books can be edited in the Rin editor.",
+      "bookMode": "Book-writing mode cannot edit blog content.",
+      "articleMode": "Blog-writing mode cannot edit book content.",
+      "missingArchive": "This content has no saved TeX source archive and cannot be edited in the Rin editor.",
+      "signInArticle": "Sign in before saving the article.",
+      "signInBook": "Sign in before saving the book.",
+      "imageOnly": "Choose an image file."
+    }
+  },
+  "markdownWriter": {
+    "documentTitle": "Markdown writing",
+    "labels": {
+      "title": "Article title",
+      "tags": "Tags",
+      "summary": "Summary",
+      "cover": "Cover",
+      "source": "Source",
+      "page": "Page"
+    },
+    "placeholders": {
+      "newTitle": "Markdown blog title",
+      "editTitle": "Blog title",
+      "editor": "Write a Markdown blog…",
+      "imageCaption": "Image caption",
+      "imageUpload": "Upload image",
+      "summary": "Write a summary…"
+    },
+    "visibility": {
+      "open": "Public",
+      "private": "Private"
+    },
+    "pageState": {
+      "published": "Published",
+      "draft": "Draft"
+    },
+    "actions": {
+      "change": "Change",
+      "upload": "Upload",
+      "remove": "Remove",
+      "save": "Save",
+      "saving": "Saving",
+      "edit": "Edit",
+      "preview": "Preview",
+      "useDefault": "Use default",
+      "cancel": "Cancel",
+      "done": "Done"
+    },
+    "controls": {
+      "saveState": "Blog save state",
+      "sourceVisibility": "Source visibility",
+      "pageState": "Page state"
+    },
+    "editor": "Markdown editor",
+    "summary": {
+      "edit": "Summary editor",
+      "preview": "Summary preview",
+      "emptyPreview": "<p>No preview.</p>"
+    },
+    "coverCrop": "Crop cover",
+    "math": {
+      "blockEditor": "Edit display formula",
+      "inlineEditor": "Edit inline formula"
+    },
+    "topBar": {
+      "bold": "Bold",
+      "italic": "Italic",
+      "strike": "Strikethrough",
+      "inlineCode": "Inline code",
+      "bulletList": "Bulleted list",
+      "orderedList": "Numbered list",
+      "taskList": "Task list",
+      "link": "Insert link",
+      "image": "Insert image",
+      "table": "Insert table",
+      "codeBlock": "Code block",
+      "quote": "Block quote",
+      "divider": "Divider",
+      "math": "Math",
+      "quiver": "Quiver diagram",
+      "tool": "Editor tool {{index}}"
+    },
+    "headings": {
+      "paragraph": "Paragraph",
+      "heading2": "Heading 2",
+      "heading3": "Heading 3",
+      "heading4": "Heading 4",
+      "heading5": "Heading 5",
+      "heading6": "Heading 6"
+    },
+    "quiver": {
+      "unavailableDemo": "The demo does not load Quiver or call a real diagram service. Continue with Markdown/LaTeX or enable Quiver in an integration deployment.",
+      "editor": "Quiver commutative diagram editor",
+      "help": "Export as an image and insert at the current cursor position",
+      "exporting": "Exporting",
+      "insert": "Insert",
+      "loading": "Loading",
+      "notLoaded": "Quiver has not finished loading.",
+      "stillLoading": "Quiver is still loading. Try inserting again shortly.",
+      "timeout": "Quiver export timed out. Check that the editor has loaded.",
+      "exportFailed": "The Quiver diagram could not be exported.",
+      "empty": "Draw a diagram in Quiver before inserting it."
+    },
+    "render": {
+      "aria": "Markdown publication render status",
+      "states": {
+        "queued": "Waiting to render",
+        "running": "Rendering",
+        "succeeded": "Render complete",
+        "failed": "Render failed",
+        "canceled": "Canceled",
+        "expired": "Result expired"
+      },
+      "stages": {
+        "queue": "Queue",
+        "analysis": "Analyze document",
+        "compile": "Compile Markdown",
+        "resolve": "Render formulas, diagrams, and code",
+        "finalize": "Safety checks and finalization",
+        "store": "Save result"
+      },
+      "queue_one": "{{displayCount}} project in queue",
+      "queue_other": "{{displayCount}} projects in queue",
+      "ahead_one": "about {{displayCount}} project ahead",
+      "ahead_other": "about {{displayCount}} projects ahead",
+      "active_one": "{{displayCount}} project running",
+      "active_other": "{{displayCount}} projects running",
+      "eta": "Estimated start: {{range}}",
+      "canceling": "Canceling…",
+      "cancel": "Cancel render"
+    },
+    "loading": {
+      "source": "Loading Markdown source…"
+    },
+    "status": {
+      "sourceLoaded": "Markdown source loaded.",
+      "coverUploading": "Uploading cover…",
+      "coverUploaded": "Cover uploaded. It will take effect after saving.",
+      "renderCancelRequested": "Requested cancellation of the Markdown publication render.",
+      "renderReused": "Continuing the existing Markdown publication render…",
+      "renderQueued": "Markdown entered the publication render queue…",
+      "renderComplete": "Markdown rendering is complete. Saving the article…",
+      "compatibilitySave": "This publication is using the compatibility reader path. Saving the article…",
+      "draftSaved": "Draft saved. You can continue editing it in Creator Center.",
+	  "activationPending": "The change was committed to Gitea and is waiting for exact-commit validation and activation. The site still shows the previous version.",
+      "published": "Published: {{title}}",
+      "privatePublished": "Saved as a private publication: {{title}}"
+    },
+    "validation": {
+      "blogOnly": "Only blogs can be edited in the Markdown editor.",
+      "wrongEditor": "This blog was not written with Markdown. Open it in the LaTeX editor.",
+      "missingSource": "This blog has no saved Markdown source and cannot be edited.",
+      "imageOnly": "Choose an image file.",
+      "signIn": "Sign in before saving the article."
+    }
+  },
+  "demoCapabilities": {
+    "notice": "Browser demo: drafts and publication stay on this device. Server rendering, collaboration, code workspaces, moderation, and production publication are unavailable; reset demo data to restore the original fixture."
+  },
+  "markdownSection": {
+    "notMarkdownBook": "This section does not belong to a Markdown book.",
+    "notFound": "This Markdown section could not be found.",
+    "bookFallback": "Markdown book",
+    "saved": "Section saved. The reading page has been updated.",
+    "documentFallback": "Markdown section",
+    "workspace": "Markdown book workspace",
+    "tagsManagedInProfile": "Manage tags from the book profile",
+    "entry": "Section editor",
+    "updatesWholeBook": "Saving updates the entire Markdown book",
+    "saving": "Saving",
+    "save": "Save",
+    "authorOnly": "Only the author can edit this section.",
+    "editor": "Markdown section editor",
+    "placeholder": "Write this section…",
+    "content": "Markdown section content"
+  }
+}

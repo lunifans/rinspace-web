@@ -1,0 +1,79 @@
+{
+  "pageTitle": "Settings",
+  "title": "Settings",
+  "scope": {
+    "signedIn": "Preferences and notifications",
+    "signedOut": "Sign in required"
+  },
+  "visitor": "Visitor",
+  "signedOut": "Signed out",
+  "signIn": "Sign in",
+  "profile": "Profile",
+  "notificationsLink": "Notifications",
+  "demoBoundary": "Demo settings stay in this browser. Real SMS, email delivery, account linking, payments, and external OAuth are disabled.",
+  "interface": {
+    "heading": "Interface",
+    "caption": "Interface preferences",
+    "language": "Language",
+    "displayMode": "Display mode",
+    "save": "Save preferences",
+    "saving": "Saving…",
+    "saved": "Interface preferences saved."
+  },
+  "language": {
+    "system": "Follow system",
+    "zh-CN": "简体中文",
+    "en": "English"
+  },
+  "colorScheme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "Follow system"
+  },
+  "notifications": {
+    "heading": "Notifications",
+    "caption": "Notification preferences",
+    "save": "Save notifications",
+    "saving": "Saving…",
+    "saved": "Notification preferences saved.",
+    "enabled": "On",
+    "disabled": "Off",
+    "channelLabel": "{{title}} channel",
+    "channels": {
+      "email": "Email",
+      "site": "On site"
+    },
+    "rows": {
+      "inbox": {
+        "title": "Inbox",
+        "detail": "Comments, answers, reposts, invitations, and upvotes."
+      },
+      "allNewQuestion": {
+        "title": "New questions",
+        "detail": "Notifications for newly posted questions."
+      },
+      "allNewQuestionForFollowingTags": {
+        "title": "Followed tags",
+        "detail": "New questions under tags you follow."
+      }
+    }
+  },
+  "recovery": {
+    "heading": "Editor recovery",
+    "caption": "Uncommitted work and Git recovery packages",
+    "detail": "Recovery packages are separate from Git commits and publishing. They include a tracked patch, untracked files, an unpushed commit bundle, and Git status. Download links expire quickly.",
+    "refresh": "Refresh",
+    "empty": "No editor recovery packages are available.",
+    "listLabel": "Editor recovery packages",
+    "unknownBranch": "Unknown branch",
+    "unknownTime": "Unknown time",
+    "download": "Download recovery package",
+    "preparing": "Preparing link…",
+    "loadFailed": "Recovery packages are temporarily unavailable.",
+    "downloadFailed": "Could not create a recovery download link.",
+    "status": {
+      "recoverable": "Contains uncommitted work",
+      "clean": "Clean checkpoint"
+    }
+  }
+}

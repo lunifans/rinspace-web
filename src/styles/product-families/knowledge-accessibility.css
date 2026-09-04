@@ -1,0 +1,26 @@
+@layer rin-dark-important {
+  [data-rin-ui="v2"] .blog-like-row .repository-like-action.active[data-tone="like"],
+  [data-rin-ui="v2"] .blog-header-actions .repository-like-action.active[data-tone="like"] {
+    border-color: color-mix(in srgb, var(--rin-like) 38%, var(--rin-border)) !important;
+    background: color-mix(in srgb, var(--rin-like) 10%, transparent) !important;
+    color: var(--rin-like-ink) !important;
+  }
+}
+
+.book-annotation-sheet > .rin-ui-dialog-heading {
+  padding-inline-end: 2.75rem;
+}
+
+.book-annotation-sheet > .rin-ui-dialog-heading .rin-editorial-title {
+  font-size: 1rem;
+}
+
+@layer route-foundation {
+  [data-rin-ui="v2"] .blog-article-taxonomy .meta-category.content-type-meta a .label {
+    color: #4a5568 !important;
+  }
+
+  [data-rin-ui="v2"] .inline-report-button {
+    opacity: 1 !important;
+  }
+}

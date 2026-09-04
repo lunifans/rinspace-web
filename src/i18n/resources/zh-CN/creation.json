@@ -1,0 +1,653 @@
+{
+  "title": "创作",
+  "actions": {
+    "publish": "发布",
+    "saveDraft": "保存草稿"
+  },
+  "tagPicker": {
+    "label": "标签",
+    "searchFailed": "标签搜索失败。",
+    "searching": "搜索中",
+    "related_one": "{{displayCount}} 项相关内容",
+    "related_other": "{{displayCount}} 项相关内容",
+    "newTag": "新标签：{{tag}}",
+    "createTag": "创建“{{tag}}”"
+  },
+  "tagCreation": {
+    "title": "创建标签",
+    "name": "名称",
+    "usageContext": "使用语境",
+    "usageContextPlaceholder": "它在这里具体指什么？",
+    "parentTagsOptional": "父标签（可选）",
+    "searchParentTags": "搜索父标签",
+    "sameNameTags": "同名标签",
+    "parents": "父级：{{parents}}",
+    "uncategorized": "未归类",
+    "creatingAction": "正在创建",
+    "createAction": "创建标签",
+    "retry": "重试",
+    "status": {
+      "created": "标签已创建。",
+      "incompleteRetryable": "创建尚未完成，可以重试。",
+      "progressUnavailable": "暂时无法获取创建进度，请稍后重试。",
+      "creating": "正在创建标签…",
+      "pending": "标签创建中…",
+      "failed": "创建未完成。",
+      "retrying": "正在重试创建。"
+    }
+  },
+  "publishDialog": {
+    "fields": {
+      "title": "标题",
+      "excerpt": "简介",
+      "tags": "标签",
+      "tagPlaceholder": "搜索或输入新标签"
+    },
+    "cover": {
+      "upload": "上传封面",
+      "replace": "更换封面",
+      "remove": "移除",
+      "uploading": "正在上传封面…",
+      "uploaded": "封面已上传。",
+      "imageOnly": "请选择图片文件。",
+      "cropBook": "裁剪书籍封面",
+      "cropBlog": "裁剪博客封面"
+    },
+    "bookProfile": {
+      "title": "编辑档案",
+      "close": "关闭编辑档案窗口",
+      "titleRequired": "请填写标题。",
+      "saving": "正在保存书籍档案…",
+      "activationPending": "修改已提交到仓库，等待该 commit 完成校验与激活。当前页面仍显示上一个已激活版本。",
+      "saved": "书籍档案已保存。",
+      "savingAction": "保存中…",
+      "saveAction": "保存档案"
+    },
+    "capabilities": {
+      "demoBoundary": "演示创建与图片上传只保存在此浏览器；远程仓库、工作区、Renderer、PDF 与归档上传保持关闭。",
+      "pdfUnavailable": "演示模式不上传 PDF；请使用本地 Markdown/LaTeX 创作，或在集成环境配置真实上传与 Renderer。"
+    },
+    "create": {
+      "titles": {
+        "blog": "创建 LaTeX 博客",
+        "latexBook": "创建 LaTeX 书籍",
+        "markdownBook": "创建 Markdown 书籍",
+        "pdfBook": "上传 PDF 书籍"
+      },
+      "close": "关闭创建窗口",
+      "visibility": "发布目标",
+      "public": "公开",
+      "private": "私密",
+      "titleRequired": "请填写标题。",
+      "excerptRequired": "请填写简介。",
+      "pdfRequired": "请先上传 PDF 文件。",
+      "initialChapter": "开始",
+      "creatingAction": "创建中…",
+      "createAction": "创建并编辑",
+      "creating": {
+        "blog": "正在创建 LaTeX 博客…",
+        "latexBook": "正在创建 LaTeX 书籍…",
+        "markdownBook": "正在创建 Markdown 书籍…",
+        "pdfBook": "正在上传 PDF 书籍…"
+      },
+      "openingRepository": "正在打开 Git 仓库…",
+      "activationPending": "内容已写入 Gitea，正在校验并激活精确 commit。激活完成前主站继续保持上一版本或暂不公开。",
+      "moderation": {
+        "pending": "内容已提交审核。",
+        "published": "内容已发布。",
+        "rejected": "内容未通过审核。"
+      }
+    },
+    "pdf": {
+      "upload": "上传 PDF（≤80MB）",
+      "replace": "更换 PDF",
+      "fileOnly": "只能上传 PDF 文件。",
+      "tooLarge": "PDF 不能超过 80MB。",
+      "extractingToc": "正在提取 PDF 目录",
+      "tocExtracted_one": "已提取 {{displayCount}} 条目录",
+      "tocExtracted_other": "已提取 {{displayCount}} 条目录",
+      "tocUnavailable": "没有读取到 PDF 目录",
+      "keepingCover": "保留已上传封面",
+      "generatingCover": "正在生成首页封面",
+      "coverGenerated": "已从 PDF 首页生成封面",
+      "coverUnavailable": "未能生成 PDF 首页封面"
+    }
+  },
+  "bookWorkspace": {
+    "fallbackTitle": "书籍工作台",
+    "documentTitle": "{{title}} 工作台",
+    "notBook": "这个内容不是书籍。",
+    "externalBookManagement": "站外 / PDF 书籍使用资料编辑页管理。",
+    "editBookProfile": "编辑书籍资料",
+    "capabilities": {
+      "demoBoundary": "本地章节和档案编辑可用；生产仓库、code-server、整书上传和 Renderer 不会在演示中启动。",
+      "rendererUnavailable": "演示不会上传归档或提交生产渲染任务；本地章节修改仍可继续。"
+    },
+    "markdownWorkspace": "Markdown 书籍工作台",
+    "latexWorkspace": "LaTeX 书籍工作台",
+    "defaultMarkdownExcerpt": "轻量 Markdown 网页书。",
+    "defaultBookExcerpt": "这本书还没有简介。",
+    "publishStatus": {
+      "draft": "草稿",
+      "private": "私密",
+      "published": "已公开"
+    },
+    "counts": {
+      "page_one": "{{displayCount}} 页",
+      "page_other": "{{displayCount}} 页",
+      "file_one": "{{displayCount}} 个文件",
+      "file_other": "{{displayCount}} 个文件",
+      "chapter_one": "{{displayCount}} 章",
+      "chapter_other": "{{displayCount}} 章",
+      "node_one": "{{displayCount}} 个节点",
+      "node_other": "{{displayCount}} 个节点"
+    },
+    "reader": {
+      "generated": "网页书已生成",
+      "notGenerated": "网页书未生成"
+    },
+    "actions": {
+      "label": "书籍操作",
+      "ratingPage": "评分页",
+      "readingPage": "阅读页",
+      "readingPending": "阅读页待生成",
+      "editProfile": "编辑档案",
+      "authorOnly": "仅作者可编辑",
+      "openingRepository": "打开中",
+      "openRepository": "打开仓库",
+      "uploading": "上传中",
+      "rendering": "后台渲染中",
+      "loading": "加载中",
+      "importAndPublish": "导入整本并发布"
+      ,"rendererUnavailable": "Renderer 不可用"
+    },
+    "markdown": {
+      "chapters": "Markdown 章节",
+      "newChapter": "新章节",
+      "newChapterTitle": "新章节标题",
+      "createChapter": "创建章节",
+      "chapter": "章",
+      "section": "节",
+      "newSectionTitle": "在「{{title}}」中新建小节",
+      "createSection": "创建节",
+      "reorder": "拖拽排序",
+      "edit": "编辑",
+      "read": "阅读",
+      "empty": "还没有 Markdown 章节"
+    },
+    "original": {
+      "noChapters": "暂无章节",
+      "workspace": "章节工作区",
+      "indexing": "索引中",
+      "emptyDirectory": "空目录",
+      "renderingImport": "后台正在渲染 {{filename}}，完成后会自动刷新。",
+      "wholeBook": "整本书籍",
+      "sources": {
+        "reader": "网页书目录",
+        "toc": "书籍目录",
+        "tex": "TeX 源码",
+        "sameFile": "同文件内节点"
+      },
+      "emptyGroup": "还没有章节",
+      "empty": "还没有可见章节"
+    },
+    "matter": {
+      "front": "前",
+      "main": "正文",
+      "back": "后"
+    },
+    "notices": {
+      "renderPublished": "整本书籍已在后台渲染并发布。",
+      "chapterCreated": "已创建章节：{{title}}",
+      "sectionCreated": "已创建小节：{{title}}",
+      "orderUpdated": "章节顺序已更新。",
+      "renderSubmitted": "已提交后台渲染。上传已完成，可以关闭网页。"
+    }
+  },
+  "publishPage": {
+    "documentTitle": "{{heading}}",
+    "modes": {
+      "question": {
+        "eyebrow": "提问",
+        "heading": "提一个数学问题",
+        "editHeading": "编辑问题",
+        "submit": "发布问题",
+        "bodyLabel": "问题正文",
+        "bodyPlaceholder": "说明背景、已尝试的方法、卡住的位置。支持 Markdown 和 LaTeX 公式。"
+      },
+      "discussion": {
+        "eyebrow": "讨论",
+        "heading": "发起讨论",
+        "editHeading": "编辑讨论",
+        "submit": "发布讨论",
+        "bodyLabel": "主楼内容",
+        "bodyPlaceholder": "像发帖一样写清楚讨论背景、观点和希望大家回应的点。"
+      },
+      "announcement": {
+        "eyebrow": "公告",
+        "heading": "发布公告",
+        "editHeading": "编辑公告",
+        "submit": "发布公告",
+        "bodyLabel": "公告内容",
+        "bodyPlaceholder": "写清楚公告事项、影响范围和需要社区成员注意的时间点。"
+      },
+      "dynamic": {
+        "eyebrow": "动态",
+        "heading": "发布动态",
+        "editHeading": "编辑动态",
+        "submit": "发布动态",
+        "bodyLabel": "动态内容",
+        "bodyPlaceholder": "写一段短动态。可以记录公式推导、链接、进展或一个临时想法。",
+        "fallbackTitle": "新的动态"
+      },
+      "book": {
+        "eyebrow": "书籍",
+        "submit": "创建 LaTeX 工作台",
+        "bodyLabel": "书籍简介",
+        "bodyPlaceholder": "写一段会展示在评分页的简介：这本 LaTeX 书籍写什么、适合谁读、前置知识和亮点。"
+      }
+    },
+    "bookHeadings": {
+      "latex": "创建 LaTeX 书籍档案",
+      "pdf": "上传 PDF 书籍",
+      "markdown": "创建 Markdown 书籍档案",
+      "copyrighted": "提交 PDF / 站外书籍"
+    },
+    "bookEditHeadings": {
+      "latex": "编辑 LaTeX 书籍档案",
+      "pdf": "编辑 PDF 书籍",
+      "markdown": "编辑 Markdown 书籍档案",
+      "copyrighted": "编辑 PDF / 站外书籍"
+    },
+    "bookPlaceholders": {
+      "pdf": "写一段会展示在评分页的简介：这本 PDF 书籍写什么、适合谁读、前置知识和亮点。",
+      "markdown": "写一段会展示在评分页的简介：这本 Markdown 书籍写什么、适合谁读、前置知识和亮点。"
+    },
+    "fields": {
+      "title": "标题",
+      "titlePlaceholder": "标题",
+      "tags": "标签",
+      "contentTags": "内容标签"
+    },
+    "signIn": "登录",
+    "chapterContext": {
+      "source": "来自书籍章节",
+      "bookFallback": "书籍",
+      "chapterFallback": "章节"
+    },
+    "similar": {
+      "title": "题目",
+      "searching": "检索中",
+      "resultCount_one": "{{displayCount}} 条",
+      "resultCount_other": "{{displayCount}} 条",
+      "noResults": "无结果",
+      "related_one": "{{displayCount}} 相关",
+      "related_other": "{{displayCount}} 相关",
+      "answers_one": "{{displayCount}} 回答",
+      "answers_other": "{{displayCount}} 回答",
+      "upvotes_one": "{{displayCount}} 赞同",
+      "upvotes_other": "{{displayCount}} 赞同"
+    },
+    "book": {
+      "kindLabel": "书籍类型",
+      "original": "原创书籍",
+      "originalPdf": "原创 PDF",
+      "external": "站外 / PDF 书籍",
+      "externalPdf": "站外 PDF",
+      "authors": "作者",
+      "removeAuthor": "移除 {{name}}",
+      "authorPlaceholder": "搜索或创建作者，如 Robin Hartshorne",
+      "authorSearching": "搜索中",
+      "authorBookCount_one": "{{displayCount}} 本书",
+      "authorBookCount_other": "{{displayCount}} 本书",
+      "authorCreating": "创建中",
+      "createAuthor": "创建作者：{{name}}",
+      "duplicateAuthors": "同名作者可以分别创建为不同条目",
+      "officialUrl": "来源 URL",
+      "cover": "封面",
+      "bookTitleFallback": "书籍标题",
+      "viewPdf": "查看 PDF",
+      "tocLoaded_one": "已读取 {{displayCount}} 条目录",
+      "tocLoaded_other": "已读取 {{displayCount}} 条目录",
+      "metadata": {
+        "seriesTitle": "丛书名称",
+        "doi": "DOI",
+        "publisher": "发布方 / 出版方",
+        "ebookPackages": "电子书包",
+        "copyright": "版权信息",
+        "hardcoverIsbn": "精装本 ISBN",
+        "hardcoverPublished": "精装本出版日期",
+        "softcoverIsbn": "平装本 ISBN",
+        "softcoverPublished": "平装本出版日期",
+        "ebookIsbn": "电子书 ISBN",
+        "ebookPublished": "电子书出版日期",
+        "seriesIssn": "丛书 ISSN",
+        "seriesEissn": "丛书 E-ISSN",
+        "edition": "版次",
+        "pages": "页数",
+        "topics": "主题",
+        "keywords": "关键词"
+      }
+    },
+    "images": {
+      "label": "图片",
+      "hint": "支持最多 9 张图片，讨论内容统一依靠标签分类。",
+      "uploading": "上传中",
+      "upload": "上传图片",
+      "preview": "讨论图片预览",
+      "remove": "移除图片"
+    },
+    "tagHints": {
+      "question": "提问至少需要 1 个标签。",
+      "book": "书籍依靠标签进入分类、推荐和修为统计，至少需要 1 个，最多 6 个。",
+      "default": "用逗号、空格或中文逗号分隔，最多 6 个。"
+    },
+    "answer": {
+      "toggle": "同时写一个自答",
+      "label": "自答内容",
+      "placeholder": "把你已经知道的解法、思路或部分证明写下来。"
+    },
+    "actions": {
+      "cancel": "取消",
+      "saving": "保存中",
+      "publishing": "发布中",
+      "save": "保存",
+      "saveChanges": "保存修改",
+      "create": "创建",
+      "uploadOriginalPdf": "上传原创 PDF",
+      "uploadExternalPdf": "上传站外 PDF",
+      "submitBook": "提交书籍"
+    },
+	"status": {
+	  "activationPending": "内容已写入 Gitea，正在校验并激活精确 commit。激活完成前主站不会公开新版本。"
+	},
+    "check": {
+      "title": "发布检查",
+      "signedIn": "已登录",
+      "signInRequired": "需登录",
+      "body": "正文"
+    },
+    "validation": {
+      "typeMismatch": "当前内容类型与编辑页面不匹配。",
+      "signInToPublish": "请先登录后发布。",
+      "signInToUploadImage": "请先登录后上传图片。",
+      "imageLimit": "最多上传 9 张图片。",
+      "imageOnly": "只能上传图片文件。",
+      "imageTooLarge": "单张图片不能超过 8MB。",
+      "authorNameLength": "作者名至少需要 2 个字符。",
+      "signInToUploadPdf": "请先登录后上传 PDF。",
+      "signInToUploadCover": "请先登录后上传封面。",
+      "coverImageOnly": "封面只能上传图片文件。",
+      "coverTooLarge": "封面图片不能超过 8MB。"
+    },
+    "status": {
+      "chapterLinkFailed": "内容已发布，但章节自动关联失败。"
+    }
+  },
+  "writer": {
+    "documentTitle": {
+      "article": "LaTeX 写作",
+      "book": "LaTeX 写书"
+    },
+    "fallbacks": {
+      "bookProject": "书籍项目",
+      "currentChapter": "当前章节",
+      "book": "书籍",
+      "chapter": "章节"
+    },
+    "template": {
+      "bibliographyComment": "% 在这里添加 BibTeX 参考文献条目。"
+    },
+    "labels": {
+      "articleTitle": "文章标题",
+      "bookTitle": "书籍标题",
+      "tags": "话题标签",
+      "cover": "封面图"
+    },
+    "profile": {
+      "workspace": "书籍正文工作台",
+      "tagsManaged": "标签在档案页维护",
+      "fromChapter": "来自书籍章节",
+      "chapterEntry": "章节编辑入口",
+      "updatesWholeBook": "保存和发布仍会更新整本书项目",
+      "edit": "编辑档案",
+      "openWorkspace": "工作台"
+    },
+    "cover": {
+      "change": "更换",
+      "upload": "上传",
+      "remove": "移除",
+      "cropArticle": "裁剪博客封面",
+      "cropBook": "裁剪书籍封面"
+    },
+    "import": {
+      "importing": "导入中",
+      "merge": "合并导入",
+      "replace": "替换项目"
+    },
+    "actions": {
+      "save": "保存",
+      "saving": "保存中",
+      "publish": "发布",
+      "publishBook": "发布书籍",
+      "publishing": "发布中",
+      "diagnostics": "诊断"
+    },
+    "editor": "Rin 编辑器",
+    "autosave": {
+      "sources": {
+        "remote": "云端",
+        "local": "本地"
+      },
+      "remoteReadFailed": "云端草稿读取失败。",
+      "restored": "已恢复 {{time}} 的{{source}}草稿。",
+      "savedSynced": "草稿已自动保存并同步于 {{time}}。",
+      "savedLocal": "本地草稿已自动保存于 {{time}}。",
+      "cloudSyncFailed": "本地草稿已自动保存，但云端同步失败。",
+      "localSaveFailed": "本地自动保存失败。",
+      "remoteConflict": "检测到另一个浏览器有新草稿。当前窗口还有未自动保存的输入，暂不覆盖。",
+      "remoteSynced": "已同步另一个浏览器 {{time}} 的草稿。",
+      "pollFailed": "云端草稿同步检查失败。"
+    },
+    "loading": {
+      "bookProject": "正在读取书籍项目…",
+      "articleSource": "正在读取原文源包…",
+      "sourceArchive": "正在把 TeX 源包交给 Rin…",
+      "articleTemplate": "正在载入 LaTeX 博客模板…",
+      "bookTemplate": "正在载入 LaTeX 书籍模板…"
+    },
+    "status": {
+      "bookProfileLoaded": "已读取书籍档案。第一次保存会生成 Rin 源项目。",
+      "archiveEditing": "已载入 {{filename}}，正在编辑 {{path}}。",
+      "archiveReady": "已载入 {{filename}}，可继续编辑。",
+      "articleTemplateLoaded": "已载入 LaTeX 博客模板。",
+      "bookTemplateLoaded": "已载入 LaTeX 书籍模板。",
+      "articleDraftSaved": "草稿已保存，可在创作中心继续编辑。",
+      "bookDraftSaved": "书籍草稿已保存，可在创作中心继续编辑。",
+      "published": "已发布：{{title}}",
+	  "activationPending": "修改已写入 Gitea，正在校验并激活精确 commit。主站当前仍显示上一版本。",
+      "chapterLinkFailed": "已发布，但章节自动关联失败。",
+      "coverUploading": "正在上传封面…",
+      "coverUploaded": "封面已上传，保存或发布后生效。",
+      "merging": "正在合并 {{filename}}…",
+      "replacing": "正在替换为 {{filename}}…",
+      "merged": "已合并 {{filename}}。同路径文件已覆盖，其他现有文件会保留。保存或发布后生效。",
+      "replaced": "已替换为 {{filename}}。保存或发布后会写入当前书籍。"
+    },
+    "validation": {
+      "contentType": "只有 Rin 长文或书籍可以在 Rin 编辑器里继续编辑。",
+      "bookMode": "当前是书籍写作模式，不能编辑博客内容。",
+      "articleMode": "当前是博客写作模式，不能编辑书籍内容。",
+      "missingArchive": "这份内容没有保存 TeX 源包，不能用 Rin 编辑器继续编辑。",
+      "signInArticle": "请先登录后保存文章。",
+      "signInBook": "请先登录后保存书籍。",
+      "imageOnly": "请选择图片文件。"
+    }
+  },
+  "markdownWriter": {
+    "documentTitle": "Markdown 写作",
+    "labels": {
+      "title": "文章标题",
+      "tags": "标签",
+      "summary": "简介",
+      "cover": "封面图",
+      "source": "源码",
+      "page": "页面"
+    },
+    "placeholders": {
+      "newTitle": "Markdown 博客标题",
+      "editTitle": "博客标题",
+      "editor": "写一篇 Markdown 博客…",
+      "imageCaption": "图片说明",
+      "imageUpload": "上传图片",
+      "summary": "写简介…"
+    },
+    "visibility": {
+      "open": "公开",
+      "private": "私密"
+    },
+    "pageState": {
+      "published": "发布",
+      "draft": "草稿"
+    },
+    "actions": {
+      "change": "更换",
+      "upload": "上传",
+      "remove": "移除",
+      "save": "保存",
+      "saving": "保存中",
+      "edit": "编辑",
+      "preview": "预览",
+      "useDefault": "使用默认",
+      "cancel": "取消",
+      "done": "完成"
+    },
+    "controls": {
+      "saveState": "博客保存状态",
+      "sourceVisibility": "源码可见性",
+      "pageState": "页面状态"
+    },
+    "editor": "Markdown 编辑器",
+    "summary": {
+      "edit": "简介编辑",
+      "preview": "简介预览",
+      "emptyPreview": "<p>暂无预览。</p>"
+    },
+    "coverCrop": "裁剪封面",
+    "math": {
+      "blockEditor": "编辑行间公式",
+      "inlineEditor": "编辑行内公式"
+    },
+    "topBar": {
+      "bold": "加粗",
+      "italic": "斜体",
+      "strike": "删除线",
+      "inlineCode": "行内代码",
+      "bulletList": "无序列表",
+      "orderedList": "有序列表",
+      "taskList": "任务列表",
+      "link": "插入链接",
+      "image": "插入图片",
+      "table": "插入表格",
+      "codeBlock": "代码块",
+      "quote": "引用块",
+      "divider": "分隔线",
+      "math": "数学",
+      "quiver": "Quiver 交换图",
+      "tool": "编辑器工具 {{index}}"
+    },
+    "headings": {
+      "paragraph": "正文",
+      "heading2": "二级标题",
+      "heading3": "三级标题",
+      "heading4": "四级标题",
+      "heading5": "五级标题",
+      "heading6": "六级标题"
+    },
+    "quiver": {
+      "unavailableDemo": "演示不会加载 Quiver 或调用真实图表服务；请继续使用 Markdown/LaTeX，或在集成环境启用 Quiver。",
+      "editor": "Quiver 交换图编辑器",
+      "help": "导出为图片并插入当前光标位置",
+      "exporting": "导出中",
+      "insert": "插入",
+      "loading": "加载中",
+      "notLoaded": "Quiver 尚未加载完成。",
+      "stillLoading": "Quiver 正在加载，请稍后再插入。",
+      "timeout": "Quiver 导出超时，请确认弹层已加载完成。",
+      "exportFailed": "Quiver 图表导出失败。",
+      "empty": "请先在 Quiver 中画一个图表，再点击插入。"
+    },
+    "render": {
+      "aria": "Markdown 发布渲染状态",
+      "states": {
+        "queued": "等待渲染",
+        "running": "正在渲染",
+        "succeeded": "渲染完成",
+        "failed": "渲染失败",
+        "canceled": "已取消",
+        "expired": "结果已过期"
+      },
+      "stages": {
+        "queue": "排队",
+        "analysis": "分析文档",
+        "compile": "编译 Markdown",
+        "resolve": "渲染公式、图表与代码",
+        "finalize": "安全检查与定稿",
+        "store": "保存结果"
+      },
+      "queue_one": "队列 {{displayCount}} 项",
+      "queue_other": "队列 {{displayCount}} 项",
+      "ahead_one": "前方约 {{displayCount}} 项",
+      "ahead_other": "前方约 {{displayCount}} 项",
+      "active_one": "正在运行 {{displayCount}} 项",
+      "active_other": "正在运行 {{displayCount}} 项",
+      "eta": "预计 {{range}} 开始",
+      "canceling": "取消中…",
+      "cancel": "取消渲染"
+    },
+    "loading": {
+      "source": "正在读取 Markdown 原文…"
+    },
+    "status": {
+      "sourceLoaded": "已载入 Markdown 原文。",
+      "coverUploading": "正在上传封面…",
+      "coverUploaded": "封面已上传，保存后生效。",
+      "renderCancelRequested": "已请求取消 Markdown 发布渲染。",
+      "renderReused": "继续已有的 Markdown 发布渲染…",
+      "renderQueued": "Markdown 已进入发布渲染队列…",
+      "renderComplete": "Markdown 渲染完成，正在保存文章…",
+      "compatibilitySave": "当前发布继续使用兼容阅读路径，正在保存文章…",
+      "draftSaved": "草稿已保存，可在创作中心继续编辑。",
+	  "activationPending": "修改已写入 Gitea，正在校验并激活精确 commit。主站当前仍显示上一版本。",
+      "published": "已发布：{{title}}",
+      "privatePublished": "已保存为私密发布：{{title}}"
+    },
+    "validation": {
+      "blogOnly": "只有博客可以在 Markdown 编辑器里继续编辑。",
+      "wrongEditor": "这篇博客不是 Markdown 写作方式，请用 LaTeX 编辑器打开。",
+      "missingSource": "这篇博客没有保存 Markdown 源文，不能继续编辑。",
+      "imageOnly": "请选择图片文件。",
+      "signIn": "请先登录后保存文章。"
+    }
+  },
+  "demoCapabilities": {
+    "notice": "浏览器演示：草稿与发布内容只保存在本设备。服务端渲染、协作、代码工作区、审核和真实发布不可用；可通过重置演示数据恢复初始内容。"
+  },
+  "markdownSection": {
+    "notMarkdownBook": "这个章节不属于 Markdown 书籍。",
+    "notFound": "没有找到这个 Markdown 章节。",
+    "bookFallback": "Markdown 书籍",
+    "saved": "章节已保存，阅读页内容已更新。",
+    "documentFallback": "Markdown 章节",
+    "workspace": "Markdown 书籍工作台",
+    "tagsManagedInProfile": "标签在档案页维护",
+    "entry": "章节编辑入口",
+    "updatesWholeBook": "保存会更新整本 Markdown 书籍",
+    "saving": "保存中",
+    "save": "保存",
+    "authorOnly": "只有作者可以编辑这个章节。",
+    "editor": "Markdown 章节编辑器",
+    "placeholder": "写下这个章节…",
+    "content": "Markdown 章节内容"
+  }
+}
