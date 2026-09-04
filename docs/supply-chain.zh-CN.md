@@ -4,6 +4,8 @@ PR workflow 只有仓库只读权限，执行类型、lint、生成契约、依�
 
 所有 `uses:` 都固定到完整 commit SHA，并镜像记录在 `config/github-actions-policy.json`。Dependabot 会提出 pnpm、Actions 和 Docker 更新，但审查者必须阅读上游差异并同步更新策略记录。`pnpm install --frozen-lockfile` 阻止未审查的依赖图改写。
 
+如果指定的 self-hosted runner 只能通过本机代理访问镜像仓库，请把经过审查、按换行分隔的 Buildx driver options 写入仓库变量 `RINSPACE_BUILDX_DRIVER_OPTS`。例如代理监听宿主机 loopback 时，可使用 `network=host`，并设置 `env.http_proxy=...`、`env.https_proxy=...` 与 `env.no_proxy=...`。能够直连 registry 时保持变量未设置。该值是配置而不是秘密，绝不能放入账号密码或 bearer token。
+
 Release workflow 只接受已存在的 `vX.Y.Z` tag；tag 必须解析到当前检出的完整 commit，并与 `package.json` 版本一致。它生成：
 
 - 确定性的根路径 demo tar；

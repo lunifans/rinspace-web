@@ -161,6 +161,21 @@ test("public CI covers source, contract, dependency, coverage, browser, accessib
   );
 });
 
+test("Buildx can receive reviewed self-hosted runner network options without repository secrets", () => {
+  for (const name of ["container.yml", "release.yml"]) {
+    const source = workflows[name];
+    assert.match(
+      source,
+      /docker\/setup-buildx-action@[0-9a-f]{40}[\s\S]*?driver-opts: \$\{\{ vars\.RINSPACE_BUILDX_DRIVER_OPTS \}\}/,
+      `${name} must pass the optional repository-level Buildx driver options`,
+    );
+  }
+  assert.doesNotMatch(
+    `${workflows["container.yml"]}\n${workflows["release.yml"]}`,
+    /secrets\.RINSPACE_BUILDX_DRIVER_OPTS/,
+  );
+});
+
 test("private release rehearsal is manual, private-only, exact, and comprehensive", () => {
   const source = workflows["private-release-rehearsal.yml"];
   assert.match(source, /workflow_dispatch:/);

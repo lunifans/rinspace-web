@@ -4,6 +4,8 @@ The pull-request workflow has repository read permission only. It runs types, li
 
 All `uses:` references are full commit SHAs mirrored in `config/github-actions-policy.json`. Dependabot proposes pnpm, Actions, and Docker updates, but a reviewer must inspect the upstream diff and update the policy record. `pnpm install --frozen-lockfile` prevents an unreviewed dependency graph rewrite.
 
+If a designated self-hosted runner can reach registries only through a local proxy, set the repository variable `RINSPACE_BUILDX_DRIVER_OPTS` to reviewed, newline-delimited Buildx driver options. For example, a runner whose proxy listens on host loopback may use `network=host` plus `env.http_proxy=...`, `env.https_proxy=...`, and `env.no_proxy=...`. Leave the variable unset when direct registry access works. The value is configuration, not a secret: never put credentials or bearer tokens in it.
+
 The release workflow accepts an existing `vX.Y.Z` tag only when it resolves to the checked-out full commit and matches `package.json`. It creates:
 
 - a deterministic root demo tar archive;
