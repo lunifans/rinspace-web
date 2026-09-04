@@ -58,6 +58,7 @@ No database, account, CloudBase project, or `.env` file is needed. Choose the pa
 | Goal                                          | Recommended path                          | What to install  |
 | --------------------------------------------- | ----------------------------------------- | ---------------- |
 | Try the demo without learning Node.js or pnpm | [Docker and Compose](#docker-and-compose) | Docker only      |
+| Let Codex choose and execute the path         | [Deploy with Codex](#deploy-with-codex)   | Codex            |
 | Read or change the source and get hot reload  | Local development below                   | Git + Node.js 22 |
 | Produce files for a static host               | [Static deployment](#static-deployment)   | Git + Node.js 22 |
 
@@ -70,6 +71,31 @@ Rinspace Web's documented and CI-tested line is **Node.js 22.x**. The official d
 | Windows 10/11 | Install Git for Windows and the Node.js 22 Windows installer. Keep the installer's default PATH options.                                                                                          | PowerShell or Windows Terminal |
 | macOS         | Install the Node.js 22 macOS installer. Install Git when macOS prompts for the command-line tools, if needed.                                                                                     | Terminal                       |
 | Linux         | Install Git with the distribution package manager, then install Node.js 22 using the official download instructions or a version manager. Distribution repositories may contain an older Node.js. | Your normal shell              |
+
+Common installation commands follow. The Windows Node command installs the current LTS; if it does not report `v22.`, use the Node.js 22 installer from the official page above for exact CI parity. The macOS commands require [Homebrew](https://brew.sh/). The Ubuntu/Debian commands install system prerequisites only; install Node.js 22.x from the official page instead of relying on a potentially old distribution package.
+
+Windows PowerShell:
+
+```powershell
+winget install --exact --id Git.Git --source winget
+winget install --exact --id OpenJS.NodeJS.LTS --source winget
+```
+
+macOS:
+
+```bash
+xcode-select --install
+brew install node@22
+echo 'export PATH="$(brew --prefix node@22)/bin:$PATH"' >> ~/.zshrc
+exec zsh
+```
+
+Ubuntu/Debian:
+
+```bash
+sudo apt update
+sudo apt install --yes git ca-certificates curl
+```
 
 Close and reopen the terminal after installation, then check the tools:
 
@@ -90,10 +116,20 @@ cd rinspace-web
 
 pnpm is the package manager used to install this project's JavaScript dependencies and run its scripts. You do not need prior pnpm knowledge, and the repository pins pnpm 9.7.0 for you. Do not replace `pnpm-lock.yaml` or run `npm install` for project dependencies.
 
-The normal commands are:
+On macOS/Linux, the normal commands are below. `corepack prepare` explicitly activates the repository's version:
 
 ```bash
 corepack enable
+corepack prepare pnpm@9.7.0 --activate
+pnpm --version
+pnpm install --frozen-lockfile
+pnpm start
+```
+
+The pnpm project currently recommends installing pnpm through npm on Windows. In PowerShell run:
+
+```powershell
+npm install --global pnpm@9.7.0
 pnpm --version
 pnpm install --frozen-lockfile
 pnpm start
@@ -140,6 +176,8 @@ pnpm preview:artifact -- --root package --port 4173
 
 Open <http://127.0.0.1:4173/>. The deployable files are now in `package/`; stop the preview with <kbd>Ctrl</kbd>+<kbd>C</kbd>.
 
+`pnpm start` is a development server, not a production deployment. A static host should receive only the complete, locally previewed `package/`. Upload into a new directory, verify it, and switch atomically; retain the previous complete directory for rollback instead of editing generated files in place.
+
 For a subpath, select a config whose normalized `basePath`, local API path, canonical URL, manifest scope, and worker scope agree. This example serves the demo at `/rinspace-demo/`:
 
 ```bash
@@ -170,6 +208,34 @@ Docker is the simplest route if you only want to run the demo: it does **not** r
 | macOS         | Install and start the correct Apple silicon or Intel build from [Docker Desktop for Mac](https://docs.docker.com/desktop/setup/install/mac-install/).                   |
 | Linux         | Install [Docker Engine](https://docs.docker.com/engine/install/) and the [Docker Compose plugin](https://docs.docker.com/compose/install/linux/) for your distribution. |
 
+Windows PowerShell and a macOS machine with Homebrew can install Docker Desktop directly:
+
+```powershell
+winget install --exact --id Docker.DockerDesktop --source winget
+```
+
+```bash
+brew install --cask docker
+open -a Docker
+```
+
+Windows may first require WSL 2 and a restart. On both systems, wait until Docker Desktop reports that its engine is running. Ubuntu should use Docker's official repository instead of a potentially old distribution `docker.io` package:
+
+```bash
+sudo apt update
+sudo apt install --yes ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl --fail --silent --show-error --location https://download.docker.com/linux/ubuntu/gpg --output /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+. /etc/os-release
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu ${UBUNTU_CODENAME:-$VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo docker run --rm hello-world
+```
+
+On Ubuntu you may keep using `sudo docker compose ...`. To run it without `sudo`, follow Docker's [Linux post-install guide](https://docs.docker.com/engine/install/linux-postinstall/) to join the `docker` group. That group grants root-equivalent privileges and should not be given casually to shared or untrusted accounts.
+
 After installation, `docker compose version` should print a version. Clone this repository, enter it, and start the zero-credential root demo on loopback port 8080:
 
 ```bash
@@ -189,9 +255,23 @@ To run in the background, inspect logs, and stop later:
 
 ```bash
 docker compose up --build -d
+docker compose ps
+curl --fail --silent --show-error http://127.0.0.1:8080/healthz
 docker compose logs -f
 docker compose down
 ```
+
+Before updating an existing checkout, confirm that it has no uncommitted work. Then fast-forward, rebuild, and verify health again:
+
+```bash
+git status --short
+git pull --ff-only
+docker compose up --build -d --remove-orphans
+docker compose ps
+curl --fail --silent --show-error http://127.0.0.1:8080/healthz
+```
+
+In Windows PowerShell, use `curl.exe` if `curl` resolves to an alias. To roll back, check out the previously recorded commit or tag and run the same `docker compose up --build -d --remove-orphans` command. Do not remove an image or checkout that is still needed for rollback.
 
 For the verified subpath overlay, run the following command and open <http://127.0.0.1:8080/rinspace-demo/>:
 
@@ -208,6 +288,28 @@ The runtime is UID/GID 1000, listens on 8080, drops all Linux capabilities, uses
 - **`docker compose` is unavailable:** start Docker Desktop, or on Linux install the Compose plugin. This project uses the current `docker compose` command, not legacy `docker-compose`.
 - **A deployed deep link returns 404:** configure the SPA fallback and deploy all generated files; do not rewrite missing asset requests to HTML.
 - **A subpath page is blank or redirects incorrectly:** rebuild with one consistent `basePath`, API prefix, canonical origin, and physical hosting directory.
+
+<!-- rinspace-section: ai-assisted-deployment -->
+
+## Deploy with Codex
+
+If command-line setup is unfamiliar, open the destination directory in Codex and paste this prompt. It defaults to a local-only demo and selects Docker or Node/pnpm from observed facts. Administrator, production, domain, credential, and public-network operations require your confirmation.
+
+```text
+Act as the Rinspace Web deployment assistant. Deploy https://github.com/lunifans/rinspace-web on this machine until I can open it in a browser and its health checks pass. Default to a zero-credential demo reachable only from this machine: prefer existing Docker, otherwise use Node.js 22.x and pnpm 9.7.0. Do not assume that I know Git, Node.js, pnpm, or Docker.
+
+First read AGENTS.md, README.md, CONTRIBUTING.md, and package.json. Then perform read-only discovery of the OS, CPU, shell, required tools, ports 5173/8080, and worktree status. Clone the official repository if absent; if present, verify its remote. Do not pull, reset, clean, switch branches, overwrite changes, or discard work on your own.
+
+When a tool is missing, show the exact installation command for this OS. Before sudo/administrator actions, PATH changes, Docker daemon installation, public listener/firewall changes, cloud login, server-directory writes, DNS/HTTPS changes, stopping an existing service, or replacing a deployment, explain the impact and wait for explicit confirmation. Never ask me to paste credentials in chat or put them in the repository, runtime config, image layers, shell history, or logs.
+
+Do not change application code to bypass a deployment problem. Do not disable tests, health checks, security headers, authorization, origin validation, or secret scanning, and never fall back from demo mode to a production API. Work incrementally; for a network failure, report the failed host and command before asking whether I have a proxy.
+
+Acceptance: the process/container is running and the home page succeeds; Docker exposes /healthz and /version.json, a static package exposes /version.json, and local development reports Vite ready; directly opening and refreshing a deep route does not incorrectly return 404; the listener defaults to loopback; and the demo requires no account, database, CloudBase project, or .env.
+
+Finish with the URL, method, commit/Node/pnpm/image versions, commands run, each acceptance result, stop/restart/update/rollback commands, and manual steps still needed. Unless explicitly asked, do not commit, push, open a PR, change repository visibility, or publish to the Internet.
+```
+
+For a static host, Ubuntu server, or existing Docker update, use the expanded [Codex deployment prompt](./docs/ai-deployment.md), which includes target examples and complete stop rules.
 
 <!-- rinspace-section: integration -->
 
@@ -272,7 +374,26 @@ pnpm test:demo-routes:browser
 
 Public CI also checks the publication boundary, dependency licenses, lockfile diffs, coverage, release budgets, workflow pins, and fail-closed legal release policy. Formal Vite/Docker builds, multi-architecture smoke, screenshots, release artifacts, and provenance run only on designated self-hosted workflows. Fork pull requests never run code on those runners; after review, a maintainer tests the commit from a repository branch. See [`docs/supply-chain.md`](./docs/supply-chain.md) and `package.json` for details.
 
-Before publication, the exact release is rehearsed while the repository is still private, including clean quick start, three-browser coverage, real static-host preview, container/layer/log/screenshot audit, and previous-release rollback. See [`docs/private-release-rehearsal.md`](./docs/private-release-rehearsal.md).
+Before first source publication, the exact commit is rehearsed while the repository is still private: clean quick start, core browser coverage, root/subpath static packages, containers, and source/history/log/screenshot safety review. Formal tags, SBOM/attestations, credentialed hosting previews, and previous-release rollback are a separate post-publication release milestone; artifact-quota failures do not block source publication when the underlying checks passed. See [`docs/private-release-rehearsal.md`](./docs/private-release-rehearsal.md).
+
+<!-- rinspace-section: contributing -->
+
+## Contributing code
+
+The beginner-oriented [`CONTRIBUTING.md`](./CONTRIBUTING.md) covers forking, cloning, pnpm setup, branches, tests, DCO sign-off, pushing, and opening a pull request. The shortest submission path is:
+
+```bash
+git switch -c fix/short-description
+pnpm check
+pnpm lint
+pnpm test
+git diff --check
+git add path/to/changed-file path/to/test-file
+git commit -s -m "fix(scope): describe the user-visible result"
+git push -u origin fix/short-description
+```
+
+Ordinary contributions do not require an external CLA. When using Codex or another coding AI, have it read [`AGENTS.md`](./AGENTS.md) first and use the outcome/acceptance/constraints/verification prompt in the contribution guide. The human contributor remains responsible for reviewing code, tests, security, sources, and the DCO certification.
 
 <!-- rinspace-section: licensing -->
 

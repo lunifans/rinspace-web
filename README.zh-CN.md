@@ -58,6 +58,7 @@ Rinspace Web 是 Rinspace（芥子环）的浏览器前端与本地演示运行�
 | 目标                                | 推荐路径                                | 需要安装         |
 | ----------------------------------- | --------------------------------------- | ---------------- |
 | 不学习 Node.js 或 pnpm，只体验 demo | [Docker 与 Compose](#docker-与-compose) | 只安装 Docker    |
+| 让 Codex 帮我选择并执行             | [用 Codex 部署](#用-codex-部署)         | Codex            |
 | 阅读或修改源码，并获得热更新        | 下方本地开发方式                        | Git + Node.js 22 |
 | 生成可交给静态托管平台的文件        | [静态部署](#静态部署)                   | Git + Node.js 22 |
 
@@ -70,6 +71,31 @@ Rinspace Web 文档约定并由 CI 验证的是 **Node.js 22.x**。官网可能�
 | Windows 10/11 | 安装 Git for Windows 和 Node.js 22 Windows 安装包，保留安装程序默认的 PATH 选项。                      | PowerShell 或 Windows Terminal |
 | macOS         | 安装 Node.js 22 macOS 安装包；若系统提示安装命令行工具，按提示补装 Git。                               | “终端”应用                     |
 | Linux         | 用发行版包管理器安装 Git，再按官网说明或用版本管理器安装 Node.js 22；发行版仓库里的 Node.js 可能过旧。 | 常用 shell                     |
+
+常用安装命令如下。Windows 的 Node 命令安装当前 LTS；若输出不是 `v22.`，请改用上方官方页面的 Node.js 22 安装包以完全匹配 CI。macOS 命令要求已经安装 [Homebrew](https://brew.sh/)；Ubuntu/Debian 命令只安装系统工具，Node.js 仍应从官方页面安装 22.x，避免发行版旧版本。
+
+Windows PowerShell：
+
+```powershell
+winget install --exact --id Git.Git --source winget
+winget install --exact --id OpenJS.NodeJS.LTS --source winget
+```
+
+macOS：
+
+```bash
+xcode-select --install
+brew install node@22
+echo 'export PATH="$(brew --prefix node@22)/bin:$PATH"' >> ~/.zshrc
+exec zsh
+```
+
+Ubuntu/Debian：
+
+```bash
+sudo apt update
+sudo apt install --yes git ca-certificates curl
+```
 
 安装后关闭并重新打开终端，再检查：
 
@@ -90,10 +116,20 @@ cd rinspace-web
 
 pnpm 只是本项目用来安装 JavaScript 依赖和运行脚本的包管理器，作用类似 npm；不会使用 pnpm 也没关系。仓库已经固定 pnpm 9.7.0，请不要替换 `pnpm-lock.yaml`，也不要用 `npm install` 安装项目依赖。
 
-正常情况下直接复制以下命令：
+macOS/Linux 正常情况下直接复制以下命令。`corepack prepare` 会明确激活仓库指定版本：
 
 ```bash
 corepack enable
+corepack prepare pnpm@9.7.0 --activate
+pnpm --version
+pnpm install --frozen-lockfile
+pnpm start
+```
+
+pnpm 官方目前建议 Windows 使用 npm 安装 pnpm。在 PowerShell 运行：
+
+```powershell
+npm install --global pnpm@9.7.0
 pnpm --version
 pnpm install --frozen-lockfile
 pnpm start
@@ -140,6 +176,8 @@ pnpm preview:artifact -- --root package --port 4173
 
 打开 <http://127.0.0.1:4173/>。可部署文件位于 `package/`；按 <kbd>Ctrl</kbd>+<kbd>C</kbd> 停止预览。
 
+`pnpm start` 是开发服务器，不能作为生产部署。静态主机应只接收经过本地预览的完整 `package/`，并通过新目录上传、检查后原子切换；保留上一个完整目录，出错时切回，而不是现场修改生成文件。
+
 子路径必须选用 `basePath`、本地 API、canonical、manifest scope 和 worker scope 一致的配置。以下示例部署到 `/rinspace-demo/`：
 
 ```bash
@@ -170,6 +208,34 @@ pnpm preview:artifact -- --root package-subpath --port 4173
 | macOS         | 根据 Apple 芯片或 Intel 芯片选择并启动 [Docker Desktop for Mac](https://docs.docker.com/desktop/setup/install/mac-install/)。                      |
 | Linux         | 按发行版安装 [Docker Engine](https://docs.docker.com/engine/install/) 和 [Docker Compose plugin](https://docs.docker.com/compose/install/linux/)。 |
 
+Windows PowerShell 与已安装 Homebrew 的 macOS 可直接安装 Docker Desktop：
+
+```powershell
+winget install --exact --id Docker.DockerDesktop --source winget
+```
+
+```bash
+brew install --cask docker
+open -a Docker
+```
+
+Windows 可能先要求启用 WSL 2 并重启；两套系统都要等 Docker Desktop 显示 engine 已启动。Ubuntu 应使用 Docker 官方仓库，而不是发行版中可能过旧的 `docker.io` 包：
+
+```bash
+sudo apt update
+sudo apt install --yes ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl --fail --silent --show-error --location https://download.docker.com/linux/ubuntu/gpg --output /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+. /etc/os-release
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu ${UBUNTU_CODENAME:-$VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt update
+sudo apt install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo docker run --rm hello-world
+```
+
+Ubuntu 上可继续用 `sudo docker compose ...`。若希望当前用户不加 `sudo`，按 [Docker 官方 post-install](https://docs.docker.com/engine/install/linux-postinstall/) 加入 `docker` 组；该组具有接近 root 的权限，不应在共享或不受信任的账号上随意授予。
+
 安装后，`docker compose version` 应能输出版本。克隆仓库、进入目录，然后在 loopback 8080 构建并运行零凭据根路径 demo：
 
 ```bash
@@ -189,9 +255,23 @@ docker compose down
 
 ```bash
 docker compose up --build -d
+docker compose ps
+curl --fail --silent --show-error http://127.0.0.1:8080/healthz
 docker compose logs -f
 docker compose down
 ```
+
+更新现有 checkout 前先确认没有未提交工作；随后快进拉取、重建并再次检查健康状态：
+
+```bash
+git status --short
+git pull --ff-only
+docker compose up --build -d --remove-orphans
+docker compose ps
+curl --fail --silent --show-error http://127.0.0.1:8080/healthz
+```
+
+Windows PowerShell 中如果 `curl` 被别名替换，可把上面的 `curl` 改成 `curl.exe`。回滚时检出之前记录的 commit 或 tag，再执行同一条 `docker compose up --build -d --remove-orphans`；不要删除仍需回滚的镜像和 checkout。
 
 经过验证的子路径 overlay 使用以下命令，随后打开 <http://127.0.0.1:8080/rinspace-demo/>：
 
@@ -208,6 +288,28 @@ runtime 使用 UID/GID 1000、监听 8080、drop 全部 Linux capabilities、只
 - **找不到 `docker compose`：**先启动 Docker Desktop；Linux 需要安装 Compose plugin。本项目使用当前的 `docker compose`，不是旧版 `docker-compose`。
 - **部署后的深层链接返回 404：**配置 SPA fallback 并部署所有生成文件；不要把缺失资源请求重写成 HTML。
 - **子路径页面空白或跳转错误：**重新构建，保证 `basePath`、API 前缀、canonical origin 与实际托管目录完全一致。
+
+<!-- rinspace-section: ai-assisted-deployment -->
+
+## 用 Codex 部署
+
+如果你不熟悉命令行，可在 Codex 中打开目标目录，复制下面这段提示词。它默认选择只允许本机访问的 demo，并会自行判断 Docker 或 Node/pnpm 路径；涉及管理员权限、生产、域名、凭据或公网变更时必须先征求你的确认。
+
+```text
+请作为 Rinspace Web 部署助手，把 https://github.com/lunifans/rinspace-web 部署到当前机器，直到我能在浏览器访问并通过健康检查。默认目标是“仅本机访问、零凭据 demo”：已有 Docker 就优先 Docker，否则使用 Node.js 22.x 与 pnpm 9.7.0。不要假定我会 Git、Node.js、pnpm 或 Docker。
+
+先阅读仓库 AGENTS.md、README.zh-CN.md、CONTRIBUTING.md 和 package.json；然后只读检测操作系统、CPU、shell、所需工具、5173/8080 端口和工作树状态。仓库不存在时克隆官方地址；存在时先核对 remote，不得擅自 pull、reset、clean、切分支或覆盖修改。
+
+缺少工具时给出适合当前系统的准确安装命令。执行 sudo/管理员操作、修改 PATH、安装 Docker daemon、开放公网/防火墙、云平台登录、写服务器目录、修改 DNS/HTTPS、停止旧服务或覆盖部署前，先说明影响并等待我明确确认。不要让我在聊天中粘贴凭据，也不得把凭据写入仓库、runtime config、镜像层、shell 历史或日志。
+
+不要修改业务源码来绕过部署问题，不要关闭测试、健康检查、安全头、权限、origin 校验或秘密扫描，不得让 demo 回退到生产 API。逐步执行；网络失败时报告失败主机与命令，再问我是否提供代理。
+
+完成标准：进程/容器运行且首页成功；Docker 的 /healthz 与 /version.json 可访问，静态包的 /version.json 可访问，本地开发模式报告 Vite ready；直接打开并刷新一个深层路由不错误 404；默认只监听 loopback；demo 不需要账号、数据库、CloudBase 或 .env。
+
+最后用中文报告访问 URL、部署方式、commit/Node/pnpm/镜像版本、执行命令、逐项验收结果、停止/重启/更新/回滚命令和仍需手工处理的事项。除非我明确要求，不要 commit、push、建 PR、修改仓库可见性或发布到公网。
+```
+
+需要静态主机、Ubuntu 服务器、已有 Docker 部署更新等场景时，使用包含目标示例和完整停止规则的 [`docs/ai-deployment.zh-CN.md`](./docs/ai-deployment.zh-CN.md)。
 
 <!-- rinspace-section: integration -->
 
@@ -272,7 +374,26 @@ pnpm test:demo-routes:browser
 
 公开 CI 还会检查发布边界、依赖许可证、锁文件差异、coverage、release budget、Actions 固定版本和 fail-closed 法律发布策略。正式 Vite/Docker build、多架构 smoke、截图、release artifact 与 provenance 只在指定 self-hosted workflow 执行；fork PR 绝不在这些 runner 上执行代码，维护者审查后需从仓库内分支验证该 commit。详情见 [`docs/supply-chain.zh-CN.md`](./docs/supply-chain.zh-CN.md) 与 `package.json`。
 
-正式公开前必须在仓库仍为 private 时对精确 release 演练，包括干净 quick start、三浏览器覆盖、真实静态托管 preview、容器层/workflow 日志/截图审计和上一 release 回滚。详见 [`docs/private-release-rehearsal.zh-CN.md`](./docs/private-release-rehearsal.zh-CN.md)。
+首次公开源码前必须在仓库仍为 private 时对精确 commit 完成干净 quick start、核心浏览器覆盖、root/subpath 静态包、容器及源码/历史/日志/截图安全审计。正式 release 的 tag、SBOM/attestation、真实托管 preview 和上一 release 回滚属于公开后的独立发布里程碑；制品配额故障不阻断已经通过验证的源码公开。详见 [`docs/private-release-rehearsal.zh-CN.md`](./docs/private-release-rehearsal.zh-CN.md)。
+
+<!-- rinspace-section: contributing -->
+
+## 贡献代码
+
+完整的新手流程见 [`CONTRIBUTING.zh-CN.md`](./CONTRIBUTING.zh-CN.md)：它覆盖 fork、clone、安装 pnpm、建分支、测试、DCO sign-off、push 和 Pull Request。最短的提交路径是：
+
+```bash
+git switch -c fix/short-description
+pnpm check
+pnpm lint
+pnpm test
+git diff --check
+git add path/to/changed-file path/to/test-file
+git commit -s -m "fix(scope): describe the user-visible result"
+git push -u origin fix/short-description
+```
+
+普通贡献不需要外部 CLA。使用 Codex 或其他代码 AI 时，请先让它读取 [`AGENTS.md`](./AGENTS.md)，并使用贡献指南内的需求/验收/约束/验证提示词；人类贡献者仍负责复核代码、测试、安全、来源与 DCO 确认。
 
 <!-- rinspace-section: licensing -->
 
