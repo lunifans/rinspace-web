@@ -176,6 +176,17 @@ test("Buildx can receive reviewed self-hosted runner network options without rep
   );
 });
 
+test("QEMU setup does not depend on the GitHub Actions cache quota", () => {
+  for (const name of ["container.yml", "release.yml"]) {
+    const source = workflows[name];
+    assert.match(
+      source,
+      /docker\/setup-qemu-action@[0-9a-f]{40}[\s\S]*?cache-image: false/,
+      `${name} must keep the binfmt image outside the GitHub Actions cache`,
+    );
+  }
+});
+
 test("container smoke validates the image revision with a valid Docker template", () => {
   const source = workflows["container.yml"];
   assert.ok(
