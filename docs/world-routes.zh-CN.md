@@ -1,14 +1,15 @@
 # Rinspace 世界路由契约
 
-本表由公开前端路由 manifest 与经审计的世界路由配置生成，不应手工修改。`world=inner` 只用于双面网页；服务与协议路由不会解释该参数。
+本表由公开前端路由 manifest 与经审计的世界路由配置生成，不应手工修改。除 `/p/*` 永久链接外，里世界网页统一使用 `world=inner`；服务与协议路由不会解释该参数。
 
-Contract version: `1.0.2`. Manifest routes: 85.
+Contract version: `1.0.3`. Manifest routes: 85.
 
 | Pattern | Kind | Owner | Logo flip | Anonymous policy | Source |
 | --- | --- | --- | --- | --- | --- |
 | `/rinspace/api/*` | service | rinspace-private | none | service-policy | shared-contract |
 | `/rinspace/admin/api/*` | service | rinspace-private | none | service-policy | shared-contract |
 | `/rinspace/auth/*` | service | rinspace-private | none | service-policy | shared-contract |
+| `/api/web/*` | service | mastodon | none | service-policy | shared-contract |
 | `/api/v1/streaming/*` | service | mastodon | none | service-policy | shared-contract |
 | `/api/*` | service | mastodon | none | service-policy | shared-contract |
 | `/oauth/*` | service | mastodon | none | service-policy | shared-contract |
@@ -84,6 +85,15 @@ Contract version: `1.0.2`. Manifest routes: 85.
 | `/getting-started` | inner-only | mastodon | opposite-home | runtime-policy | shared-contract |
 | `/keyboard-shortcuts` | inner-only | mastodon | opposite-home | runtime-policy | shared-contract |
 | `/overview` | inner-only | mastodon | opposite-home | public | shared-contract |
+| `/settings/:section/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/filters/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/relationships` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/severed_relationships/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/statuses_cleanup` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/invites/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/admin/:section/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/privacy-policy` | inner-only | mastodon | opposite-home | public | shared-contract |
+| `/terms-of-service/*` | inner-only | mastodon | opposite-home | public | shared-contract |
 | `/@:username` | dual | rinspace-web, mastodon | same-path | public | shared-contract |
 | `/sounds/*` | service | mastodon | none | public | shared-contract |
 | `/avatars/*` | service | mastodon | none | public | shared-contract |

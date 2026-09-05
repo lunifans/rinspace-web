@@ -1,14 +1,15 @@
 # Rinspace world route contract
 
-This table is generated from the public frontend route manifest and its audited world-route source. Do not edit it by hand. `world=inner` is only interpreted by dual Web pages; service and protocol routes ignore it.
+This table is generated from the public frontend route manifest and its audited world-route source. Do not edit it by hand. Inner-world pages use `world=inner` except for permanent `/p/*` links; service and protocol routes ignore it.
 
-Contract version: `1.0.2`. Manifest routes: 85.
+Contract version: `1.0.3`. Manifest routes: 85.
 
 | Pattern | Kind | Owner | Logo flip | Anonymous policy | Source |
 | --- | --- | --- | --- | --- | --- |
 | `/rinspace/api/*` | service | rinspace-private | none | service-policy | shared-contract |
 | `/rinspace/admin/api/*` | service | rinspace-private | none | service-policy | shared-contract |
 | `/rinspace/auth/*` | service | rinspace-private | none | service-policy | shared-contract |
+| `/api/web/*` | service | mastodon | none | service-policy | shared-contract |
 | `/api/v1/streaming/*` | service | mastodon | none | service-policy | shared-contract |
 | `/api/*` | service | mastodon | none | service-policy | shared-contract |
 | `/oauth/*` | service | mastodon | none | service-policy | shared-contract |
@@ -84,6 +85,15 @@ Contract version: `1.0.2`. Manifest routes: 85.
 | `/getting-started` | inner-only | mastodon | opposite-home | runtime-policy | shared-contract |
 | `/keyboard-shortcuts` | inner-only | mastodon | opposite-home | runtime-policy | shared-contract |
 | `/overview` | inner-only | mastodon | opposite-home | public | shared-contract |
+| `/settings/:section/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/filters/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/relationships` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/severed_relationships/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/statuses_cleanup` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/invites/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/admin/:section/*` | inner-only | mastodon | opposite-home | authenticated | shared-contract |
+| `/privacy-policy` | inner-only | mastodon | opposite-home | public | shared-contract |
+| `/terms-of-service/*` | inner-only | mastodon | opposite-home | public | shared-contract |
 | `/@:username` | dual | rinspace-web, mastodon | same-path | public | shared-contract |
 | `/sounds/*` | service | mastodon | none | public | shared-contract |
 | `/avatars/*` | service | mastodon | none | public | shared-contract |

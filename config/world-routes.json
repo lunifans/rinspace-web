@@ -1,6 +1,6 @@
 {
   "schemaVersion": "rinspace-world-route-source/v1",
-  "contractVersion": "1.0.2",
+  "contractVersion": "1.0.3",
   "manifestGuard": {
     "routeCount": 85,
     "orderedPathSha256": "sha256:eb3e44e77f8585e984f718d905315957cd1d57ed45e5f5635022f211b198ad0b"
@@ -84,6 +84,15 @@
       "pattern": "/auth/*",
       "kind": "service",
       "priority": 112,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "service-policy",
+      "flip": "none"
+    },
+    {
+      "id": "service.mastodon-web-api",
+      "pattern": "/api/web/*",
+      "kind": "service",
+      "priority": 108,
       "owners": ["mastodon"],
       "anonymousPolicy": "service-policy",
       "flip": "none"
@@ -810,6 +819,87 @@
       "pattern": "/overview",
       "kind": "inner-only",
       "priority": 349,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "public",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.settings-sections",
+      "pattern": "/settings/:section/*",
+      "kind": "inner-only",
+      "priority": 350,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.filters",
+      "pattern": "/filters/*",
+      "kind": "inner-only",
+      "priority": 351,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.relationships",
+      "pattern": "/relationships",
+      "kind": "inner-only",
+      "priority": 352,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.severed-relationships",
+      "pattern": "/severed_relationships/*",
+      "kind": "inner-only",
+      "priority": 353,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.statuses-cleanup",
+      "pattern": "/statuses_cleanup",
+      "kind": "inner-only",
+      "priority": 354,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.invites",
+      "pattern": "/invites/*",
+      "kind": "inner-only",
+      "priority": 355,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.admin-sections",
+      "pattern": "/admin/:section/*",
+      "kind": "inner-only",
+      "priority": 356,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.privacy-policy",
+      "pattern": "/privacy-policy",
+      "kind": "inner-only",
+      "priority": 357,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "public",
+      "flip": "opposite-home"
+    },
+    {
+      "id": "inner.terms-of-service",
+      "pattern": "/terms-of-service/*",
+      "kind": "inner-only",
+      "priority": 358,
       "owners": ["mastodon"],
       "anonymousPolicy": "public",
       "flip": "opposite-home"

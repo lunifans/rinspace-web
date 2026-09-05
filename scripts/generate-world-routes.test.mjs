@@ -40,6 +40,36 @@ test("classifies every public manifest route and every shared route exactly once
     "inner-only",
   );
   assert.equal(
+    contract.routes.find((route) => route.pattern === "/p/:id/:slug")
+      ?.canonicalWorld,
+    "path-owned",
+  );
+  assert.deepEqual(
+    [
+      contract.routes.find((route) => route.pattern === "/api/web/*")?.id,
+      contract.routes.find((route) => route.pattern === "/api/web/*")?.kind,
+      contract.routes.find((route) => route.pattern === "/api/web/*")?.owners,
+    ],
+    ["service.mastodon-web-api", "service", ["mastodon"]],
+  );
+  for (const path of [
+    "/settings/:section/*",
+    "/filters/*",
+    "/relationships",
+    "/severed_relationships/*",
+    "/statuses_cleanup",
+    "/invites/*",
+    "/admin/:section/*",
+    "/privacy-policy",
+    "/terms-of-service/*",
+  ]) {
+    const route = contract.routes.find((candidate) => candidate.pattern === path);
+    assert.deepEqual(
+      [route?.kind, route?.owners, route?.canonicalWorld],
+      ["inner-only", ["mastodon"], "query-for-inner"],
+    );
+  }
+  assert.equal(
     contract.routes.find((route) => route.pattern === "/users/:username")?.kind,
     "federation-disabled",
   );

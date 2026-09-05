@@ -90,9 +90,14 @@ function defaultAnonymousPolicy(route, kind) {
   return kind === "dual" ? "runtime-policy" : "public";
 }
 
-function defaultCanonicalWorld(kind) {
+function defaultCanonicalWorld(kind, pattern) {
   if (kind === "dual") return "query-for-inner";
-  if (kind === "outer-only" || kind === "inner-only") return "path-owned";
+  if (kind === "inner-only") {
+    return pattern === "/p/:id" || pattern === "/p/:id/:slug"
+      ? "path-owned"
+      : "query-for-inner";
+  }
+  if (kind === "outer-only") return "path-owned";
   return "not-applicable";
 }
 
@@ -233,7 +238,7 @@ export function buildWorldRouteContract(routes, source) {
       owners: defaultOwners(kind),
       anonymousPolicy: defaultAnonymousPolicy(route, kind),
       flip,
-      canonicalWorld: defaultCanonicalWorld(kind),
+      canonicalWorld: defaultCanonicalWorld(kind, route.path),
       source: "rinspace-web-manifest",
       manifestOrder: route.order,
       canonicalPath: route.canonicalPath,
@@ -247,7 +252,7 @@ export function buildWorldRouteContract(routes, source) {
   source.additionalRoutes.forEach(validateAdditionalRoute);
   const additionalRoutes = source.additionalRoutes.map((route) => ({
     ...route,
-    canonicalWorld: defaultCanonicalWorld(route.kind),
+    canonicalWorld: defaultCanonicalWorld(route.kind, route.pattern),
     source: "shared-contract",
   }));
   const allRoutes = [...additionalRoutes, ...manifestRoutes].sort(
@@ -301,8 +306,8 @@ function documentation(contract, locale) {
     ? "Rinspace 世界路由契约"
     : "Rinspace world route contract";
   const intro = chinese
-    ? "本表由公开前端路由 manifest 与经审计的世界路由配置生成，不应手工修改。`world=inner` 只用于双面网页；服务与协议路由不会解释该参数。"
-    : "This table is generated from the public frontend route manifest and its audited world-route source. Do not edit it by hand. `world=inner` is only interpreted by dual Web pages; service and protocol routes ignore it.";
+    ? "本表由公开前端路由 manifest 与经审计的世界路由配置生成，不应手工修改。除 `/p/*` 永久链接外，里世界网页统一使用 `world=inner`；服务与协议路由不会解释该参数。"
+    : "This table is generated from the public frontend route manifest and its audited world-route source. Do not edit it by hand. Inner-world pages use `world=inner` except for permanent `/p/*` links; service and protocol routes ignore it.";
   const rows = contract.routes.map(
     (route) =>
       `| \`${route.pattern}\` | ${route.kind} | ${route.owners.join(", ")} | ${route.flip} | ${route.anonymousPolicy} | ${route.source} |`,

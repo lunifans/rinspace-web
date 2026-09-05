@@ -1,6 +1,6 @@
 # Rinspace 表里世界技术设计
 
-> 状态：技术设计、任务 1–25 与生产切换已于 2026-09-05 完成；联邦保持关闭。
+> 状态：技术设计、任务 1–26 与生产切换已于 2026-09-05 完成；任务 27 正在实施，联邦保持关闭。
 
 ## 1. 设计结论
 
@@ -118,7 +118,7 @@ RINSPACE_MASTODON_WORKTREE=/absolute/path/to/mastodon
 
 ### 5.1 URL 模型
 
-`outer` 是默认世界，只在路径无法判断的双面资源上使用 `world=inner`：
+`outer` 是默认世界。除稳定帖子永久链接 `/p/:id[/slug]` 外，里世界产品网页统一使用 `world=inner`；这样未来新增同名表世界页面时，已有里世界链接不需要改写：
 
 | 资源                     | 表世界                  | 里世界                           |
 | ------------------------ | ----------------------- | -------------------------------- |
@@ -128,6 +128,8 @@ RINSPACE_MASTODON_WORKTREE=/absolute/path/to/mastodon
 | 搜索/通知/设置等重叠页面 | 无 `world`              | `?world=inner`                   |
 | 表世界文章               | `/a/42/title`           | 无对应面                         |
 | 里世界帖子               | 无对应面                | `/p/123/title`                   |
+
+Mastodon 新生成的 SPA 导航、跨文档链接和 canonical 都必须补齐 `world=inner`。为兼容上线前链接，当前已分类为 `inner-only` 的无参数地址仍可进入 Mastodon，并在客户端或 Rails HTML 边界规范化；API、OAuth、streaming、媒体与静态资源不参与该规则。
 
 `world` 只接受 `inner`；`outer` 由省略表达。无效值被删除并回到路径默认世界。协议/API/媒体/静态资源不得携带或解释 `world`。
 
@@ -149,7 +151,7 @@ RINSPACE_MASTODON_WORKTREE=/absolute/path/to/mastodon
 浏览器文档请求按以下固定优先级处理：
 
 1. 匹配 `service` 或 `federation-disabled`，不进入网页世界判断；
-2. `/p/:id`、`/p/:id/:slug` 和其他 `inner-only` 路由进入 Mastodon；
+2. `/p/:id`、`/p/:id/:slug` 和其他 `inner-only` 路由进入 Mastodon；除 `/p/*` 外，里世界页面规范地址补齐 `world=inner`；
 3. `dual` 路由在 `world=inner` 时进入 Mastodon，否则进入表世界；
 4. 明确的 `outer-only` 路由进入 `rinspace-web`；
 5. 未分类地址返回 404，不进入当前 `/:username` 式 catch-all。
@@ -162,7 +164,7 @@ RINSPACE_MASTODON_WORKTREE=/absolute/path/to/mastodon
 - `Rinspace` 文字回当前世界首页。
 - 单面资源点击 Logo 回相反世界首页。
 - 双面资源缺少映射或无权访问时，也回相反世界首页，不猜测对象。
-- 双面 inner 页 canonical 保留 `?world=inner`；outer 页省略 `world`；单面页删除无意义参数。
+- 双面 inner 页及非帖子里世界产品页 canonical 保留 `?world=inner`；outer 页与 `/p/*` 省略 `world`。
 - 页面刷新、新标签页、前进/后退都仅根据 URL 恢复，不依赖 cookie 或 localStorage 才能判断世界。
 
 ## 6. 顶栏和翻面动效
@@ -506,6 +508,7 @@ Mastodon 上游的 [Status entity](https://docs.joinmastodon.org/entities/Status
 ### 18.2 Mastodon fork
 
 - `/p`、错 slug、敏感 slug、REST `url` 和 `/@username/:statusId` 404 的 Rails/JS 测试；
+- 非帖子里世界页面统一补齐 `world=inner`，并验证 settings、filters、relationships、moderation/admin 页面和 `/api/web/*` 不落入表世界；
 - local-only 的 route/service/worker/network deny matrix；
 - OIDC 预配冲突、handle 改名/释放、资料投影和关注事务测试；
 - `views_count` 并发原子性、授权、短期去重和删除测试；

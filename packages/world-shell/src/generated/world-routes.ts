@@ -3,7 +3,7 @@ import type { WorldRouteContract } from '../types.js';
 
 export const defaultWorldRouteContract = {
   "schemaVersion": "rinspace-world-routes/v1",
-  "contractVersion": "1.0.2",
+  "contractVersion": "1.0.3",
   "generatedFrom": [
     "src/app/routing/routeManifest.tsx",
     "config/world-routes.json"
@@ -61,6 +61,19 @@ export const defaultWorldRouteContract = {
       "priority": 102,
       "owners": [
         "rinspace-private"
+      ],
+      "anonymousPolicy": "service-policy",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-web-api",
+      "pattern": "/api/web/*",
+      "kind": "service",
+      "priority": 108,
+      "owners": [
+        "mastodon"
       ],
       "anonymousPolicy": "service-policy",
       "flip": "none",
@@ -519,7 +532,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -532,7 +545,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -545,7 +558,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -558,7 +571,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -571,7 +584,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "public",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -584,7 +597,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -597,7 +610,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "public",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -662,7 +675,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "public",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -675,7 +688,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "public",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -688,7 +701,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -701,7 +714,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -714,7 +727,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -727,7 +740,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -740,7 +753,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -753,7 +766,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -766,7 +779,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -779,7 +792,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -792,7 +805,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -805,7 +818,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -818,7 +831,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -831,7 +844,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -844,7 +857,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -857,7 +870,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -870,7 +883,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -883,7 +896,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -896,7 +909,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -909,7 +922,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -922,7 +935,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -935,7 +948,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -948,7 +961,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -961,7 +974,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -974,7 +987,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "authenticated",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -987,7 +1000,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "public",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -1000,7 +1013,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -1013,7 +1026,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -1026,7 +1039,7 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "runtime-policy",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {
@@ -1039,7 +1052,124 @@ export const defaultWorldRouteContract = {
       ],
       "anonymousPolicy": "public",
       "flip": "opposite-home",
-      "canonicalWorld": "path-owned",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.settings-sections",
+      "pattern": "/settings/:section/*",
+      "kind": "inner-only",
+      "priority": 350,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.filters",
+      "pattern": "/filters/*",
+      "kind": "inner-only",
+      "priority": 351,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.relationships",
+      "pattern": "/relationships",
+      "kind": "inner-only",
+      "priority": 352,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.severed-relationships",
+      "pattern": "/severed_relationships/*",
+      "kind": "inner-only",
+      "priority": 353,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.statuses-cleanup",
+      "pattern": "/statuses_cleanup",
+      "kind": "inner-only",
+      "priority": 354,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.invites",
+      "pattern": "/invites/*",
+      "kind": "inner-only",
+      "priority": 355,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.admin-sections",
+      "pattern": "/admin/:section/*",
+      "kind": "inner-only",
+      "priority": 356,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "authenticated",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.privacy-policy",
+      "pattern": "/privacy-policy",
+      "kind": "inner-only",
+      "priority": 357,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "inner.terms-of-service",
+      "pattern": "/terms-of-service/*",
+      "kind": "inner-only",
+      "priority": 358,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "opposite-home",
+      "canonicalWorld": "query-for-inner",
       "source": "shared-contract"
     },
     {

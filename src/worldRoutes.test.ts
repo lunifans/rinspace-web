@@ -27,7 +27,7 @@ describe("Rinspace world route resolution", () => {
     expect(resolution.canonicalHref).toBe("/about?ref=nav");
   });
 
-  it("lets path-owned pages determine their world", () => {
+  it("keeps outer pages and permanent post links path-owned", () => {
     const outer = resolveWorld("/a/42/a-proof?world=inner&ref=share");
     const inner = resolveWorld("/p/123/hello?world=inner&ref=share");
 
@@ -36,6 +36,18 @@ describe("Rinspace world route resolution", () => {
     expect(inner.world).toBe("inner");
     expect(inner.runtime).toBe("mastodon");
     expect(inner.canonicalHref).toBe("/p/123/hello?ref=share");
+  });
+
+  it("canonicalizes non-post inner pages with an explicit world selector", () => {
+    const explore = resolveWorld("/explore?tab=posts");
+    const settings = resolveWorld("/settings/preferences/appearance");
+
+    expect(explore.world).toBe("inner");
+    expect(explore.canonicalHref).toBe("/explore?tab=posts&world=inner");
+    expect(settings.runtime).toBe("mastodon");
+    expect(settings.canonicalHref).toBe(
+      "/settings/preferences/appearance?world=inner",
+    );
   });
 
   it("flips dual account pages in place and single pages to the other home", () => {
@@ -91,5 +103,6 @@ describe("Rinspace world route resolution", () => {
     expect(flipTarget("/@alice/123", legacy)).toBeNull();
     expect(accountMedia.route?.id).toBe("inner.account-media");
     expect(accountMedia.world).toBe("inner");
+    expect(accountMedia.canonicalHref).toBe("/@alice/media?world=inner");
   });
 });

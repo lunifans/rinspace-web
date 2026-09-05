@@ -2,6 +2,11 @@
 
 All notable changes to Rinspace Web will be documented in this file. Releases follow Semantic Versioning once the legal release gate is approved.
 
+## 0.1.6 - 2026-09-06
+
+- Canonicalize every non-post inner-world page with `world=inner`, while keeping `/p/:id[/slug]` path-owned and older unqualified links compatible.
+- Classify Mastodon Web settings API and the server-rendered settings, filters, relationship, cleanup, invite, administration, privacy, and terms pages so they cannot fall into the outer runtime.
+
 ## 0.1.5 - 2026-09-05
 
 - Added explicit world-gateway routes for the public runtime configuration, Web App Manifest, and container health endpoint so they cannot be shadowed by reserved profile paths.

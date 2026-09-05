@@ -2,6 +2,11 @@
 
 All notable changes to `@rinspace/world-shell` are documented here.
 
+## 0.1.6 - 2026-09-06
+
+- Canonicalize non-post inner-world product pages with `world=inner` and retain path-owned canonical URLs for `/p/:id[/slug]`.
+- Add explicit Mastodon Web API and server-rendered product-page route ownership.
+
 ## 0.1.5 - 2026-09-05
 
 - Add public service routes for `runtime-config.json`, `site.webmanifest`, and `healthz` to the generated two-world contract.
