@@ -35,6 +35,8 @@ Rinspace Web 是 Rinspace（芥子环）的浏览器前端与本地演示运行�
 
 通过页面下沿的 demo 控制入口切换 persona，或选择可复现的错误/延迟 scenario。
 
+点击 Logo 可以在两个世界的首页之间翻面。Demo 模式的里世界首页会明确标注为本地契约预览，使用合成帖子和路由实验台展示账号/标签双面、单面页面回退、`/p/:id`、错误 slug 与失败关闭降级。它不是 Mastodon runtime 的替代品，也不会请求私有服务或生产服务。
+
 <!-- rinspace-section: screenshots -->
 
 ## 截图
@@ -108,7 +110,7 @@ npm --version
 `node --version` 应以 `v22.` 开头。然后克隆仓库并进入目录：
 
 ```bash
-git clone https://github.com/lunifans/rinspace-web.git
+git clone https://github.com/rinspacehq/rinspace-web.git
 cd rinspace-web
 ```
 
@@ -239,7 +241,7 @@ Ubuntu 上可继续用 `sudo docker compose ...`。若希望当前用户不加 `
 安装后，`docker compose version` 应能输出版本。克隆仓库、进入目录，然后在 loopback 8080 构建并运行零凭据根路径 demo：
 
 ```bash
-git clone https://github.com/lunifans/rinspace-web.git
+git clone https://github.com/rinspacehq/rinspace-web.git
 cd rinspace-web
 docker compose version
 docker compose up --build
@@ -296,7 +298,7 @@ runtime 使用 UID/GID 1000、监听 8080、drop 全部 Linux capabilities、只
 如果你不熟悉命令行，可在 Codex 中打开目标目录，复制下面这段提示词。它默认选择只允许本机访问的 demo，并会自行判断 Docker 或 Node/pnpm 路径；涉及管理员权限、生产、域名、凭据或公网变更时必须先征求你的确认。
 
 ```text
-请作为 Rinspace Web 部署助手，把 https://github.com/lunifans/rinspace-web 部署到当前机器，直到我能在浏览器访问并通过健康检查。默认目标是“仅本机访问、零凭据 demo”：已有 Docker 就优先 Docker，否则使用 Node.js 22.x 与 pnpm 9.7.0。不要假定我会 Git、Node.js、pnpm 或 Docker。
+请作为 Rinspace Web 部署助手，把 https://github.com/rinspacehq/rinspace-web 部署到当前机器，直到我能在浏览器访问并通过健康检查。默认目标是“仅本机访问、零凭据 demo”：已有 Docker 就优先 Docker，否则使用 Node.js 22.x 与 pnpm 9.7.0。不要假定我会 Git、Node.js、pnpm 或 Docker。
 
 先阅读仓库 AGENTS.md、README.zh-CN.md、CONTRIBUTING.md 和 package.json；然后只读检测操作系统、CPU、shell、所需工具、5173/8080 端口和工作树状态。仓库不存在时克隆官方地址；存在时先核对 remote，不得擅自 pull、reset、clean、切分支或覆盖修改。
 
@@ -324,6 +326,30 @@ pnpm dev:integration -- --backend http://127.0.0.1:8080
 打开 `http://127.0.0.1:5173/rinspace/`。浏览器只看到同源 `/rinspace/api/` 与 `/rinspace/auth/v1/`；loopback 后端 target 只存在于 Vite 进程，不会进入 runtime config 或生产 bundle。官方私有仓库的 worktree/lock 入口与四类脏工作树场景见 [`docs/integration-development.zh-CN.md`](./docs/integration-development.zh-CN.md)；additive-first 与破坏性 API 规则见 [`docs/api-compatibility.zh-CN.md`](./docs/api-compatibility.zh-CN.md)。
 
 静态托管使用经过校验的 integration config 执行 `pnpm package`。容器可通过 `RINSPACE_PUBLIC_RUNTIME_CONFIG_JSON` 提供完整公开文档，secret 形态字段仍会被拒绝。认证、cookie/CORS、上传、Renderer、Gitea 与 workspace 服务由集成方安全实现。
+
+### 从另一个仓库消费公开世界契约
+
+本 monorepo 开发时使用 workspace 依赖 `@rinspace/world-shell`。其他仓库必须消费不可变 release 附件，不能直接消费这个工作树或浮动分支。每个正式 tag 会提供：
+
+- `rinspace-world-shell-<version>.tgz`，可由包管理器安装的标准归档；
+- 带版本的世界路由 contract JSON 与 JSON Schema；
+- `world-release-manifest.json`、`WORLD-SHA256SUMS`、许可证元数据、完整 AGPL 许可证和最小 SPDX 2.3 SBOM。
+
+把全部世界制品下载到同一目录，先校验再安装。示例版本只能替换为 [`docs/rinspace-stack-baseline.zh-CN.md`](./docs/rinspace-stack-baseline.zh-CN.md) 兼容版本元组明确列出的版本：
+
+```bash
+sha256sum --check WORLD-SHA256SUMS
+pnpm add ./rinspace-world-shell-0.1.0.tgz
+```
+
+应用需要导入 `@rinspace/world-shell` 和 `@rinspace/world-shell/styles.css`，并用 `rinspace-world-routes-1.0.0.json` 校验 runtime 路由；消费方不需要本仓库的私有后端。维护者可在打 tag 前复现并从干净 consumer 安装整个公开制品：
+
+```bash
+pnpm build:world-release -- --out world-release-candidate
+pnpm test:world-release
+```
+
+构建器拒绝覆盖非空目录；除非只是明确传入 `--allow-dirty` 的本地开发探测，否则也会拒绝脏工作树。
 
 <!-- rinspace-section: architecture -->
 
@@ -394,6 +420,12 @@ git push -u origin fix/short-description
 ```
 
 普通贡献不需要外部 CLA。使用 Codex 或其他代码 AI 时，请先让它读取 [`AGENTS.md`](./AGENTS.md)，并使用贡献指南内的需求/验收/约束/验证提示词；人类贡献者仍负责复核代码、测试、安全、来源与 DCO 确认。
+
+<!-- rinspace-section: china-user-documents -->
+
+## 中国大陆用户文书
+
+里世界的[用户协议、隐私政策、社区规则、算法推荐说明、未成年人保护和举报申诉规则候选稿](./docs/legal/zh-CN/README.md)均以版本号管理。它们目前是上线候选稿，不代表已经完成实名、内容审核、算法备案、安全评估或生产授权；相关工程和运营证据缺失时，写入、推荐及公开入口必须保持关闭。
 
 <!-- rinspace-section: licensing -->
 

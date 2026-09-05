@@ -4,6 +4,8 @@ package/
 package-preview-*/
 netlify-dist/
 coverage/
+release/
+packages/*/dist/
 playwright-report/
 test-results/
 .pnpm-store/

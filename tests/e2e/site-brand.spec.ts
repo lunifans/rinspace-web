@@ -22,7 +22,7 @@ test('default demo has neutral metadata, manifest, navigation, and legal content
   await expect(page.locator('body')).not.toContainText('lunifans@outlook.com');
   await expect(page.getByRole('link', { name: '源代码' }).first()).toHaveAttribute(
     'href',
-    'https://github.com/lunifans/rinspace-web',
+    'https://github.com/rinspacehq/rinspace-web',
   );
 
   const manifestResponse = await request.get('/site.webmanifest');

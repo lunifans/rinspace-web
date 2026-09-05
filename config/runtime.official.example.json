@@ -9,7 +9,7 @@
     "description": "芥子环是一个以 Tag 为核心的长文知识社区，支持 Markdown 与 LaTeX 写作，并依托 Git 进行版本管理。",
     "defaultLocale": "zh-CN",
     "contactEmail": "lunifans@outlook.com",
-    "sourceUrl": "https://github.com/lunifans/rinspace-web",
+    "sourceUrl": "https://github.com/rinspacehq/rinspace-web",
     "legalEntity": "任务优先（上海）网络科技有限责任公司",
     "filings": {
       "icp": "沪ICP备2025152146号-2",

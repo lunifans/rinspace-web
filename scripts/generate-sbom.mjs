@@ -93,7 +93,7 @@ const document = {
   dataLicense: "CC0-1.0",
   SPDXID: "SPDXRef-DOCUMENT",
   name: `rinspace-web-${packageDocument.version}`,
-  documentNamespace: `https://github.com/lunifans/rinspace-web/sbom/${sourceCommit}/${graphDigest}`,
+  documentNamespace: `https://github.com/rinspacehq/rinspace-web/sbom/${sourceCommit}/${graphDigest}`,
   creationInfo: {
     created: created.toISOString().replace(/\.\d{3}Z$/, "Z"),
     creators: ["Tool: rinspace-web/scripts/generate-sbom.mjs"],

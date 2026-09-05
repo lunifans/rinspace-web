@@ -35,6 +35,8 @@ Routes are not separate integration entry points. All 85 routes consume the same
 
 Use the demo control at the lower edge of the page to switch persona or a reproducible error/latency scenario.
 
+The Logo turns between the two world homes. In demo mode, the inner home is an explicitly labelled local contract preview with synthetic posts and a route lab for account/tag dual views, single-sided fallback, `/p/:id`, incorrect slugs, and fail-closed degradation. It is not a substitute for the Mastodon runtime and makes no private or production request.
+
 <!-- rinspace-section: screenshots -->
 
 ## Screenshots
@@ -108,7 +110,7 @@ npm --version
 `node --version` should start with `v22.`. Next, clone the repository and enter it:
 
 ```bash
-git clone https://github.com/lunifans/rinspace-web.git
+git clone https://github.com/rinspacehq/rinspace-web.git
 cd rinspace-web
 ```
 
@@ -239,7 +241,7 @@ On Ubuntu you may keep using `sudo docker compose ...`. To run it without `sudo`
 After installation, `docker compose version` should print a version. Clone this repository, enter it, and start the zero-credential root demo on loopback port 8080:
 
 ```bash
-git clone https://github.com/lunifans/rinspace-web.git
+git clone https://github.com/rinspacehq/rinspace-web.git
 cd rinspace-web
 docker compose version
 docker compose up --build
@@ -296,7 +298,7 @@ The runtime is UID/GID 1000, listens on 8080, drops all Linux capabilities, uses
 If command-line setup is unfamiliar, open the destination directory in Codex and paste this prompt. It defaults to a local-only demo and selects Docker or Node/pnpm from observed facts. Administrator, production, domain, credential, and public-network operations require your confirmation.
 
 ```text
-Act as the Rinspace Web deployment assistant. Deploy https://github.com/lunifans/rinspace-web on this machine until I can open it in a browser and its health checks pass. Default to a zero-credential demo reachable only from this machine: prefer existing Docker, otherwise use Node.js 22.x and pnpm 9.7.0. Do not assume that I know Git, Node.js, pnpm, or Docker.
+Act as the Rinspace Web deployment assistant. Deploy https://github.com/rinspacehq/rinspace-web on this machine until I can open it in a browser and its health checks pass. Default to a zero-credential demo reachable only from this machine: prefer existing Docker, otherwise use Node.js 22.x and pnpm 9.7.0. Do not assume that I know Git, Node.js, pnpm, or Docker.
 
 First read AGENTS.md, README.md, CONTRIBUTING.md, and package.json. Then perform read-only discovery of the OS, CPU, shell, required tools, ports 5173/8080, and worktree status. Clone the official repository if absent; if present, verify its remote. Do not pull, reset, clean, switch branches, overwrite changes, or discard work on your own.
 
@@ -324,6 +326,30 @@ pnpm dev:integration -- --backend http://127.0.0.1:8080
 Open `http://127.0.0.1:5173/rinspace/`. The browser sees only same-origin `/rinspace/api/` and `/rinspace/auth/v1/`; the loopback backend target exists only in the Vite process and cannot enter runtime config or a production bundle. The official private-repository worktree/lock entry and all four dirty-worktree scenarios are documented in [`docs/integration-development.md`](./docs/integration-development.md); additive-first and breaking API rules are in [`docs/api-compatibility.md`](./docs/api-compatibility.md).
 
 For static hosting, run `pnpm package` with a validated integration config. For a container, provide the entire public document as `RINSPACE_PUBLIC_RUNTIME_CONFIG_JSON`; secret-shaped fields are rejected. Authentication, cookies/CORS, uploads, Renderer, Gitea, and workspace services remain the integrator's responsibility.
+
+### Consume the public world contract from another repository
+
+Development inside this monorepo uses the workspace dependency `@rinspace/world-shell`. Another repository must consume an immutable release attachment, never this working tree or a floating branch. Each tagged release includes:
+
+- `rinspace-world-shell-<version>.tgz`, a normal package-manager archive;
+- versioned route contract JSON and JSON Schema;
+- `world-release-manifest.json`, `WORLD-SHA256SUMS`, license metadata, the full AGPL license, and a minimal SPDX 2.3 SBOM.
+
+Download all world release files into one directory, verify them, then install the archive. Replace the example version only with the version named by the compatibility tuple in [`docs/rinspace-stack-baseline.md`](./docs/rinspace-stack-baseline.md):
+
+```bash
+sha256sum --check WORLD-SHA256SUMS
+pnpm add ./rinspace-world-shell-0.1.0.tgz
+```
+
+Import `@rinspace/world-shell` plus `@rinspace/world-shell/styles.css`; validate runtime routes against `rinspace-world-routes-1.0.0.json`. A consumer does not need this repository's private backend. Maintainers can reproduce and clean-install the exact public bundle before tagging with:
+
+```bash
+pnpm build:world-release -- --out world-release-candidate
+pnpm test:world-release
+```
+
+The builder refuses a non-empty output directory and, unless it is a local development probe with explicit `--allow-dirty`, refuses a dirty worktree.
 
 <!-- rinspace-section: architecture -->
 
@@ -394,6 +420,12 @@ git push -u origin fix/short-description
 ```
 
 Ordinary contributions do not require an external CLA. When using Codex or another coding AI, have it read [`AGENTS.md`](./AGENTS.md) first and use the outcome/acceptance/constraints/verification prompt in the contribution guide. The human contributor remains responsible for reviewing code, tests, security, sources, and the DCO certification.
+
+<!-- rinspace-section: china-user-documents -->
+
+## Mainland China user documents
+
+Versioned candidate drafts for the [user agreement, privacy policy, community rules, algorithm disclosure, minor protection, and report/appeal process](./docs/legal/zh-CN/README.md) are maintained in Chinese. They do not claim that real-identity operations, content review, algorithm filings, security assessments, or production approval are complete. Writes, recommendations, and the public entry stay closed whenever the corresponding engineering or operating evidence is absent.
 
 <!-- rinspace-section: licensing -->
 

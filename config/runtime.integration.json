@@ -9,7 +9,7 @@
     "description": "A local Rinspace Web worktree connected to a compatible private backend through the Vite development proxy.",
     "defaultLocale": "zh-CN",
     "contactEmail": null,
-    "sourceUrl": "https://github.com/lunifans/rinspace-web",
+    "sourceUrl": "https://github.com/rinspacehq/rinspace-web",
     "legalEntity": null,
     "filings": {
       "icp": null,

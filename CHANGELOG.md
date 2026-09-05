@@ -4,6 +4,9 @@ All notable changes to Rinspace Web will be documented in this file. Releases fo
 
 ## Unreleased
 
+- Added the versioned two-world route contract, shared `world-shell`, cross-document turn transition, and quiet outer-world home.
+- Added a fail-closed synthetic inner-world contract demo with stable `/p/:id/:slug` resolution and automated browser coverage.
+- Added checksummed world release attachments, AGPL license metadata, a minimal SPDX SBOM, and clean-consumer install verification.
 - Added runtime-neutral demo, integration, and official deployment shells.
 - Added deterministic guest/member demo data with offline network isolation.
 - Added static-package, non-root container, public CI, SBOM, checksum, and provenance release contracts.

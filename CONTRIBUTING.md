@@ -38,7 +38,7 @@ Use Git, Node.js 22.x, and pnpm 9.7.0. The installation and Docker alternatives 
 ```bash
 git clone https://github.com/YOUR_ACCOUNT/rinspace-web.git
 cd rinspace-web
-git remote add upstream https://github.com/lunifans/rinspace-web.git
+git remote add upstream https://github.com/rinspacehq/rinspace-web.git
 git remote -v
 corepack enable
 corepack prepare pnpm@9.7.0 --activate
@@ -122,7 +122,7 @@ For an AI-assisted local or server deployment, use the purpose-built [Codex depl
 
 ## Pull requests
 
-- Push the branch with `git push -u origin fix/short-description`, then open a pull request from your fork to `lunifans/rinspace-web:main`.
+- Push the branch with `git push -u origin fix/short-description`, then open a pull request from your fork to `rinspacehq/rinspace-web:main`.
 - Use a clear title and explain the problem, user-visible result, implementation boundaries, security/privacy impact, tests run, screenshots for visual changes, compatibility or migration impact, and rollback plan.
 - Link the issue with `Fixes #123` only when merging the pull request should close it. Mark unfinished work as a draft.
 - Add tests for bug fixes and new behavior. State any test you could not run and why; do not report an unrun check as passing.

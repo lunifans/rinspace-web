@@ -9,7 +9,7 @@
     "description": "A local, synthetic-data demonstration of the Rinspace web interface.",
     "defaultLocale": "zh-CN",
     "contactEmail": null,
-    "sourceUrl": "https://github.com/lunifans/rinspace-web",
+    "sourceUrl": "https://github.com/rinspacehq/rinspace-web",
     "legalEntity": null,
     "filings": {
       "icp": null,

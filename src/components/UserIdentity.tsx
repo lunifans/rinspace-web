@@ -26,6 +26,7 @@ export type UserIdentityProps = {
   variant?: UserIdentityVariant;
   className?: string;
   title?: string;
+  href?: string;
 };
 
 const profilePromiseCache = new Map<string, Promise<AnswerUserInfo>>();
@@ -173,6 +174,7 @@ export default function UserIdentity({
   variant = 'default',
   className = '',
   title,
+  href,
 }: UserIdentityProps) {
   const identity = cleanUserId(username || userId || name);
   const resolvedSize = size || (variant === 'prominent' ? 'md' : 'sm');
@@ -183,7 +185,7 @@ export default function UserIdentity({
   const [followBusy, setFollowBusy] = useState(false);
   const [followError, setFollowError] = useState('');
   const [viewer, setViewer] = useState<{ id?: string; username?: string } | null>(null);
-  const destination = routeProfilePath(identity);
+  const destination = href || routeProfilePath(identity);
   const fallback = useMemo(
     () => ({ name, username: cleanUserId(username || identity), imageUrl, rank }),
     [identity, imageUrl, name, rank, username],

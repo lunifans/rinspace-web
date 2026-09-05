@@ -1,6 +1,6 @@
 # Private release rehearsal
 
-Run the `Private Release Rehearsal` workflow only while `lunifans/rinspace-web` is private and only after an immutable candidate release exists. The workflow is manual, uses the protected `private-release-rehearsal` environment and the dedicated release-build runner, and never authorizes changing repository visibility.
+Run the `Private Release Rehearsal` workflow only while `rinspacehq/rinspace-web` is private and only after an immutable candidate release exists. The workflow is manual, uses the protected `private-release-rehearsal` environment and the dedicated release-build runner, and never authorizes changing repository visibility.
 
 Provide the exact candidate tag/full commit, a distinct previous tag, and successful workflow run IDs for Release, Public CI, Container CI, and Static Host Preview. Each run must belong to the candidate commit. The workflow rejects branches, `latest`, failed runs, public repository state, or an incomplete legal release gate.
 

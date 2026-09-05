@@ -38,7 +38,7 @@ Signed-off-by: Your Name <you@example.com>
 ```bash
 git clone https://github.com/YOUR_ACCOUNT/rinspace-web.git
 cd rinspace-web
-git remote add upstream https://github.com/lunifans/rinspace-web.git
+git remote add upstream https://github.com/rinspacehq/rinspace-web.git
 git remote -v
 corepack enable
 corepack prepare pnpm@9.7.0 --activate
@@ -122,7 +122,7 @@ git show --stat --oneline HEAD
 
 ## 提交 Pull Request
 
-- 运行 `git push -u origin fix/short-description`，然后从自己的 fork 向 `lunifans/rinspace-web:main` 创建 PR。
+- 运行 `git push -u origin fix/short-description`，然后从自己的 fork 向 `rinspacehq/rinspace-web:main` 创建 PR。
 - 标题要清晰；正文说明问题、用户可见结果、实现边界、安全/隐私影响、实际测试、视觉变化截图、兼容/迁移影响和回滚方式。
 - 只有在合并后确实应该关闭 issue 时才写 `Fixes #123`；未完成的工作请先标记 Draft。
 - 修复和新行为都应有测试。不能运行的检查要说明原因，不能把未运行的检查写成通过。

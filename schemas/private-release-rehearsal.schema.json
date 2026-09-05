@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/lunifans/rinspace-web/schemas/private-release-rehearsal.schema.json",
+  "$id": "https://github.com/rinspacehq/rinspace-web/schemas/private-release-rehearsal.schema.json",
   "title": "Rinspace Web private release rehearsal evidence",
   "type": "object",
   "additionalProperties": false,
@@ -16,7 +16,7 @@
   ],
   "properties": {
     "schemaVersion": { "const": 1 },
-    "repository": { "const": "lunifans/rinspace-web" },
+    "repository": { "const": "rinspacehq/rinspace-web" },
     "repositoryVisibility": { "const": "private" },
     "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
     "tag": { "type": "string", "pattern": "^v(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-[0-9A-Za-z.-]+)?$" },

@@ -9,7 +9,8 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { hrefInWorld, resolveWorld } from '@rinspace/world-shell';
 import { Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -62,7 +63,16 @@ function SiteTopbarInstance({
   const [authRequestVersion, setAuthRequestVersion] = useState(0);
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
+  const currentHref = `${location.pathname}${location.search}${location.hash}`;
+  const worldResolution = resolveWorld(currentHref);
+  const currentWorld = worldResolution.world ?? 'outer';
   const { resolved, setPreference } = useTheme();
+
+  useEffect(() => {
+    if (worldResolution.canonicalHref === currentHref) return;
+    navigate(worldResolution.canonicalHref, { replace: true });
+  }, [currentHref, navigate, worldResolution.canonicalHref]);
 
   const activateLogin = useCallback(() => {
     if (isDemo) {
@@ -92,7 +102,7 @@ function SiteTopbarInstance({
         onSubmit={(event) => {
           event.preventDefault();
           const next = query.trim();
-          if (next) navigate(`/search?q=${encodeURIComponent(next)}`);
+          if (next) navigate(hrefInWorld(`/search?q=${encodeURIComponent(next)}`, currentWorld));
         }}
       >
         <input
@@ -149,6 +159,7 @@ function SiteTopbarInstance({
             ariaLabel={ariaLabel}
             onSessionChange={onSessionChange}
             authRequestVersion={authRequestVersion}
+            world={currentWorld}
           />
         </Suspense>
       ) : lightweightControls}

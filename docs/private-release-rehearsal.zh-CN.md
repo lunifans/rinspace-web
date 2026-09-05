@@ -1,6 +1,6 @@
 # 私有发布候选演练
 
-仅当 `lunifans/rinspace-web` 仍为 private 且不可变 candidate release 已存在时，才能运行 `Private Release Rehearsal` workflow。该流程只能手动触发，使用受保护的 `private-release-rehearsal` environment 和专用 release-build runner；它不会授权修改仓库可见性。
+仅当 `rinspacehq/rinspace-web` 仍为 private 且不可变 candidate release 已存在时，才能运行 `Private Release Rehearsal` workflow。该流程只能手动触发，使用受保护的 `private-release-rehearsal` environment 和专用 release-build runner；它不会授权修改仓库可见性。
 
 输入必须包含 candidate 的精确 tag/full commit、不同的上一 release tag，以及 Release、Public CI、Container CI、Static Host Preview 四条成功 workflow 的 run ID。所有 run 必须属于同一个 candidate commit。branch、`latest`、失败 run、已经公开的仓库或未通过法律 release gate 都会被拒绝。
 

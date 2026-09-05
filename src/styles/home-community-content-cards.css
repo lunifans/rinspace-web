@@ -94,6 +94,31 @@
   box-shadow: none;
 }
 
+[data-rin-ui="v2"] .home-shell .outer-legacy-panel > p {
+  margin: 0;
+  color: var(--rin-ink-muted);
+  font-size: .82rem;
+  line-height: 1.65;
+}
+
+[data-rin-ui="v2"] .home-shell .outer-legacy-panel > nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+[data-rin-ui="v2"] .home-shell .outer-legacy-panel > nav a {
+  padding: 5px 9px;
+  border: 1px solid var(--rin-border);
+  border-radius: var(--rin-radius-sm);
+  color: var(--rin-accent);
+  font-family: var(--rin-font-mono);
+  font-size: .72rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 [data-rin-ui="v2"] .home-shell .community-board .stream-footer {
   border-block-start-color: color-mix(in srgb, var(--rin-ink) 10%, transparent);
 }

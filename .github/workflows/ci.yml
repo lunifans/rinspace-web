@@ -57,6 +57,7 @@ jobs:
           pnpm test:dco
           pnpm test:integration-dev
           pnpm test:release-shell
+          pnpm test:world-release
       - name: Check generated contracts and source boundaries
         run: |
           pnpm check:env-boundary
@@ -171,6 +172,8 @@ jobs:
         env:
           RINSPACE_DEMO_BOUNDARY_BROWSERS: chromium
         run: pnpm test:demo-production-boundaries:browser
+      - name: Validate two-world demo, stable post routes, and degradation
+        run: pnpm test:world-demo:browser
       - name: Validate packaged root and subpath deep refresh
         run: |
           RINSPACE_ARTIFACT_DIR=package-preview-root pnpm exec playwright test tests/e2e/static-package.spec.ts --project=desktop-light --workers=1

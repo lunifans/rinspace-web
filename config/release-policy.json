@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "releasesEnabled": true,
-  "repository": "lunifans/rinspace-web",
+  "repository": "rinspacehq/rinspace-web",
   "requiredRootLicense": "AGPL-3.0-only",
   "requiredLegalFiles": [
     "LICENSE",

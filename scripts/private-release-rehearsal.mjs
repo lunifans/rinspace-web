@@ -42,7 +42,7 @@ export function validatePrivateReleaseRehearsal(value, expected = {}) {
     'checks',
     'verifiedAt',
   ], 'Private release rehearsal');
-  if (value.schemaVersion !== 1 || value.repository !== 'lunifans/rinspace-web' || value.repositoryVisibility !== 'private') {
+  if (value.schemaVersion !== 1 || value.repository !== 'rinspacehq/rinspace-web' || value.repositoryVisibility !== 'private') {
     throw new Error('Rehearsal must target the canonical repository while it is private.');
   }
   if (!/^[0-9a-f]{40}$/.test(value.commit)) throw new Error('Rehearsal commit must be a lowercase full commit.');

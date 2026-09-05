@@ -25,7 +25,7 @@ RUN pnpm exec esbuild scripts/container-runtime.mjs \
 FROM ${NODE_IMAGE} AS runtime
 ARG RINSPACE_BUILD_COMMIT
 ARG RINSPACE_BUILD_TIME
-LABEL org.opencontainers.image.source="https://github.com/lunifans/rinspace-web"
+LABEL org.opencontainers.image.source="https://github.com/rinspacehq/rinspace-web"
 LABEL org.opencontainers.image.revision="${RINSPACE_BUILD_COMMIT}"
 LABEL org.opencontainers.image.created="${RINSPACE_BUILD_TIME}"
 ENV NODE_ENV=production

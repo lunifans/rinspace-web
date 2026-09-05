@@ -2,6 +2,9 @@
   "landmark": "Channels and account",
   "brandName": "Rinspace",
   "brandHome": "{{brandName}} home",
+  "brandCurrentHome": "Return to the current-world home",
+  "brandFlipToInner": "Flip to the inner world",
+  "brandFlipToOuter": "Flip to the outer world",
   "search": {
     "label": "Search",
     "placeholder": "Search",

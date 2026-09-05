@@ -1,6 +1,8 @@
 import React from 'react';
+import { installWorldTransitionLifecycle } from '@rinspace/world-shell';
 
 import 'katex/dist/katex.min.css';
+import '@rinspace/world-shell/styles.css';
 
 import App from './App';
 import { BootstrapProvider } from './app/bootstrap/context';
@@ -53,6 +55,8 @@ document.addEventListener('click', handleClickLink, true);
 
 const rootElement = document.getElementById('root');
 if (!(rootElement instanceof HTMLElement)) throw new Error('Rinspace root element is missing.');
+
+installWorldTransitionLifecycle();
 
 void startApplication({
   rootElement,
