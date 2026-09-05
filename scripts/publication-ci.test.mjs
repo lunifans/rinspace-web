@@ -108,6 +108,8 @@ test("pull-request workflows are read-only and cannot consume repository secrets
     workflows["release.yml"],
     /runs-on: \[self-hosted, linux, x64, rinspace-release-build\]/,
   );
+  assert.match(workflows["release.yml"], /^\s{10}pnpm test$/m);
+  assert.doesNotMatch(workflows["release.yml"], /pnpm test -- --pool/);
 });
 
 test("every pnpm command used by public workflows is declared", () => {

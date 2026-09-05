@@ -92,7 +92,7 @@ jobs:
           pnpm check:i18n
           pnpm check
           pnpm lint
-          pnpm test -- --pool forks --maxWorkers 1
+          pnpm test
       - name: Build neutral core and root demo release shell
         env:
           GENERATE_SOURCEMAP: "false"
