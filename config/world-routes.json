@@ -1,6 +1,6 @@
 {
   "schemaVersion": "rinspace-world-route-source/v1",
-  "contractVersion": "1.0.0",
+  "contractVersion": "1.0.1",
   "manifestGuard": {
     "routeCount": 85,
     "orderedPathSha256": "sha256:eb3e44e77f8585e984f718d905315957cd1d57ed45e5f5635022f211b198ad0b"
@@ -148,6 +148,39 @@
       "kind": "service",
       "priority": 123,
       "owners": ["rinspace-web"],
+      "anonymousPolicy": "public",
+      "flip": "none"
+    },
+    {
+      "id": "service.outer-runtime-config",
+      "pattern": "/runtime-config.json",
+      "kind": "service",
+      "priority": 1231,
+      "owners": [
+        "rinspace-web"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none"
+    },
+    {
+      "id": "service.outer-site-manifest",
+      "pattern": "/site.webmanifest",
+      "kind": "service",
+      "priority": 1232,
+      "owners": [
+        "rinspace-web"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none"
+    },
+    {
+      "id": "service.outer-health",
+      "pattern": "/healthz",
+      "kind": "service",
+      "priority": 1233,
+      "owners": [
+        "rinspace-web"
+      ],
       "anonymousPolicy": "public",
       "flip": "none"
     },

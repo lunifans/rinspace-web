@@ -3,7 +3,7 @@ import type { WorldRouteContract } from '../types.js';
 
 export const defaultWorldRouteContract = {
   "schemaVersion": "rinspace-world-routes/v1",
-  "contractVersion": "1.0.0",
+  "contractVersion": "1.0.1",
   "generatedFrom": [
     "src/app/routing/routeManifest.tsx",
     "config/world-routes.json"
@@ -1054,6 +1054,45 @@ export const defaultWorldRouteContract = {
       "anonymousPolicy": "public",
       "flip": "same-path",
       "canonicalWorld": "query-for-inner",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.outer-runtime-config",
+      "pattern": "/runtime-config.json",
+      "kind": "service",
+      "priority": 1231,
+      "owners": [
+        "rinspace-web"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.outer-site-manifest",
+      "pattern": "/site.webmanifest",
+      "kind": "service",
+      "priority": 1232,
+      "owners": [
+        "rinspace-web"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.outer-health",
+      "pattern": "/healthz",
+      "kind": "service",
+      "priority": 1233,
+      "owners": [
+        "rinspace-web"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
       "source": "shared-contract"
     },
     {

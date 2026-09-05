@@ -2,7 +2,7 @@
 
 本表由公开前端路由 manifest 与经审计的世界路由配置生成，不应手工修改。`world=inner` 只用于双面网页；服务与协议路由不会解释该参数。
 
-Contract version: `1.0.0`. Manifest routes: 85.
+Contract version: `1.0.1`. Manifest routes: 85.
 
 | Pattern | Kind | Owner | Logo flip | Anonymous policy | Source |
 | --- | --- | --- | --- | --- | --- |
@@ -85,6 +85,9 @@ Contract version: `1.0.0`. Manifest routes: 85.
 | `/keyboard-shortcuts` | inner-only | mastodon | opposite-home | runtime-policy | shared-contract |
 | `/overview` | inner-only | mastodon | opposite-home | public | shared-contract |
 | `/@:username` | dual | rinspace-web, mastodon | same-path | public | shared-contract |
+| `/runtime-config.json` | service | rinspace-web | none | public | shared-contract |
+| `/site.webmanifest` | service | rinspace-web | none | public | shared-contract |
+| `/healthz` | service | rinspace-web | none | public | shared-contract |
 | `/users/:username` | federation-disabled | blocked | none | blocked | rinspace-web-manifest |
 | `/` | dual | rinspace-web, mastodon | same-path | runtime-policy | rinspace-web-manifest |
 | `/about` | dual | rinspace-web, mastodon | same-path | runtime-policy | rinspace-web-manifest |
