@@ -143,9 +143,9 @@ jobs:
           docker image rm "$RINSPACE_WEB_IMAGE" >/dev/null 2>&1 || true
 
   pull-published-image:
-    name: Pull published image on release runner
+    name: Export published image
     if: github.event_name == 'workflow_dispatch' && inputs.operation == 'pull-published-image'
-    runs-on: [self-hosted, linux, x64, rinspace-release-build]
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
       contents: read
@@ -170,3 +170,14 @@ jobs:
           docker pull "$image"
           test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.revision"}}' "$image")" = "$EXPECTED_REVISION"
           docker image inspect --format 'pulled={{.Id}} revision={{index .Config.Labels "org.opencontainers.image.revision"}}' "$image"
+          docker save --output "$RUNNER_TEMP/rinspace-web-v0.1.5.oci.tar" "$image"
+          sha256sum "$RUNNER_TEMP/rinspace-web-v0.1.5.oci.tar" > "$RUNNER_TEMP/rinspace-web-v0.1.5.oci.tar.sha256"
+      - name: Upload exact published image
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: rinspace-web-v0.1.5-oci
+          path: |
+            ${{ runner.temp }}/rinspace-web-v0.1.5.oci.tar
+            ${{ runner.temp }}/rinspace-web-v0.1.5.oci.tar.sha256
+          if-no-files-found: error
+          retention-days: 1
