@@ -18,6 +18,7 @@ import {
 import { Alert, Container } from '@/components/ui/compat';
 import { RuntimeHelmet as Helmet } from '@/components/RuntimeHelmet';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { hrefInWorld, type WorldState } from '@rinspace/world-shell';
 
 import AvatarImage from '@/components/AvatarImage';
 import AvatarName from '@/components/AvatarName';
@@ -78,7 +79,7 @@ type HomeTagLink = {
 };
 
 type FeedMode = HomeFeedMode;
-type CommunityView = 'stream' | 'tags' | 'books' | 'graph';
+type CommunityView = 'reading' | 'stream' | 'tags' | 'books' | 'graph';
 type BookMode = 'hot' | 'latest' | 'following' | 'shelf';
 type SocialTargetType = Exclude<ContentType, 'task' | 'tag'>;
 type SocialApiTargetType = Exclude<PublishContentType, 'announcement' | 'book'> | 'post';
@@ -99,12 +100,12 @@ function normalizeBookMode(value: string | null) {
   return bookModes.find((mode) => mode === value) ?? 'hot';
 }
 
-const communityViews: readonly CommunityView[] = ['stream', 'tags', 'books', 'graph'];
+const communityViews: readonly CommunityView[] = ['reading', 'books', 'tags', 'graph', 'stream'];
 
 function normalizeCommunityView(value: string | null) {
   const matched = communityViews.find((view) => view === value);
   if (matched) return matched;
-  return 'stream';
+  return 'reading';
 }
 
 const typeMetaChar: Record<string, string> = {
@@ -388,6 +389,7 @@ function bookAuthorNodes(
   t: TFunction<'discovery'>,
   imageUrl?: string,
   rank?: number,
+  currentWorld: WorldState = 'outer',
 ) {
   const identity = item.authorId || item.authorUid;
   if (identity) {
@@ -397,6 +399,7 @@ function bookAuthorNodes(
         userId={identity}
         imageUrl={imageUrl}
         rank={rank}
+        href={hrefInWorld(routeProfilePath(identity), currentWorld)}
       />
     );
   }
@@ -857,9 +860,11 @@ function KnowledgeGraphPanel({
 function KnowledgeGraphInspector({
   graph,
   selectedNode,
+  currentWorld,
 }: {
   graph: KnowledgeGraphResponse | null;
   selectedNode: KnowledgeGraphNode | null;
+  currentWorld: WorldState;
 }) {
   const { t } = useFeatureTranslation('discovery');
   const locale = useResolvedLocale();
@@ -908,7 +913,7 @@ function KnowledgeGraphInspector({
       </div>
       <span>{graphContentLabel(selected, t)}</span>
       <h2>
-        <Link to={selected.url}>
+        <Link to={hrefInWorld(selected.url, currentWorld)}>
           <MathInline text={selected.label} />
         </Link>
       </h2>
@@ -926,7 +931,7 @@ function KnowledgeGraphInspector({
           {selected.tags.slice(0, 5).map((tag) => {
             const path = tagNodePathBySlug.get(tag) || tagReadOrLegacyPath(tag, tag);
             return (
-              <Link to={path} key={tag}>
+              <Link to={hrefInWorld(path, currentWorld)} key={tag}>
                 {tag}
               </Link>
             );
@@ -940,7 +945,7 @@ function KnowledgeGraphInspector({
             <Link
               className={`knowledge-related-item knowledge-related-item-${graphNodeTone(node)}`}
               key={node.id}
-              to={node.url}
+              to={hrefInWorld(node.url, currentWorld)}
             >
               <span>{graphContentLabel(node, t)}</span>
               <strong>
@@ -1091,6 +1096,7 @@ function HomePage() {
   const locale = useResolvedLocale();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const currentWorld: WorldState = searchParams.get('world') === 'inner' ? 'inner' : 'outer';
   const homeSeoTitle = site?.name ?? t('home.seo.title');
   const homeSeoDescription = site?.description ?? t('home.seo.description');
   const homeSeoSiteName = site?.name ?? t('home.seo.title');
@@ -1213,7 +1219,15 @@ function HomePage() {
       ),
     [tagActivityItems],
   );
-  const boardItems = communityView === 'tags' ? visibleTagActivityItems : visibleStream;
+  const readingItems = useMemo(
+    () => visibleStream.filter((item) => item.type === 'blog' || item.type === 'book'),
+    [visibleStream],
+  );
+  const boardItems = communityView === 'tags'
+    ? visibleTagActivityItems
+    : communityView === 'reading'
+      ? readingItems
+      : visibleStream;
   const streamUsesTwoColumns = useMediaQuery('(min-width: 721px)');
   const boardColumns = useMemo(
     () => distributeItemsAcrossColumns(boardItems, streamUsesTwoColumns ? 2 : 1),
@@ -1247,7 +1261,7 @@ function HomePage() {
     setCommunityView(nextCommunityView);
     setSearchParams((current) => {
       const nextParams = new URLSearchParams(current);
-      if (nextCommunityView === 'stream') {
+      if (nextCommunityView === 'reading') {
         nextParams.delete('view');
       } else {
         nextParams.set('view', nextCommunityView);
@@ -1315,6 +1329,8 @@ function HomePage() {
           ? {
               title: communityView === 'tags'
                 ? t('home.assistant.tagActivityTitle')
+                : communityView === 'reading'
+                  ? t('home.assistant.readingTitle')
                 : t('home.assistant.streamTitle'),
               body: boardItems
                 .slice(0, 12)
@@ -2256,7 +2272,7 @@ function HomePage() {
       {homeSidebar.recommendedUsers.length ? (
         <div className="home-follow-list">
           {homeSidebar.recommendedUsers.map((item) => (
-            <Link className="home-follow-user" key={item.id} to={routeProfilePath(item.username)}>
+            <Link className="home-follow-user" key={item.id} to={hrefInWorld(routeProfilePath(item.username), currentWorld)}>
               <AvatarImage
                 className="home-follow-avatar"
                 src={item.avatar}
@@ -2329,7 +2345,7 @@ function HomePage() {
                   <Link
                     aria-label={t('home.actions.viewTag', { tag: tag.label })}
                     key={tag.key}
-                    to={tag.path}
+                    to={hrefInWorld(tag.path, currentWorld)}
                   >
                     {tag.label}
                   </Link>
@@ -2344,7 +2360,7 @@ function HomePage() {
             </Link>
           </h2>
           <p className="stream-meta stream-author-meta book-author-links home-book-author">
-            {bookAuthorNodes(item, t, avatarForItem(item), rankForItem(item))}
+            {bookAuthorNodes(item, t, avatarForItem(item), rankForItem(item), currentWorld)}
           </p>
           <div className="home-book-meta">
             {book?.seriesTitle ? <span>{book.seriesTitle}</span> : null}
@@ -2449,7 +2465,7 @@ function HomePage() {
             <Link
               aria-label={t('home.actions.viewTag', { tag: tag.label })}
               key={tag.key}
-              to={tag.path}
+              to={hrefInWorld(tag.path, currentWorld)}
             >
               {tag.label}
             </Link>
@@ -2476,7 +2492,7 @@ function HomePage() {
               <CardExactTime item={item} />
             </div>
             <div className="stream-dynamic-lead">
-              <Link className="stream-author-lead" to={authorProfilePath(item)}>
+              <Link className="stream-author-lead" to={hrefInWorld(authorProfilePath(item), currentWorld)}>
                 <span className="stream-dynamic-avatar" aria-hidden="true">
                   <AvatarImage src={avatarForItem(item)} fallback={shortInitialsFor(item.author)} />
                 </span>
@@ -2515,9 +2531,10 @@ function HomePage() {
                 userId={item.authorId}
                 imageUrl={avatarForItem(item)}
                 rank={rankForItem(item)}
+                href={hrefInWorld(authorProfilePath(item), currentWorld)}
               />
             ) : (
-              <Link className="identity-link" to={authorProfilePath(item)}>
+              <Link className="identity-link" to={hrefInWorld(authorProfilePath(item), currentWorld)}>
               <AvatarName
                 name={item.author}
                 imageUrl={avatarForItem(item)}
@@ -2529,7 +2546,7 @@ function HomePage() {
         ) : null}
         {isBook ? (
           <p className="stream-meta stream-author-meta book-author-links">
-            {bookAuthorNodes(item, t, avatarForItem(item), rankForItem(item))}
+            {bookAuthorNodes(item, t, avatarForItem(item), rankForItem(item), currentWorld)}
           </p>
         ) : null}
         {!isDynamic ? (
@@ -2831,6 +2848,8 @@ function HomePage() {
                 </div>
               ) : null}
             </>
+          ) : communityView === 'reading' && !feedLoading ? (
+            <div className="state-strip">{t('home.board.emptyReading')}</div>
           ) : null}
             </>
           )}
@@ -2845,12 +2864,27 @@ function HomePage() {
             <KnowledgeGraphInspector
               graph={knowledgeGraph}
               selectedNode={selectedGraphNode}
+              currentWorld={currentWorld}
             />
           ) : (
             <>
-              {user ? renderTodayMetricsCard() : null}
-              {renderHotDiscussionCard()}
-              {renderFollowRecommendationCard()}
+              {communityView === 'stream' && user ? renderTodayMetricsCard() : null}
+              {communityView === 'stream' ? renderHotDiscussionCard() : null}
+              {communityView === 'stream' ? renderFollowRecommendationCard() : null}
+              {communityView === 'reading' ? (
+                <section className="panel forum-panel outer-legacy-panel">
+                  <div className="panel-heading">
+                    <span>{t('home.rail.legacyTitle')}</span>
+                    <strong>{t('home.rail.legacyStatus')}</strong>
+                  </div>
+                  <p>{t('home.rail.legacyDescription')}</p>
+                  <nav aria-label={t('home.rail.legacyTitle')}>
+                    <Link to="/discussions">{t('home.rail.discussions')}</Link>
+                    <Link to="/questions">{t('home.rail.questions')}</Link>
+                    <Link to="/dynamics">{t('home.rail.dynamics')}</Link>
+                  </nav>
+                </section>
+              ) : null}
               <section className="panel forum-panel announcement-panel">
                 <div className="panel-heading">
                   <span>{t('home.rail.announcements')}</span>
@@ -2880,7 +2914,7 @@ function HomePage() {
                 </div>
                 <div className="tag-cloud">
                   {sidebarFollowedTags.map((tag) => (
-                    <Link key={tag.tagId || tag.slugName} to={followedTagPath(tag)}>
+                    <Link key={tag.tagId || tag.slugName} to={hrefInWorld(followedTagPath(tag), currentWorld)}>
                       {tag.displayName}
                     </Link>
                   ))}

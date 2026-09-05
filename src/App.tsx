@@ -13,7 +13,9 @@ import { PageLoadingState } from '@/components/LoadingState';
 import { SiteTopbarHost } from '@/components/SiteTopbarShell';
 import DemoProductionCapabilityPage from '@/demo/DemoProductionCapabilityPage';
 import DemoRouteSupportPage from '@/demo/DemoRouteSupportPage';
+import DemoWorldContractPage from '@/demo/DemoWorldContractPage';
 import { demoProductionCapabilityForPath } from '@/demo/productionCapabilities';
+import { resolveDemoWorldRoute } from '@/demo/worldContract';
 import { useRouteTranslationNamespaces } from '@/i18n/LanguageProvider';
 import { useAuthSnapshot } from '@/platform/auth/context';
 import { requestAuthDialog } from '@/utils/authDialog';
@@ -115,6 +117,18 @@ function RouteBody({ route }: { route: RouteDefinition }) {
   const demoCapability = config.mode === 'demo'
     ? demoProductionCapabilityForPath(location.pathname)
     : null;
+  const demoWorldRoute = config.mode === 'demo'
+    ? resolveDemoWorldRoute(location.pathname, location.search)
+    : null;
+  if (demoWorldRoute) {
+    return (
+      <RouteErrorBoundary path={`${location.pathname}${location.search}`}>
+        <RouteLayout kind={demoWorldRoute.kind === 'post' ? 'ReaderLayout' : 'PublicLayout'} family={demoWorldRoute.kind === 'post' ? 'knowledge' : 'discovery'}>
+          <DemoWorldContractPage route={demoWorldRoute} />
+        </RouteLayout>
+      </RouteErrorBoundary>
+    );
+  }
   if (demoCapability) {
     return (
       <RouteErrorBoundary path={location.pathname}>

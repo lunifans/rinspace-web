@@ -1,7 +1,7 @@
 import { forwardRef, type FormHTMLAttributes, type ReactNode } from 'react';
-import { motion } from 'motion/react';
+import { RinspaceBrandNavigation, currentWorldHome, flipTarget, prepareWorldFlipNavigation, resolveWorld } from '@rinspace/world-shell';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useOptionalBootstrap } from '@/app/bootstrap/context';
 import { SplittingText } from 'components/ui';
@@ -9,17 +9,27 @@ import { SplittingText } from 'components/ui';
 export function BrandNavigation({ animate = true }: { animate?: boolean }) {
   const { t } = useTranslation('navigation');
   const bootstrap = useOptionalBootstrap();
+  const location = useLocation();
+  const navigate = useNavigate();
   const brandName = bootstrap?.config.site.name ?? t('brandName');
   const logoPath = bootstrap?.config.site.brand.logoPath ?? null;
+  const currentHref = `${location.pathname}${location.search}${location.hash}`;
+  const resolution = resolveWorld(currentHref);
+  const world = resolution.world ?? 'outer';
+  const currentHomeHref = currentWorldHome(world);
+  const oppositeWorld = world === 'outer' ? 'inner' : 'outer';
+  const flipHref = flipTarget(currentHref, resolution) ?? currentWorldHome(oppositeWorld);
   return (
-    <Link className="brand" to="/" aria-label={t('brandHome', { brandName })}>
-      <motion.span
-        className="brand-mark"
-        whileHover={{ rotateY: 360 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-        style={{ transformPerspective: 600 }}
-      >
-        {logoPath ? (
+    <RinspaceBrandNavigation
+      brandName={brandName}
+      world={world}
+      currentHomeHref={currentHomeHref}
+      flipHref={flipHref}
+      labels={{
+        flip: world === 'outer' ? t('brandFlipToInner') : t('brandFlipToOuter'),
+        home: t('brandCurrentHome'),
+      }}
+      brandMark={logoPath ? (
           <img
             src={logoPath}
             alt=""
@@ -31,8 +41,7 @@ export function BrandNavigation({ animate = true }: { animate?: boolean }) {
             fetchPriority="high"
           />
         ) : <span aria-hidden="true">{brandName.slice(0, 1)}</span>}
-      </motion.span>
-      <span className="brand-word" aria-hidden="true">
+      wordmark={
         <SplittingText
           className="brand-word-motion"
           text={brandName}
@@ -42,8 +51,21 @@ export function BrandNavigation({ animate = true }: { animate?: boolean }) {
           stagger={0.04}
           disableAnimation={!animate}
         />
-      </span>
-    </Link>
+      }
+      classNames={{ root: 'brand', logo: 'brand-mark', wordmark: 'brand-word' }}
+      ports={{
+        navigation: {
+          navigate: ({ href, reason }) => {
+            if (reason === 'flip') {
+              prepareWorldFlipNavigation(href);
+              return false;
+            }
+            navigate(href);
+            return true;
+          },
+        },
+      }}
+    />
   );
 }
 

@@ -1,4 +1,5 @@
 import { AnimateThemeToggler, Icon, AnimateButton, AnimateBell, AnimateBellRing, AnimateChevronDown, AnimateKanban, AnimateLogOut, AnimatePlus, AnimateSearch, AnimateSettings, AnimateSparkles, AnimateUser, Dialog, DialogPortal, DialogOverlay, DialogBody, DialogTitle, DialogClose, Menu, MenuTrigger, MenuContent, MenuItem, MenuSub, MenuSubTrigger, MenuSubContent, Tooltip } from 'components/ui';
+import { hrefInWorld, resolveWorld, type WorldState } from '@rinspace/world-shell';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import {
   type FormEvent,
@@ -49,6 +50,7 @@ type SiteTopbarProps = {
   onSessionChange?: () => void | Promise<void>;
   authRequestVersion?: number;
   onSessionPresentationChange?: (presentation: SessionPresentation) => void;
+  world?: WorldState;
 };
 
 type SessionPresentation = 'anonymous' | 'restoring' | 'authenticated';
@@ -97,6 +99,7 @@ export default function SiteTopbar({
   onSessionChange,
   authRequestVersion = 0,
   onSessionPresentationChange,
+  world: providedWorld,
 }: SiteTopbarProps) {
   const { t: tNavigation } = useTranslation('navigation');
   const { t: tAuth } = useTranslation('auth');
@@ -104,6 +107,7 @@ export default function SiteTopbar({
   const syncAccountPreference = language?.syncAccountPreference;
   const navigate = useNavigate();
   const location = useLocation();
+  const currentWorld = providedWorld ?? resolveWorld(`${location.pathname}${location.search}${location.hash}`).world ?? 'outer';
   const { resolved: resolvedTheme, setPreference: setThemePreference } = useTheme();
   const auth = useAuthAdapter();
   const bootstrap = useOptionalBootstrap();
@@ -292,7 +296,7 @@ export default function SiteTopbar({
       if (mobileSearchOpen) closeMobileSearch();
       return;
     }
-    navigate(`/search?q=${encodeURIComponent(query)}`);
+    navigate(hrefInWorld(`/search?q=${encodeURIComponent(query)}`, currentWorld));
   };
 
   const focusSearchInput = () => {
@@ -466,7 +470,7 @@ export default function SiteTopbar({
             <div className="topbar-search-preview" aria-live="polite">
               <div className="topbar-search-preview-head">
                 <span>{tNavigation('search.liveIndex')}</span>
-              <Link to={`/search?q=${encodeURIComponent(trimmedSearchDraft)}`}>
+              <Link to={hrefInWorld(`/search?q=${encodeURIComponent(trimmedSearchDraft)}`, currentWorld)}>
                   {searchPreviewLoading ? tNavigation('search.loading') : tNavigation('search.resultCount', { count: searchPreviewCount })}
                 </Link>
               </div>
@@ -488,7 +492,7 @@ export default function SiteTopbar({
               {searchPreviewItems.map((item) => (
                 <Link
                   className="topbar-search-result"
-                  to={searchResultPath(item)}
+                  to={hrefInWorld(searchResultPath(item), currentWorld)}
                   key={`${item.objectType}-${item.id}`}
                 >
                   <span>{searchTypeLabel[item.objectType] || item.objectType}</span>
@@ -500,7 +504,7 @@ export default function SiteTopbar({
               ))}
               <Link
                 className="topbar-search-all"
-                to={`/search?q=${encodeURIComponent(trimmedSearchDraft)}`}
+                to={hrefInWorld(`/search?q=${encodeURIComponent(trimmedSearchDraft)}`, currentWorld)}
               >
                 {tNavigation('search.allResults')}
                 <Icon name="arrow-right" />
@@ -623,7 +627,7 @@ export default function SiteTopbar({
               </PublishingActions>
               <NotificationNavigation>
                 <Tooltip content={tNavigation('account.notifications')}>
-                  <Link className="notification-pill" to="/notifications" aria-label={tNavigation('account.notifications')}>
+                  <Link className="notification-pill" to={hrefInWorld('/notifications', currentWorld)} aria-label={tNavigation('account.notifications')}>
                     {notifications.length ? <AnimateBellRing animateOnHover size={16} /> : <AnimateBell animateOnHover size={16} />}
                     {notifications.length ? <span>{notifications.length}</span> : null}
                   </Link>
@@ -658,7 +662,7 @@ export default function SiteTopbar({
                       </Link>
                     </MenuItem>
                     <MenuItem asChild>
-                      <Link to="/settings">
+                      <Link to={hrefInWorld('/settings', currentWorld)}>
                         <AnimateSettings animateOnHover size={16} />
                         <span>{tNavigation('account.accountSettings')}</span>
                       </Link>

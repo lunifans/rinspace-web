@@ -242,7 +242,8 @@
       "publisher": "Rinspace Web"
     },
     "views": {
-      "stream": "社区流",
+      "reading": "阅读",
+      "stream": "旧栏目",
       "tags": "标签",
       "books": "书库",
       "graph": "知识图谱"
@@ -270,6 +271,7 @@
       "title": "芥子环 首页",
       "excerpt": "当前首页视图：{{view}}；信息流模式：{{mode}}。",
       "streamTitle": "社区流",
+      "readingTitle": "书籍与博客",
       "tagActivityTitle": "标签动态",
       "bookTitle": "书库 · {{mode}}",
       "hotDiscussions": "最近热议",
@@ -338,13 +340,14 @@
       "contentCount_other": "{{displayCount}} 条内容"
     },
     "board": {
-      "landmark": "综合动态与题目问答",
+      "landmark": "书籍、博客与知识标签",
       "views": "首页社区视图",
       "feedFilter": "动态筛选",
       "bookFilter": "书库筛选",
       "tagSyncFailed": "标签动态同步失败：{{error}}",
       "usingLocal": "正在使用本地摘要：{{error}}",
-      "syncingContent": "正在同步最新社区内容..."
+      "syncingContent": "正在同步最新社区内容...",
+      "emptyReading": "暂时没有可阅读的书籍或博客。"
     },
     "rail": {
       "graph": "知识图谱",
@@ -356,7 +359,13 @@
       "emptyFollowed": "还没有关注标签。",
       "signInFollowed": "登录后显示关注标签。",
       "sponsor": "赞助我们",
-      "support": "支持"
+      "support": "支持",
+      "legacyTitle": "旧社区栏目",
+      "legacyStatus": "保留入口",
+      "legacyDescription": "讨论、问答与动态保留原有路由和历史内容，不参与里世界帖子迁移。",
+      "discussions": "讨论",
+      "questions": "问答",
+      "dynamics": "动态"
     },
     "time": {
       "unknown": "时间未知",

@@ -21,6 +21,14 @@
     {
       "path": "src/utils/internalContentPreview.ts",
       "reason": "URL parser recognizes the canonical site to keep internal previews on an allowlisted path."
+    },
+    {
+      "path": "specs/rinspace-two-worlds/requirements.md",
+      "reason": "Confirmed product requirement names the public same-origin domain while prohibiting a second inner-world domain."
+    },
+    {
+      "path": "specs/rinspace-two-worlds/design.md",
+      "reason": "Confirmed architecture diagram names the public same-origin boundary shared by both Web runtimes."
     }
   ],
   "demoSurfacePrefixes": [

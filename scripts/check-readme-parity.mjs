@@ -22,6 +22,7 @@ const expectedSections = [
   "configuration",
   "testing",
   "contributing",
+  "china-user-documents",
   "licensing",
   "security",
   "limitations",

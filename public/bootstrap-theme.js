@@ -1,4 +1,21 @@
 (() => {
+  const pageRevealKey = '__rinspacePendingPageReveal';
+  addEventListener('pagereveal', (event) => {
+    globalThis[pageRevealKey] = event;
+  }, { once: true });
+  try {
+    const pending = JSON.parse(sessionStorage.getItem('rinspace:world-transition:v1') || 'null');
+    if (
+      pending?.version === 1
+      && pending.targetHref === location.href
+      && Date.now() - pending.createdAt <= 15000
+      && (pending.direction === 'outer-to-inner' || pending.direction === 'inner-to-outer')
+    ) {
+      document.documentElement.dataset.rinWorldTransition = pending.direction;
+    }
+  } catch {
+    // Theme and application bootstrap remain available when storage is blocked.
+  }
   try {
     const value = localStorage.getItem('rinspace-theme-v2') || 'system';
     const dark = value === 'dark'

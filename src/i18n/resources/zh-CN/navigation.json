@@ -2,6 +2,9 @@
   "landmark": "频道与账户",
   "brandName": "芥子环",
   "brandHome": "{{brandName}}首页",
+  "brandCurrentHome": "返回当前世界首页",
+  "brandFlipToInner": "翻到里世界",
+  "brandFlipToOuter": "翻到表世界",
   "search": {
     "label": "搜索",
     "placeholder": "搜索",
