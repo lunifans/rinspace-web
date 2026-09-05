@@ -12,6 +12,9 @@ const root = process.cwd();
 const shellPackage = JSON.parse(
   fs.readFileSync(path.join(root, "packages/world-shell/package.json"), "utf8"),
 );
+const worldContract = JSON.parse(
+  fs.readFileSync(path.join(root, "contracts/world-routes.json"), "utf8"),
+);
 
 function sha256(file) {
   return crypto
@@ -38,11 +41,15 @@ test("world release is checksummed and installable by a clean public consumer", 
         "utf8",
       ),
     );
-    assert.equal(manifest.contractVersion, "1.0.0");
+    assert.equal(manifest.contractVersion, worldContract.contractVersion);
     assert.equal(manifest.shellVersion, shellPackage.version);
     assert.equal(manifest.reactPeer, "^19.0.0");
     assert.ok(result.files.includes("LICENSE-AGPL-3.0-only.txt"));
-    assert.ok(result.files.includes("rinspace-world-release-1.0.0.spdx.json"));
+    assert.ok(
+      result.files.includes(
+        `rinspace-world-release-${worldContract.contractVersion}.spdx.json`,
+      ),
+    );
 
     const checksumLines = fs
       .readFileSync(path.join(releaseDirectory, "SHA256SUMS"), "utf8")

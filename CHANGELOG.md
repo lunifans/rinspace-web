@@ -2,6 +2,10 @@
 
 All notable changes to Rinspace Web will be documented in this file. Releases follow Semantic Versioning once the legal release gate is approved.
 
+## 0.1.5 - 2026-09-05
+
+- Added explicit world-gateway routes for the public runtime configuration, Web App Manifest, and container health endpoint so they cannot be shadowed by reserved profile paths.
+
 ## 0.1.4 - 2026-09-05
 
 - Added the versioned two-world route contract, shared `world-shell`, cross-document turn transition, and quiet outer-world home.

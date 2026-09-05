@@ -2,7 +2,7 @@
 
 This table is generated from the public frontend route manifest and its audited world-route source. Do not edit it by hand. `world=inner` is only interpreted by dual Web pages; service and protocol routes ignore it.
 
-Contract version: `1.0.0`. Manifest routes: 85.
+Contract version: `1.0.1`. Manifest routes: 85.
 
 | Pattern | Kind | Owner | Logo flip | Anonymous policy | Source |
 | --- | --- | --- | --- | --- | --- |
@@ -85,6 +85,9 @@ Contract version: `1.0.0`. Manifest routes: 85.
 | `/keyboard-shortcuts` | inner-only | mastodon | opposite-home | runtime-policy | shared-contract |
 | `/overview` | inner-only | mastodon | opposite-home | public | shared-contract |
 | `/@:username` | dual | rinspace-web, mastodon | same-path | public | shared-contract |
+| `/runtime-config.json` | service | rinspace-web | none | public | shared-contract |
+| `/site.webmanifest` | service | rinspace-web | none | public | shared-contract |
+| `/healthz` | service | rinspace-web | none | public | shared-contract |
 | `/users/:username` | federation-disabled | blocked | none | blocked | rinspace-web-manifest |
 | `/` | dual | rinspace-web, mastodon | same-path | runtime-policy | rinspace-web-manifest |
 | `/about` | dual | rinspace-web, mastodon | same-path | runtime-policy | rinspace-web-manifest |

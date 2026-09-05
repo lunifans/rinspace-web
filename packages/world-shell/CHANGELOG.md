@@ -2,6 +2,10 @@
 
 All notable changes to `@rinspace/world-shell` are documented here.
 
+## 0.1.5 - 2026-09-05
+
+- Add public service routes for `runtime-config.json`, `site.webmanifest`, and `healthz` to the generated two-world contract.
+
 ## 0.1.0 - Unreleased
 
 - Add the generated `rinspace-world-routes/v1` contract snapshot and pure URL resolver.

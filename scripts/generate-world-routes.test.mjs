@@ -48,6 +48,17 @@ test("classifies every public manifest route and every shared route exactly once
       ?.kind,
     "reserved",
   );
+  for (const path of [
+    "/runtime-config.json",
+    "/site.webmanifest",
+    "/healthz",
+  ]) {
+    const route = contract.routes.find((candidate) => candidate.pattern === path);
+    assert.deepEqual(
+      [route?.kind, route?.owners, route?.anonymousPolicy],
+      ["service", ["rinspace-web"], "public"],
+    );
+  }
 });
 
 test("fails closed when the public manifest changes without route review", () => {
