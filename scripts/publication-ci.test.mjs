@@ -99,10 +99,14 @@ test("pull-request workflows are read-only and cannot consume repository secrets
   assert.equal(
     (
       workflows["release.yml"].match(
-        /runs-on: \[self-hosted, linux, x64, rinspace-release-build\]/g,
+        /runs-on: ubuntu-24\.04/g,
       ) || []
     ).length,
     3,
+  );
+  assert.doesNotMatch(
+    workflows["release.yml"],
+    /runs-on: \[self-hosted, linux, x64, rinspace-release-build\]/,
   );
 });
 
