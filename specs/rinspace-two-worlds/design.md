@@ -524,7 +524,7 @@ Mastodon 上游的 [Status entity](https://docs.joinmastodon.org/entities/Status
 ### 18.4 里世界加载回归
 
 - 分别保存表世界与里世界的冷启动、同一会话温刷新网络瀑布，记录请求数、传输量、DOMContentLoaded 和 load。
-- 带哈希 `/packs/*` 和公开资料媒体保留 Mastodon 的公开长缓存 header；HTML、API 和鉴权响应继续 `no-store`，禁止跨用户缓存。
+- 带哈希 `/packs/*` 由边缘层收紧为一年 `immutable`，公开资料媒体和音效保留 Mastodon 的上游公开缓存 header；HTML、API 和鉴权响应继续 `no-store`，禁止跨用户缓存。
 - 同一发布的温刷新必须命中已加载的哈希资源；首页和个人页不得产生 Mastodon 静态资源 404。
 - 生产验收同时检查源站首字节和容器 CPU，避免把资源图或缓存错误误判为 Rails 容量问题。
 
