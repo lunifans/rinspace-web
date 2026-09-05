@@ -90,7 +90,6 @@ jobs:
           pnpm check:dco
           pnpm check:demo-seed
           pnpm check:i18n
-          pnpm check:i18n:bundles
           pnpm check
           pnpm lint
           pnpm test -- --pool forks --maxWorkers 1
@@ -102,6 +101,7 @@ jobs:
           SOURCE_DATE_EPOCH: ${{ steps.metadata.outputs.epoch }}
         run: |
           pnpm build
+          pnpm check:i18n:bundles
           pnpm package -- --config config/runtime.demo.json --out package-release --base-path /
           pnpm test:static-package
           pnpm check:vite-artifact -- --core build --package package-release
