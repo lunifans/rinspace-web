@@ -9,6 +9,9 @@ import test from "node:test";
 import { buildWorldRelease } from "./build-world-release.mjs";
 
 const root = process.cwd();
+const shellPackage = JSON.parse(
+  fs.readFileSync(path.join(root, "packages/world-shell/package.json"), "utf8"),
+);
 
 function sha256(file) {
   return crypto
@@ -36,7 +39,7 @@ test("world release is checksummed and installable by a clean public consumer", 
       ),
     );
     assert.equal(manifest.contractVersion, "1.0.0");
-    assert.equal(manifest.shellVersion, "0.1.0");
+    assert.equal(manifest.shellVersion, shellPackage.version);
     assert.equal(manifest.reactPeer, "^19.0.0");
     assert.ok(result.files.includes("LICENSE-AGPL-3.0-only.txt"));
     assert.ok(result.files.includes("rinspace-world-release-1.0.0.spdx.json"));
