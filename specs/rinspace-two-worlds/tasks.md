@@ -223,6 +223,7 @@
   - 将本地模式的 Status 判定改为模型实际提供的 `local?` 语义，覆盖 like/favourite、bookmark 及远端状态拒绝的请求测试，消除 `Status#remote?` 触发的 500。
   - 为 Mastodon `/api/web/*` 增加高优先级服务路由，并在保留表世界未版本化 `/api/*` 的前提下仅开放该边缘前缀。
   - 补齐 settings、filters、relationships、cleanup、invites、admin、privacy 和 terms 等 Mastodon 产品页面的显式路由归属；未知内容 ID、已删除内容和外部漏洞探测继续返回 404。
+  - 补齐 Mastodon 根目录下 loading、oops、embed、badge 与 Web Push 图标的显式资源归属，避免短暂加载或错误状态误落入表世界并产生 404。
   - 除 `/p/:id[/slug]` 外，里世界产品网页的新链接与 canonical 默认携带 `world=inner`；旧无参数地址继续兼容并规范化，API、OAuth、媒体和静态资源不添加世界参数。
   - 串行执行公开契约、网关、Mastodon 请求/前端、浏览器和线上日志回归，再使用不可变镜像发布并保留上一组回滚制品。
   - _Requirements: R1, R3, R5, R10, R12, R13, R14, R15, R19_

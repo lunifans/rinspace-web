@@ -3,7 +3,7 @@ import type { WorldRouteContract } from '../types.js';
 
 export const defaultWorldRouteContract = {
   "schemaVersion": "rinspace-world-routes/v1",
-  "contractVersion": "1.0.3",
+  "contractVersion": "1.0.4",
   "generatedFrom": [
     "src/app/routing/routeManifest.tsx",
     "config/world-routes.json"
@@ -386,6 +386,123 @@ export const defaultWorldRouteContract = {
       "priority": 142,
       "owners": [
         "rinspace-private"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-badge",
+      "pattern": "/badge.png",
+      "kind": "service",
+      "priority": 143,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-embed",
+      "pattern": "/embed.js",
+      "kind": "service",
+      "priority": 144,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-loading-gif",
+      "pattern": "/loading.gif",
+      "kind": "service",
+      "priority": 145,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-loading-png",
+      "pattern": "/loading.png",
+      "kind": "service",
+      "priority": 146,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-oops-gif",
+      "pattern": "/oops.gif",
+      "kind": "service",
+      "priority": 147,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-oops-png",
+      "pattern": "/oops.png",
+      "kind": "service",
+      "priority": 148,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-push-expand",
+      "pattern": "/web-push-icon_expand.png",
+      "kind": "service",
+      "priority": 149,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-push-favourite",
+      "pattern": "/web-push-icon_favourite.png",
+      "kind": "service",
+      "priority": 150,
+      "owners": [
+        "mastodon"
+      ],
+      "anonymousPolicy": "public",
+      "flip": "none",
+      "canonicalWorld": "not-applicable",
+      "source": "shared-contract"
+    },
+    {
+      "id": "service.mastodon-root-push-reblog",
+      "pattern": "/web-push-icon_reblog.png",
+      "kind": "service",
+      "priority": 151,
+      "owners": [
+        "mastodon"
       ],
       "anonymousPolicy": "public",
       "flip": "none",

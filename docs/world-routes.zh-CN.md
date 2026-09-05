@@ -2,7 +2,7 @@
 
 本表由公开前端路由 manifest 与经审计的世界路由配置生成，不应手工修改。除 `/p/*` 永久链接外，里世界网页统一使用 `world=inner`；服务与协议路由不会解释该参数。
 
-Contract version: `1.0.3`. Manifest routes: 85.
+Contract version: `1.0.4`. Manifest routes: 85.
 
 | Pattern | Kind | Owner | Logo flip | Anonymous policy | Source |
 | --- | --- | --- | --- | --- | --- |
@@ -34,6 +34,15 @@ Contract version: `1.0.3`. Manifest routes: 85.
 | `/manifest` | service | mastodon | none | public | shared-contract |
 | `/sw.js` | service | mastodon | none | public | shared-contract |
 | `/robots.txt` | service | rinspace-private | none | public | shared-contract |
+| `/badge.png` | service | mastodon | none | public | shared-contract |
+| `/embed.js` | service | mastodon | none | public | shared-contract |
+| `/loading.gif` | service | mastodon | none | public | shared-contract |
+| `/loading.png` | service | mastodon | none | public | shared-contract |
+| `/oops.gif` | service | mastodon | none | public | shared-contract |
+| `/oops.png` | service | mastodon | none | public | shared-contract |
+| `/web-push-icon_expand.png` | service | mastodon | none | public | shared-contract |
+| `/web-push-icon_favourite.png` | service | mastodon | none | public | shared-contract |
+| `/web-push-icon_reblog.png` | service | mastodon | none | public | shared-contract |
 | `/repos/*` | service | rinspace-private | none | service-policy | shared-contract |
 | `/rin/*` | service | rinspace-private | none | service-policy | shared-contract |
 | `/quiver/*` | service | rinspace-private | none | service-policy | shared-contract |

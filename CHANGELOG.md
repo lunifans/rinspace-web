@@ -2,6 +2,10 @@
 
 All notable changes to Rinspace Web will be documented in this file. Releases follow Semantic Versioning once the legal release gate is approved.
 
+## 0.1.7 - 2026-09-06
+
+- Route Mastodon's root loading, error, embed, badge, and Web Push assets to the inner runtime so transient UI states cannot fall through to the outer application with 404 responses.
+
 ## 0.1.6 - 2026-09-06
 
 - Canonicalize every non-post inner-world page with `world=inner`, while keeping `/p/:id[/slug]` path-owned and older unqualified links compatible.

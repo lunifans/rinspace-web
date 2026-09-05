@@ -1,6 +1,6 @@
 {
   "name": "rinspace-web",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "type": "module",
   "homepage": "/",
@@ -96,7 +96,7 @@
     "@radix-ui/react-tabs": "1.1.13",
     "@radix-ui/react-toast": "1.2.15",
     "@radix-ui/react-tooltip": "1.2.8",
-    "@rinspace/world-shell": "workspace:0.1.6",
+    "@rinspace/world-shell": "workspace:0.1.7",
     "classnames": "^2.3.1",
     "clsx": "2.1.1",
     "dompurify": "3.4.11",

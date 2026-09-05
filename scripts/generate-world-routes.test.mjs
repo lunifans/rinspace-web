@@ -89,6 +89,23 @@ test("classifies every public manifest route and every shared route exactly once
       ["service", ["rinspace-web"], "public"],
     );
   }
+  for (const path of [
+    "/badge.png",
+    "/embed.js",
+    "/loading.gif",
+    "/loading.png",
+    "/oops.gif",
+    "/oops.png",
+    "/web-push-icon_expand.png",
+    "/web-push-icon_favourite.png",
+    "/web-push-icon_reblog.png",
+  ]) {
+    const route = contract.routes.find((candidate) => candidate.pattern === path);
+    assert.deepEqual(
+      [route?.kind, route?.owners, route?.canonicalWorld],
+      ["service", ["mastodon"], "not-applicable"],
+    );
+  }
 });
 
 test("fails closed when the public manifest changes without route review", () => {

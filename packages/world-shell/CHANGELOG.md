@@ -2,6 +2,10 @@
 
 All notable changes to `@rinspace/world-shell` are documented here.
 
+## 0.1.7 - 2026-09-06
+
+- Add explicit inner-runtime ownership for Mastodon's root loading, error, embed, badge, and Web Push assets.
+
 ## 0.1.6 - 2026-09-06
 
 - Canonicalize non-post inner-world product pages with `world=inner` and retain path-owned canonical URLs for `/p/:id[/slug]`.
