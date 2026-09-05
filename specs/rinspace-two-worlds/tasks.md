@@ -1,6 +1,6 @@
 # Rinspace 表里世界实施任务
 
-> 状态：任务 1–26 已于 2026-09-05 完成；任务 27 正在修复上线后发现的互动 500、里世界 HTML/API 404 和世界参数冲突。
+> 状态：任务 1–27 已完成；联邦保持关闭，生产继续按公开路由契约运行。
 
 ## 1. 执行原则
 
@@ -219,13 +219,14 @@
   - 实际结果：2026-09-05 使用路由契约 1.0.2 串行发布 Mastodon `bdecd1060adfc63c83615b307a1f3c71940096b7` 与私有 runtime `74de3d7a66ec358334cfb81e3df47ccf1f6f226b`。127/128 个身份前向刷新成功，唯一既有非法长 handle 留在对账；22/22 个有效源封面投影为 Mastodon header，51 个既有头像保持不变。真实个人页加载 header 媒体 200 并完成浏览器渲染，sounds、默认媒体兼容前缀和哈希 packs 不再落入表世界或返回 404。`/packs/*` 使用一年 `immutable`；同一 Chrome 会话温刷新从约 1.03 MB 重传降至 0 字节，250/250 个资源命中本地缓存，load 从 9.5 秒降至 1.89 秒。全新发布在边缘冷缓存时仍会付出约 250 个请求，作为后续包图优化而非本次正确性回归。
   - _Requirements: R3, R8, R15, R16, R19_
 
-- [ ] 27. 修复里世界互动错误与页面路由冲突
+- [x] 27. 修复里世界互动错误与页面路由冲突
   - 将本地模式的 Status 判定改为模型实际提供的 `local?` 语义，覆盖 like/favourite、bookmark 及远端状态拒绝的请求测试，消除 `Status#remote?` 触发的 500。
   - 为 Mastodon `/api/web/*` 增加高优先级服务路由，并在保留表世界未版本化 `/api/*` 的前提下仅开放该边缘前缀。
   - 补齐 settings、filters、relationships、cleanup、invites、admin、privacy 和 terms 等 Mastodon 产品页面的显式路由归属；未知内容 ID、已删除内容和外部漏洞探测继续返回 404。
   - 补齐 Mastodon 根目录下 loading、oops、embed、badge 与 Web Push 图标的显式资源归属，避免短暂加载或错误状态误落入表世界并产生 404。
   - 除 `/p/:id[/slug]` 外，里世界产品网页的新链接与 canonical 默认携带 `world=inner`；旧无参数地址继续兼容并规范化，API、OAuth、媒体和静态资源不添加世界参数。
   - 串行执行公开契约、网关、Mastodon 请求/前端、浏览器和线上日志回归，再使用不可变镜像发布并保留上一组回滚制品。
+  - 实际结果：2026-09-06 串行发布公开 `rinspace-web` v0.1.7（提交 `67b37241f77b422f60762875c1a1fab69af47d15`）、路由契约 1.0.4 与 `world-shell` 0.1.7；正式 Release 流水线成功并附带校验和、SBOM 和源码制品。Mastodon 使用提交 `aae7ef7c1df47c486b5fbd720416ac233577eb72` 的 `rinspace-mastodon:release-aae7ef7c1`，私有 bridge/control/gateway 使用提交 `2e7126b57a6af5778f277c8b9a20976de3ed2e60` 的 `rinspace-private:release-2e7126b`，Streaming 保持不变。Status 本地判定、favourite/bookmark 请求、`/api/web/*`、Mastodon 产品页面、根目录 loading/oops/embed/badge/Web Push 资源均已修复；除 `/p/` 外的里世界产品页规范化为 `world=inner`。生产入口模式已从易在重建时复发 404 的临时覆盖固化为 `public`；实例标题、favicon/app icon 和源码链接改为 Rinspace 资产与 fork。公开类型检查、生产构建、世界路由与可安装发布包测试通过；Mastodon 类型检查、8 个路径单测、27 个请求示例与增量构建通过；私有网关 19 个测试通过。线上页面、API 和品牌资源回归无 500，`/api/web/settings` 未认证写入由错误 404 变为预期 422，已删除 `/p/398` 和未知路径继续返回 404；保留 `release-fa8df896d`、`release-28b3cb21c` 和 `release-f5706a3` 作为分层回滚制品。
   - _Requirements: R1, R3, R5, R10, R12, R13, R14, R15, R19_
 
 ## 4. 完成定义
