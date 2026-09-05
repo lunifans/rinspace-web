@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const policyPath = path.join(root, 'config/dco-policy.json');
-const trustedRepository = 'lunifans/rinspace-web';
+const trustedRepository = 'rinspacehq/rinspace-web';
 const trustedApiRoot = `https://api.github.com/repos/${trustedRepository}`;
 
 function assert(condition, message) {

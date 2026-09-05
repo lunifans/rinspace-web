@@ -2,7 +2,7 @@
   "$schema": "../schemas/dco-policy.schema.json",
   "schemaVersion": 1,
   "status": "operational",
-  "repository": "lunifans/rinspace-web",
+  "repository": "rinspacehq/rinspace-web",
   "documents": {
     "dco": {
       "path": "DCO",
