@@ -70,7 +70,7 @@ function buildWorldSbom({
     dataLicense: "CC0-1.0",
     SPDXID: "SPDXRef-DOCUMENT",
     name: `rinspace-world-release-${contractVersion}`,
-    documentNamespace: `https://github.com/lunifans/rinspace-web/world-sbom/${namespaceKey}`,
+    documentNamespace: `https://github.com/rinspacehq/rinspace-web/world-sbom/${namespaceKey}`,
     creationInfo: {
       created: "1970-01-01T00:00:00Z",
       creators: ["Tool: rinspace-web/scripts/build-world-release.mjs"],
@@ -215,7 +215,7 @@ export function buildWorldRelease({
     projectLicense: rootPackage.license,
     worldShellLicense: shellPackage.license,
     licenseFile: licenseName,
-    sourceRepository: "https://github.com/lunifans/rinspace-web",
+    sourceRepository: "https://github.com/rinspacehq/rinspace-web",
   });
 
   const artifactFiles = fs.readdirSync(output).sort();

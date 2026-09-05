@@ -106,7 +106,7 @@ test('GitHub commit collection uses a read token only against the trusted endpoi
     return { ok: true, status: 200, headers: { get: () => null }, json: async () => payload };
   };
   const commits = await collectPullRequestCommits({
-    repository: { full_name: 'lunifans/rinspace-web', url: 'https://api.github.com/repos/lunifans/rinspace-web' },
+    repository: { full_name: 'rinspacehq/rinspace-web', url: 'https://api.github.com/repos/rinspacehq/rinspace-web' },
     pull_request: { number: 7 },
   }, { token: 'test-token', fetchImpl });
   assert.equal(calls.length, 1);
@@ -127,7 +127,7 @@ test('pagination cannot send the read token outside the exact GitHub API path', 
     };
   };
   await assert.rejects(() => collectPullRequestCommits({
-    repository: { full_name: 'lunifans/rinspace-web', url: 'https://api.github.com/repos/lunifans/rinspace-web' },
+    repository: { full_name: 'rinspacehq/rinspace-web', url: 'https://api.github.com/repos/rinspacehq/rinspace-web' },
     pull_request: { number: 8 },
   }, { token: 'test-token', fetchImpl }), /pagination URL escaped/);
   assert.equal(calls, 1);

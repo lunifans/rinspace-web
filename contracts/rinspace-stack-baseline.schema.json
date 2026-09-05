@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/lunifans/rinspace-web/contracts/rinspace-stack-baseline.schema.json",
+  "$id": "https://github.com/rinspacehq/rinspace-web/contracts/rinspace-stack-baseline.schema.json",
   "title": "Rinspace stack development baseline",
   "type": "object",
   "additionalProperties": false,

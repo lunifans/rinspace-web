@@ -110,7 +110,7 @@ npm --version
 `node --version` 应以 `v22.` 开头。然后克隆仓库并进入目录：
 
 ```bash
-git clone https://github.com/lunifans/rinspace-web.git
+git clone https://github.com/rinspacehq/rinspace-web.git
 cd rinspace-web
 ```
 
@@ -241,7 +241,7 @@ Ubuntu 上可继续用 `sudo docker compose ...`。若希望当前用户不加 `
 安装后，`docker compose version` 应能输出版本。克隆仓库、进入目录，然后在 loopback 8080 构建并运行零凭据根路径 demo：
 
 ```bash
-git clone https://github.com/lunifans/rinspace-web.git
+git clone https://github.com/rinspacehq/rinspace-web.git
 cd rinspace-web
 docker compose version
 docker compose up --build
@@ -298,7 +298,7 @@ runtime 使用 UID/GID 1000、监听 8080、drop 全部 Linux capabilities、只
 如果你不熟悉命令行，可在 Codex 中打开目标目录，复制下面这段提示词。它默认选择只允许本机访问的 demo，并会自行判断 Docker 或 Node/pnpm 路径；涉及管理员权限、生产、域名、凭据或公网变更时必须先征求你的确认。
 
 ```text
-请作为 Rinspace Web 部署助手，把 https://github.com/lunifans/rinspace-web 部署到当前机器，直到我能在浏览器访问并通过健康检查。默认目标是“仅本机访问、零凭据 demo”：已有 Docker 就优先 Docker，否则使用 Node.js 22.x 与 pnpm 9.7.0。不要假定我会 Git、Node.js、pnpm 或 Docker。
+请作为 Rinspace Web 部署助手，把 https://github.com/rinspacehq/rinspace-web 部署到当前机器，直到我能在浏览器访问并通过健康检查。默认目标是“仅本机访问、零凭据 demo”：已有 Docker 就优先 Docker，否则使用 Node.js 22.x 与 pnpm 9.7.0。不要假定我会 Git、Node.js、pnpm 或 Docker。
 
 先阅读仓库 AGENTS.md、README.zh-CN.md、CONTRIBUTING.md 和 package.json；然后只读检测操作系统、CPU、shell、所需工具、5173/8080 端口和工作树状态。仓库不存在时克隆官方地址；存在时先核对 remote，不得擅自 pull、reset、clean、切分支或覆盖修改。
 

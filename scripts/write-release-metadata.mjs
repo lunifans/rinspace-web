@@ -39,7 +39,7 @@ const shell = path.resolve(values.shell);
 const output = path.resolve(values.output);
 const document = {
   schemaVersion: 1,
-  repository: "https://github.com/lunifans/rinspace-web",
+  repository: "https://github.com/rinspacehq/rinspace-web",
   source: {
     commit: values.commit.toLowerCase(),
     tag: values.tag,
@@ -59,7 +59,7 @@ const document = {
       sha256: sha256(shell),
     },
     container: {
-      image: values.image || "ghcr.io/lunifans/rinspace-web",
+      image: values.image || "ghcr.io/rinspacehq/rinspace-web",
       digest: values["image-digest"].toLowerCase(),
       platforms: ["linux/amd64", "linux/arm64"],
     },

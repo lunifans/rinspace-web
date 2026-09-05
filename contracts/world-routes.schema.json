@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/lunifans/rinspace-web/contracts/world-routes.schema.json",
+  "$id": "https://github.com/rinspacehq/rinspace-web/contracts/world-routes.schema.json",
   "title": "Rinspace world route contract",
   "type": "object",
   "additionalProperties": false,

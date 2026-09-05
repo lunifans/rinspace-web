@@ -5,7 +5,7 @@
   "status": "development-baseline",
   "components": {
     "rinspaceWeb": {
-      "repository": "lunifans/rinspace-web",
+      "repository": "rinspacehq/rinspace-web",
       "visibility": "public",
       "commit": "d8878c0ddc10275f0ae0cac2ef726c418fcb5b20",
       "version": "0.1.0",
@@ -16,7 +16,7 @@
       "vite": "6.4.3"
     },
     "mastodon": {
-      "repository": "lunifans/mastodon",
+      "repository": "rinspacehq/mastodon",
       "visibility": "public",
       "commit": "0a32b4a831838ef1f363a915c2e71e2a1b52cf0d",
       "upstreamRepository": "mastodon/mastodon",
@@ -33,7 +33,7 @@
       "redis": "7"
     },
     "rinspacePrivate": {
-      "repository": "lunifans/rinspace",
+      "repository": "rinspacehq/rinspace",
       "visibility": "private",
       "commit": "d5e83cb83577e0935ebd20665782884de75643cd",
       "releaseTag": "rinspace-ui-build-d5e83cb83577e0935ebd20665782884de75643cd",

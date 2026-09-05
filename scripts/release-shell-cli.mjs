@@ -29,7 +29,7 @@ export function assembleOfficialReleaseShell({
   const config = parseRuntimeConfig(JSON.parse(configBytes.toString('utf8')));
   if (config.mode !== 'official') throw new Error('Release shell requires an official runtime config.');
   if (config.runtimeConfigChannel !== undefined) throw new Error('Runtime config cannot override the private release channel.');
-  if (config.site.sourceUrl !== 'https://github.com/lunifans/rinspace-web') {
+  if (config.site.sourceUrl !== 'https://github.com/rinspacehq/rinspace-web') {
     throw new Error('Official runtime config must expose the canonical public source URL.');
   }
   const version = JSON.parse(fs.readFileSync(path.join(core, 'version.json'), 'utf8'));

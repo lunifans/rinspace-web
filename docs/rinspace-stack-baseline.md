@@ -8,9 +8,9 @@ The machine-readable baseline is [`contracts/rinspace-stack-baseline.json`](../c
 
 | Component                   | Commit                                     | Role at the baseline                                                           |
 | --------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------ |
-| `lunifans/rinspace-web`     | `d8878c0ddc10275f0ae0cac2ef726c418fcb5b20` | Public outer-world frontend, deterministic demo, public contracts              |
-| `lunifans/mastodon`         | `0a32b4a831838ef1f363a915c2e71e2a1b52cf0d` | Public inner-world fork baseline                                               |
-| private `lunifans/rinspace` | `d5e83cb83577e0935ebd20665782884de75643cd` | Gateway, identity/control plane, private adapters and deployment orchestration |
+| `rinspacehq/rinspace-web`     | `d8878c0ddc10275f0ae0cac2ef726c418fcb5b20` | Public outer-world frontend, deterministic demo, public contracts              |
+| `rinspacehq/mastodon`         | `0a32b4a831838ef1f363a915c2e71e2a1b52cf0d` | Public inner-world fork baseline                                               |
+| private `rinspacehq/rinspace` | `d5e83cb83577e0935ebd20665782884de75643cd` | Gateway, identity/control plane, private adapters and deployment orchestration |
 
 The Mastodon fork and upstream `main` pointed to the same commit at inspection time, so the initial Rinspace patch inventory is empty. Every future fork patch must be classified as upstreamable, Rinspace product behavior, or long-lived safety behavior, and must record its upstream base, changed files, verification, license impact, and upgrade notes.
 

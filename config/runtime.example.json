@@ -9,7 +9,7 @@
     "description": "An example deployment of the Rinspace web frontend.",
     "defaultLocale": "en",
     "contactEmail": "support@example.com",
-    "sourceUrl": "https://github.com/lunifans/rinspace-web",
+    "sourceUrl": "https://github.com/rinspacehq/rinspace-web",
     "legalEntity": null,
     "filings": {
       "icp": null,

@@ -64,7 +64,7 @@ const requiredSetupGuidance = [
 ];
 const requiredAiGuidance = [
   "AGENTS.md",
-  "https://github.com/lunifans/rinspace-web",
+  "https://github.com/rinspacehq/rinspace-web",
   "5173/8080",
   "/healthz",
   "/version.json",

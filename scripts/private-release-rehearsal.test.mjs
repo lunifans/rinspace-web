@@ -7,7 +7,7 @@ import { privateRehearsalChecks, validatePrivateReleaseRehearsal } from './priva
 function fixture() {
   return {
     schemaVersion: 1,
-    repository: 'lunifans/rinspace-web',
+    repository: 'rinspacehq/rinspace-web',
     repositoryVisibility: 'private',
     commit: '1'.repeat(40),
     tag: 'v0.2.0',

@@ -8,9 +8,9 @@
 
 | 组件                     | 提交                                       | 基线时职责                              |
 | ------------------------ | ------------------------------------------ | --------------------------------------- |
-| `lunifans/rinspace-web`  | `d8878c0ddc10275f0ae0cac2ef726c418fcb5b20` | 公开表世界前端、确定性 Demo 和公共契约  |
-| `lunifans/mastodon`      | `0a32b4a831838ef1f363a915c2e71e2a1b52cf0d` | 公开里世界 fork 基线                    |
-| 私有 `lunifans/rinspace` | `d5e83cb83577e0935ebd20665782884de75643cd` | 网关、身份/控制面、私有适配器和部署编排 |
+| `rinspacehq/rinspace-web`  | `d8878c0ddc10275f0ae0cac2ef726c418fcb5b20` | 公开表世界前端、确定性 Demo 和公共契约  |
+| `rinspacehq/mastodon`      | `0a32b4a831838ef1f363a915c2e71e2a1b52cf0d` | 公开里世界 fork 基线                    |
+| 私有 `rinspacehq/rinspace` | `d5e83cb83577e0935ebd20665782884de75643cd` | 网关、身份/控制面、私有适配器和部署编排 |
 
 核查时 Mastodon fork 与上游 `main` 指向同一提交，因此初始 Rinspace 补丁清单为空。未来每个 fork 补丁必须归为“可上游化”“Rinspace 产品行为”或“长期安全行为”，并记录上游基线、变更文件、验证、许可证影响和升级说明。
 

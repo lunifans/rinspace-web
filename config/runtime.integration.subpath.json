@@ -9,7 +9,7 @@
     "description": "A local configuration used to verify demo worker cleanup.",
     "defaultLocale": "en",
     "contactEmail": null,
-    "sourceUrl": "https://github.com/lunifans/rinspace-web",
+    "sourceUrl": "https://github.com/rinspacehq/rinspace-web",
     "legalEntity": null,
     "filings": { "icp": null, "publicSecurity": null },
     "brand": {

@@ -110,7 +110,7 @@ npm --version
 `node --version` should start with `v22.`. Next, clone the repository and enter it:
 
 ```bash
-git clone https://github.com/lunifans/rinspace-web.git
+git clone https://github.com/rinspacehq/rinspace-web.git
 cd rinspace-web
 ```
 
@@ -241,7 +241,7 @@ On Ubuntu you may keep using `sudo docker compose ...`. To run it without `sudo`
 After installation, `docker compose version` should print a version. Clone this repository, enter it, and start the zero-credential root demo on loopback port 8080:
 
 ```bash
-git clone https://github.com/lunifans/rinspace-web.git
+git clone https://github.com/rinspacehq/rinspace-web.git
 cd rinspace-web
 docker compose version
 docker compose up --build
@@ -298,7 +298,7 @@ The runtime is UID/GID 1000, listens on 8080, drops all Linux capabilities, uses
 If command-line setup is unfamiliar, open the destination directory in Codex and paste this prompt. It defaults to a local-only demo and selects Docker or Node/pnpm from observed facts. Administrator, production, domain, credential, and public-network operations require your confirmation.
 
 ```text
-Act as the Rinspace Web deployment assistant. Deploy https://github.com/lunifans/rinspace-web on this machine until I can open it in a browser and its health checks pass. Default to a zero-credential demo reachable only from this machine: prefer existing Docker, otherwise use Node.js 22.x and pnpm 9.7.0. Do not assume that I know Git, Node.js, pnpm, or Docker.
+Act as the Rinspace Web deployment assistant. Deploy https://github.com/rinspacehq/rinspace-web on this machine until I can open it in a browser and its health checks pass. Default to a zero-credential demo reachable only from this machine: prefer existing Docker, otherwise use Node.js 22.x and pnpm 9.7.0. Do not assume that I know Git, Node.js, pnpm, or Docker.
 
 First read AGENTS.md, README.md, CONTRIBUTING.md, and package.json. Then perform read-only discovery of the OS, CPU, shell, required tools, ports 5173/8080, and worktree status. Clone the official repository if absent; if present, verify its remote. Do not pull, reset, clean, switch branches, overwrite changes, or discard work on your own.
 

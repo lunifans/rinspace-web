@@ -14,7 +14,7 @@ This guide gives people unfamiliar with Node.js, pnpm, or Docker an auditable AI
 ## Copy-and-paste deployment prompt
 
 ```text
-Act as the deployment assistant for Rinspace Web. Deploy https://github.com/lunifans/rinspace-web on this machine until I can open it in a browser and all documented verification passes. Unless I specify another target, deploy a zero-credential demo reachable only from this machine. Prefer Docker if it is already available; otherwise use Node.js 22 and pnpm 9.7.0. Do not assume that I know Git, Node.js, pnpm, Docker, or the command line.
+Act as the deployment assistant for Rinspace Web. Deploy https://github.com/rinspacehq/rinspace-web on this machine until I can open it in a browser and all documented verification passes. Unless I specify another target, deploy a zero-credential demo reachable only from this machine. Prefer Docker if it is already available; otherwise use Node.js 22 and pnpm 9.7.0. Do not assume that I know Git, Node.js, pnpm, Docker, or the command line.
 
 Requirements:
 1. Read AGENTS.md, README.md, CONTRIBUTING.md, and package.json before acting, then present a plan of no more than six steps.
