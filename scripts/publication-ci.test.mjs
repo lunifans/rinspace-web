@@ -110,6 +110,10 @@ test("pull-request workflows are read-only and cannot consume repository secrets
   );
   assert.match(workflows["release.yml"], /^\s{10}pnpm test$/m);
   assert.doesNotMatch(workflows["release.yml"], /pnpm test -- --pool/);
+  assert.match(
+    workflows["release.yml"],
+    /pnpm check:i18n:bundles\n\s{10}pnpm build:world-release -- --out world-release\n\s{10}pnpm package/,
+  );
 });
 
 test("every pnpm command used by public workflows is declared", () => {
@@ -127,6 +131,11 @@ test("every pnpm command used by public workflows is declared", () => {
     .filter((name) => typeof packageJson.scripts?.[name] !== "string")
     .sort();
   assert.deepEqual(missing, []);
+  assert.match(
+    packageJson.scripts.build,
+    /^pnpm build:world-shell && /,
+    "a fresh checkout must build workspace packages before the application",
+  );
 });
 
 test("public CI covers source, contract, dependency, coverage, browser, accessibility, and package gates", () => {

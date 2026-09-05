@@ -102,6 +102,7 @@ jobs:
         run: |
           pnpm build
           pnpm check:i18n:bundles
+          pnpm build:world-release -- --out world-release
           pnpm package -- --config config/runtime.demo.json --out package-release --base-path /
           pnpm test:static-package
           pnpm check:vite-artifact -- --core build --package package-release
@@ -115,7 +116,6 @@ jobs:
           mkdir -p release
           tar --sort=name --mtime="@${SOURCE_DATE_EPOCH}" --owner=0 --group=0 --numeric-owner -C package-release -cf - . | gzip -n > "release/rinspace-web-${VERSION}.tar.gz"
           pnpm generate:sbom -- --output "release/rinspace-web-${VERSION}.spdx.json"
-          pnpm build:world-release -- --out world-release
           cp world-release/rinspace-world-shell-*.tgz release/
           cp world-release/rinspace-world-routes-*.json release/
           cp world-release/rinspace-world-release-*.spdx.json release/
