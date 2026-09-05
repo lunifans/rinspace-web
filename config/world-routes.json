@@ -1,6 +1,6 @@
 {
   "schemaVersion": "rinspace-world-route-source/v1",
-  "contractVersion": "1.0.1",
+  "contractVersion": "1.0.2",
   "manifestGuard": {
     "routeCount": 85,
     "orderedPathSha256": "sha256:eb3e44e77f8585e984f718d905315957cd1d57ed45e5f5635022f211b198ad0b"
@@ -113,6 +113,51 @@
       "priority": 115,
       "owners": ["mastodon"],
       "anonymousPolicy": "runtime-policy",
+      "flip": "none"
+    },
+    {
+      "id": "service.mastodon-sounds",
+      "pattern": "/sounds/*",
+      "kind": "service",
+      "priority": 1151,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "public",
+      "flip": "none"
+    },
+    {
+      "id": "service.mastodon-default-avatars",
+      "pattern": "/avatars/*",
+      "kind": "service",
+      "priority": 1152,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "public",
+      "flip": "none"
+    },
+    {
+      "id": "service.mastodon-default-headers",
+      "pattern": "/headers/*",
+      "kind": "service",
+      "priority": 1153,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "public",
+      "flip": "none"
+    },
+    {
+      "id": "service.mastodon-compat-media",
+      "pattern": "/media_attachments/*",
+      "kind": "service",
+      "priority": 1154,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "runtime-policy",
+      "flip": "none"
+    },
+    {
+      "id": "service.mastodon-emoji",
+      "pattern": "/emoji/*",
+      "kind": "service",
+      "priority": 1155,
+      "owners": ["mastodon"],
+      "anonymousPolicy": "public",
       "flip": "none"
     },
     {

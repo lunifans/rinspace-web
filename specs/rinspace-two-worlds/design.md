@@ -229,6 +229,12 @@ handle 只是当前个人主页入口，改名采用可恢复 saga：
 
 过程中账号 ID、followers/following、帖子作者、帖子 ID 和 `/p` 地址不变。失败时保留最后一次完整可读状态并进入对账，不能让两个世界长期显示不同 handle。
 
+### 7.4 资料媒体投影
+
+Rinspace `profiles` 是共享资料权威源。Control Plane 在同一版本化 identity command 中投影 `avatar_data_url → avatarUrl` 和 `cover_url → headerUrl`；Mastodon 分别写入同一 local Account 的 avatar 与 header。
+
+`headerUrl` 采用三态语义：字段缺失表示旧调用方不更新封面，空字符串表示清除封面，受信 HTTPS URL 表示替换封面。非 HTTP(S)、含 userinfo 或不在精确主机白名单中的 URL 必须 fail closed，不得触发任意出网抓取。存量资料使用幂等 `refresh-verified` 前向刷新，不创建新账号。
+
 ## 8. 一张本地关注图
 
 Mastodon 的 Follow/Unfollow、锁定账号审批、计数、列表、通知、静音和屏蔽已形成完整事务边界，因此 Mastodon 是社交关系唯一事实库。Rinspace Control Plane 暴露统一命令与读取入口，但写入最终调用 Mastodon 服务；外层 UI 在成功前显示 pending，不先修改 Gitea 或本地计数伪造成功。
@@ -514,6 +520,13 @@ Mastodon 上游的 [Status entity](https://docs.joinmastodon.org/entities/Status
 - Gitea Follow 迁移/对账演练，数据库备份与前向修复演练；
 - 零联邦出站证明、内容/算法/个人信息门禁 evidence；
 - 三仓精确 commit、双 lock、镜像 digest、SBOM、provenance 与 AGPL 对应源码链接。
+
+### 18.4 里世界加载回归
+
+- 分别保存表世界与里世界的冷启动、同一会话温刷新网络瀑布，记录请求数、传输量、DOMContentLoaded 和 load。
+- 带哈希 `/packs/*` 和公开资料媒体保留 Mastodon 的公开长缓存 header；HTML、API 和鉴权响应继续 `no-store`，禁止跨用户缓存。
+- 同一发布的温刷新必须命中已加载的哈希资源；首页和个人页不得产生 Mastodon 静态资源 404。
+- 生产验收同时检查源站首字节和容器 CPU，避免把资源图或缓存错误误判为 Rails 容量问题。
 
 ## 19. 明确放弃的方案
 
