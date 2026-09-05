@@ -26,6 +26,19 @@ name: Container CI
       - "scripts/**"
       - "src/**"
   workflow_dispatch:
+    inputs:
+      operation:
+        description: Workflow operation
+        required: true
+        default: smoke
+        type: choice
+        options:
+          - smoke
+          - pull-published-image
+      image_digest:
+        description: Published rinspace-web sha256 digest to pull
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -37,7 +50,7 @@ concurrency:
 jobs:
   smoke:
     name: ${{ matrix.architecture }} non-root smoke
-    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    if: (github.event_name != 'workflow_dispatch' || inputs.operation == 'smoke') && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
     runs-on: [self-hosted, linux, x64, rinspace-release-build]
     timeout-minutes: 60
     strategy:
@@ -128,3 +141,32 @@ jobs:
           project="rinspace-web-subpath-${GITHUB_RUN_ID}-${{ matrix.architecture }}"
           docker compose --project-name "$project" --file compose.yaml --file compose.subpath.yaml down --volumes --remove-orphans
           docker image rm "$RINSPACE_WEB_IMAGE" >/dev/null 2>&1 || true
+
+  pull-published-image:
+    name: Pull published image on release runner
+    if: github.event_name == 'workflow_dispatch' && inputs.operation == 'pull-published-image'
+    runs-on: [self-hosted, linux, x64, rinspace-release-build]
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - name: Validate exact digest
+        env:
+          IMAGE_DIGEST: ${{ inputs.image_digest }}
+        run: '[[ "$IMAGE_DIGEST" =~ ^sha256:[0-9a-f]{64}$ ]]'
+      - name: Log in to GHCR
+        uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Pull and verify exact published image
+        env:
+          IMAGE_DIGEST: ${{ inputs.image_digest }}
+          EXPECTED_REVISION: c8c90a366fcff8e82cee621158b94b69118152d8
+        run: |
+          image="ghcr.io/${GITHUB_REPOSITORY,,}@${IMAGE_DIGEST}"
+          docker pull "$image"
+          test "$(docker image inspect --format '{{index .Config.Labels "org.opencontainers.image.revision"}}' "$image")" = "$EXPECTED_REVISION"
+          docker image inspect --format 'pulled={{.Id}} revision={{index .Config.Labels "org.opencontainers.image.revision"}}' "$image"
