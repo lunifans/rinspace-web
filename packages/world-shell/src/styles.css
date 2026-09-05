@@ -95,30 +95,70 @@ html[data-rin-world-transition-fallback="true"] body {
 
 .rin-world-shell {
   --rin-world-shell-height: 64px;
-  --rin-world-shell-ink: #172033;
-  --rin-world-shell-paper: rgba(255, 255, 255, 0.94);
-  --rin-world-shell-rule: rgba(23, 32, 51, 0.12);
-  --rin-world-shell-focus: #315f8c;
-  position: relative;
-  z-index: 60;
+  --rin-world-shell-canvas: #f8fafc;
+  --rin-world-shell-surface: #fff;
+  --rin-world-shell-surface-subtle: #edf2f7;
+  --rin-world-shell-ink: #2c3e50;
+  --rin-world-shell-muted: #4a5568;
+  --rin-world-shell-rule: #cbd5df;
+  --rin-world-shell-accent: #2b577a;
+  --rin-world-shell-focus: #2b577a;
+  --rin-world-shell-font-interface:
+    "IBM Plex Sans", "Rinspace Noto Sans SC", "Noto Sans SC", "PingFang SC",
+    sans-serif;
+  --rin-world-shell-font-editorial:
+    "Rinspace Newsreader", Newsreader, "Rinspace Noto Serif SC",
+    "Noto Serif SC", Georgia, serif;
+  --rin-world-shell-font-mono:
+    "IBM Plex Mono", "Rinspace Code", ui-monospace, monospace;
+  box-sizing: border-box;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--rin-world-shell-height);
   min-height: var(--rin-world-shell-height);
   border-bottom: 1px solid var(--rin-world-shell-rule);
-  background: var(--rin-world-shell-paper);
+  background: color-mix(
+    in srgb,
+    var(--rin-world-shell-canvas) 90%,
+    transparent
+  );
   color: var(--rin-world-shell-ink);
+  font-family: var(--rin-world-shell-font-interface);
+  backdrop-filter: blur(18px);
+}
+
+.rin-world-shell,
+.rin-world-shell *,
+.rin-world-shell *::before,
+.rin-world-shell *::after {
+  box-sizing: border-box;
+}
+
+html[data-color-scheme="dark"] .rin-world-shell {
+  --rin-world-shell-canvas: #0b1218;
+  --rin-world-shell-surface: #111c25;
+  --rin-world-shell-surface-subtle: #0f1921;
+  --rin-world-shell-ink: #e8f0f5;
+  --rin-world-shell-muted: #a8b6c2;
+  --rin-world-shell-rule: #40515e;
+  --rin-world-shell-accent: #83b4d4;
+  --rin-world-shell-focus: #83b4d4;
 }
 
 .rin-world-shell__nav {
   display: grid;
-  grid-template-columns: minmax(180px, auto) minmax(180px, 640px) minmax(
-      180px,
-      auto
+  grid-template-columns: minmax(160px, 1fr) minmax(240px, 420px) minmax(
+      160px,
+      1fr
     );
   align-items: center;
   gap: 16px;
-  width: min(100%, 1600px);
-  min-height: var(--rin-world-shell-height);
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   margin-inline: auto;
-  padding-inline: clamp(12px, 2.4vw, 32px);
+  padding-inline: 28px;
 }
 
 .rin-world-shell__brand,
@@ -129,16 +169,25 @@ html[data-rin-world-transition-fallback="true"] body {
 }
 
 .rin-world-shell__brand {
-  gap: 8px;
+  justify-self: start;
+  gap: 10px;
+  color: var(--rin-world-shell-ink);
+  font-family: var(--rin-world-shell-font-editorial);
+  font-size: 1.35rem;
+  font-weight: 700;
 }
 
 .rin-world-shell__actions {
   justify-content: flex-end;
-  gap: 8px;
+  gap: 10px;
 }
 
 .rin-world-shell__search {
+  position: relative;
+  display: block;
+  width: 100%;
   min-width: 0;
+  justify-self: center;
 }
 
 .rin-world-shell__logo,
@@ -148,22 +197,23 @@ html[data-rin-world-transition-fallback="true"] body {
 }
 
 .rin-world-shell__logo {
-  display: inline-grid;
+  display: grid;
   width: 38px;
   height: 38px;
   flex: 0 0 38px;
   place-items: center;
-  border-radius: 50%;
+  border: 0;
+  background: transparent;
 }
 
 .rin-world-shell__logo-content {
-  display: inline-grid;
-  width: 34px;
-  height: 34px;
+  display: grid;
+  width: 38px;
+  height: 38px;
   place-items: center;
-  overflow: hidden;
-  border: 1px solid var(--rin-world-shell-rule);
-  border-radius: 50%;
+  overflow: visible;
+  border: 0;
+  border-radius: 0;
   font-weight: 760;
 }
 
@@ -174,13 +224,258 @@ html[data-rin-world-transition-fallback="true"] body {
   height: 100%;
 }
 
+html[data-color-scheme="dark"] .rin-world-shell__logo-content > img {
+  filter: invert(1);
+}
+
 .rin-world-shell__wordmark {
   overflow: hidden;
-  font-size: 1.08rem;
-  font-weight: 720;
-  letter-spacing: -0.025em;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.rin-world-shell__search
+  > :is(.rinspace-world-topbar__search, .topbar-search, .search) {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  min-height: 34px;
+  align-items: center;
+  margin: 0;
+  padding: 0 3px 0 10px;
+  border: 1px solid var(--rin-world-shell-rule);
+  border-radius: 12px;
+  background: color-mix(
+    in srgb,
+    var(--rin-world-shell-surface) 78%,
+    transparent
+  );
+}
+
+.rin-world-shell__search
+  > :is(.rinspace-world-topbar__search, .topbar-search)
+  > input:not([type="hidden"]),
+.rin-world-shell__search > .search > .search__input {
+  width: 100%;
+  min-width: 0;
+  min-height: 30px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--rin-world-shell-ink);
+  font-family: var(--rin-world-shell-font-mono);
+  font-size: 0.78rem;
+}
+
+.rin-world-shell__search
+  > :is(.rinspace-world-topbar__search, .topbar-search)
+  > button,
+.rin-world-shell__search > .search > .search__icon-wrapper {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--rin-world-shell-accent);
+  color: #fff;
+}
+
+.rin-world-shell__search > .search > .search__icon-wrapper {
+  position: relative;
+  inset: auto;
+  margin: 0;
+  pointer-events: auto;
+}
+
+.rin-world-shell__search > .search .search__icon {
+  color: #fff;
+}
+
+.rin-world-shell__search > .search .search__icon--open-button {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.rin-world-shell__search > .search > .search__popout {
+  top: calc(100% + 10px);
+  right: 0;
+  left: 0;
+  width: 100%;
+  margin-top: 0;
+  padding: 12px 5px;
+  border: 1px solid var(--rin-world-shell-rule);
+  border-radius: 12px;
+  background: color-mix(
+    in srgb,
+    var(--rin-world-shell-surface) 98%,
+    transparent
+  );
+  color: var(--rin-world-shell-ink);
+  box-shadow: 0 22px 46px rgba(15, 23, 42, 0.17);
+  font-family: var(--rin-world-shell-font-mono);
+  font-size: 0.74rem;
+}
+
+.rin-world-shell__search > .search > .search__popout h4 {
+  margin-bottom: 8px;
+  color: var(--rin-world-shell-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.rin-world-shell__search > .search .search__popout__menu {
+  margin-bottom: 12px;
+}
+
+.rin-world-shell__search > .search .search__popout__menu__message,
+.rin-world-shell__search > .search .search__popout__menu__item {
+  color: var(--rin-world-shell-muted);
+}
+
+.rin-world-shell__search > .search .search__popout__menu__item {
+  border-radius: 8px;
+}
+
+.rin-world-shell__search
+  > .search
+  .search__popout__menu__item:is(:hover, :focus, :active, .selected) {
+  background: var(--rin-world-shell-surface-subtle);
+  color: var(--rin-world-shell-ink);
+}
+
+.rin-world-shell__search > .search .search__popout__menu__item mark {
+  color: var(--rin-world-shell-accent);
+}
+
+.rin-world-shell__actions
+  > :is(.rin-world-shell__action, .rinspace-world-topbar__action),
+.rin-world-shell__theme {
+  position: relative;
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--rin-world-shell-rule);
+  border-radius: 999px;
+  background: var(--rin-world-shell-surface);
+  color: var(--rin-world-shell-ink);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.rin-world-shell__actions
+  > :is(.rin-world-shell__action, .rinspace-world-topbar__action)
+  svg,
+.rin-world-shell__theme svg,
+.rin-world-shell__search svg {
+  width: 18px;
+  height: 18px;
+}
+
+.rin-world-shell__actions
+  > :is(.rin-world-shell__action, .rinspace-world-topbar__action):hover,
+.rin-world-shell__theme:hover,
+.rin-world-shell__account:hover {
+  background: var(--rin-world-shell-surface-subtle);
+  color: var(--rin-world-shell-accent);
+}
+
+.rin-world-shell__account {
+  display: inline-flex;
+  max-width: 168px;
+  height: 34px;
+  align-items: center;
+  gap: 7px;
+  padding: 3px 8px 3px 4px;
+  border: 1px solid var(--rin-world-shell-rule);
+  border-radius: 999px;
+  background: var(--rin-world-shell-surface);
+  color: var(--rin-world-shell-ink);
+  font-family: var(--rin-world-shell-font-mono);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+.rin-world-shell__avatar {
+  display: inline-grid;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--rin-world-shell-rule);
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 700;
+}
+
+.rin-world-shell__avatar > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.rin-world-shell__account-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rin-world-shell__sign-in {
+  border: 0;
+  background: transparent;
+  color: var(--rin-world-shell-ink);
+  font-family: var(--rin-world-shell-font-mono);
+  font-size: 0.86rem;
+  text-decoration: underline;
+  text-decoration-color: color-mix(
+    in srgb,
+    var(--rin-world-shell-accent) 32%,
+    transparent
+  );
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  white-space: nowrap;
+}
+
+.rin-world-shell__sign-in:hover {
+  color: var(--rin-world-shell-accent);
+}
+
+.rin-world-shell__badge {
+  position: absolute;
+  top: -6px;
+  right: -7px;
+  display: grid;
+  min-width: 18px;
+  height: 18px;
+  place-items: center;
+  padding: 0 5px;
+  border: 1px solid var(--rin-world-shell-canvas);
+  border-radius: 999px;
+  background: var(--rin-world-shell-accent);
+  color: #fff;
+  font-family: var(--rin-world-shell-font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
 }
 
 .rin-world-shell :is(a, button, input, select, textarea):focus-visible {
@@ -188,15 +483,36 @@ html[data-rin-world-transition-fallback="true"] body {
   outline-offset: 3px;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 620px) {
   .rin-world-shell {
-    --rin-world-shell-height: 56px;
+    --rin-world-shell-height: 54px;
   }
 
   .rin-world-shell__nav {
     grid-template-columns: minmax(0, 1fr) auto auto;
+    justify-items: stretch;
     gap: 8px;
-    padding-inline: max(10px, env(safe-area-inset-left));
+    padding: 8px max(10px, env(safe-area-inset-right)) 8px
+      max(10px, env(safe-area-inset-left));
+  }
+
+  .rin-world-shell__brand {
+    min-width: 0;
+    max-width: 100%;
+    gap: 6px;
+    font-size: 1.08rem;
+  }
+
+  .rin-world-shell__logo,
+  .rin-world-shell__logo-content {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .rin-world-shell__wordmark {
+    max-width: 96px;
+    font-size: 0.9rem;
   }
 
   .rin-world-shell__search {
@@ -207,12 +523,86 @@ html[data-rin-world-transition-fallback="true"] body {
   .rin-world-shell__actions {
     grid-column: 3;
     grid-row: 1;
-    max-width: 42vw;
+    max-width: min(38vw, 156px);
+    gap: 8px;
     overflow-x: auto;
+    overflow-y: visible;
     scrollbar-width: none;
   }
 
   .rin-world-shell__actions::-webkit-scrollbar {
+    display: none;
+  }
+
+  .rin-world-shell__search
+    > :is(.rinspace-world-topbar__search, .topbar-search, .search) {
+    width: 36px;
+    min-height: 36px;
+    padding: 0;
+    border-radius: 999px;
+  }
+
+  .rin-world-shell__search > .search.mobile-search-open {
+    position: fixed;
+    top: 62px;
+    right: 10px;
+    left: 10px;
+    z-index: 110;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 34px;
+    width: calc(100vw - 20px);
+    max-width: none;
+    min-height: 44px;
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+  .rin-world-shell__search
+    > :is(.rinspace-world-topbar__search, .topbar-search)
+    > input:not([type="hidden"]),
+  .rin-world-shell__search > .search > .search__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .rin-world-shell__search > .search.mobile-search-open > .search__input {
+    position: static;
+    width: 100%;
+    height: auto;
+    min-height: 34px;
+    padding: 0 6px;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .rin-world-shell__search
+    > :is(.rinspace-world-topbar__search, .topbar-search)
+    > button,
+  .rin-world-shell__search > .search > .search__icon-wrapper {
+    width: 34px;
+    height: 34px;
+    flex-basis: 34px;
+  }
+
+  .rin-world-shell__search > .search.mobile-search-open > .search__popout {
+    top: calc(100% + 8px);
+    right: 0;
+    left: 0;
+    width: 100%;
+    max-height: min(58vh, 420px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .rin-world-shell__account {
+    max-width: 42px;
+    padding-right: 7px;
+  }
+
+  .rin-world-shell__account-name {
     display: none;
   }
 }

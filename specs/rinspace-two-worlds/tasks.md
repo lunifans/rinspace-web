@@ -229,6 +229,14 @@
   - 实际结果：2026-09-06 串行发布公开 `rinspace-web` v0.1.7（提交 `67b37241f77b422f60762875c1a1fab69af47d15`）、路由契约 1.0.4 与 `world-shell` 0.1.7；正式 Release 流水线成功并附带校验和、SBOM 和源码制品。Mastodon 使用提交 `aae7ef7c1df47c486b5fbd720416ac233577eb72` 的 `rinspace-mastodon:release-aae7ef7c1`，私有 bridge/control/gateway 使用提交 `703ebea8d43e9c7d9730140ea64be78a46c23e98` 的 `rinspace-private:release-703ebea`，Streaming 保持不变。Status 本地判定、favourite/bookmark 请求、`/api/web/*`、Mastodon 产品页面、根目录 loading/oops/embed/badge/Web Push 资源均已修复；除 `/p/` 外的里世界产品页规范化为 `world=inner`。生产入口模式已从易在重建时复发 404 的临时覆盖固化为 `public`；实例标题、favicon/app icon 和源码链接改为 Rinspace 资产与 fork。公开类型检查、生产构建、世界路由与可安装发布包测试通过；Mastodon 类型检查、8 个路径单测、27 个请求示例与增量构建通过；私有 Go 全量测试和网关 19 个测试通过。线上页面、API 和品牌资源回归无 500，`/api/web/settings` 未认证写入由错误 404 变为预期 422，已删除 `/p/398` 和未知路径继续返回 404。历史出版项目缺失和排队记录缺失渲染快照不再误报 503，分别稳定返回 204 与 `reconciliation_required`；社区写入、推荐和浏览量灰度开关已固化开启，生产冒烟确认 favourite、bookmark、view 和 recommended timeline 均为 200，推荐与本地 Explore 返回真实帖子。保留 `release-fa8df896d`、`release-28b3cb21c`、`release-2e7126b` 和 `release-f5706a3` 作为分层回滚制品。
   - _Requirements: R1, R3, R5, R10, R12, R13, R14, R15, R19_
 
+- [ ] 28. 让里世界导航复用表世界视觉壳层与 Mastodon 原生能力
+  - 仅把当前生产表世界导航作为视觉基线，不替换或修改表世界运行代码；共享尺寸、留白、品牌、搜索框、控件和响应式布局由公开 `world-shell` 维护。
+  - Mastodon adapter 注入原生搜索、里世界通知未读数、发布入口、登录和账号头像，不再保留假搜索或第二套侧栏搜索。
+  - 搜索下拉、浅色/深色导航和交互态使用 Rinspace 蓝灰色 token，不让 Mastodon 紫色品牌变量穿透共享导航。
+  - 串行完成公开包安装验证、Mastodon 类型/前端测试、生产构建、桌面/移动浏览器几何对照和线上真实搜索/通知/身份回归。
+  - 发布 `world-shell` 0.1.8 与匹配的 Mastodon 不可变镜像及 AGPL 对应源码；表世界继续锁定既有生产制品，可独立回滚 Mastodon。
+  - _Requirements: R1, R2, R3, R5, R6, R14, R19_
+
 ## 4. 完成定义
 
 本规格只有在以下条件同时满足时才算完成：

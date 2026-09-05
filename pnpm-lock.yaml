@@ -89,7 +89,7 @@ importers:
         specifier: 1.2.8
         version: 1.2.8(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       '@rinspace/world-shell':
-        specifier: workspace:0.1.7
+        specifier: workspace:0.1.8
         version: link:packages/world-shell
       classnames:
         specifier: ^2.3.1

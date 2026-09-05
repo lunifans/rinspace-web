@@ -2,6 +2,11 @@
 
 All notable changes to `@rinspace/world-shell` are documented here.
 
+## 0.1.8 - 2026-09-06
+
+- Make the inner-world shell match the established outer-world navigation dimensions, typography, surfaces, controls, and responsive search treatment.
+- Add namespaced light/dark Rinspace theme tokens so Mastodon consumer styles cannot reintroduce its purple brand accent into the shared navigation.
+
 ## 0.1.7 - 2026-09-06
 
 - Add explicit inner-runtime ownership for Mastodon's root loading, error, embed, badge, and Web Push assets.

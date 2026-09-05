@@ -1,6 +1,6 @@
 {
   "name": "@rinspace/world-shell",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Shared world routing and topbar shell for Rinspace Web runtimes",
   "type": "module",
   "license": "AGPL-3.0-only",

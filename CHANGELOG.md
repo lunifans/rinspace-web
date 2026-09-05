@@ -2,6 +2,11 @@
 
 All notable changes to Rinspace Web will be documented in this file. Releases follow Semantic Versioning once the legal release gate is approved.
 
+## 0.1.8 - 2026-09-06
+
+- Align the inner-world navigation shell with the established outer-world header without changing the outer runtime.
+- Let the Mastodon adapter supply its native search, inner notification state, session identity, publishing route, and Rinspace light/dark palette through the shared shell slots.
+
 ## 0.1.7 - 2026-09-06
 
 - Route Mastodon's root loading, error, embed, badge, and Web Push assets to the inner runtime so transient UI states cannot fall through to the outer application with 404 responses.
