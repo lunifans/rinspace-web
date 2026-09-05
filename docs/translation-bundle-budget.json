@@ -5,19 +5,19 @@
     "totalFeatureGzipBytes": 73728
   },
   "actual": {
-    "totalFeatureGzipBytes": 69581,
+    "totalFeatureGzipBytes": 69884,
     "chunks": [
       {
         "namespace": "discovery",
-        "file": "discovery.C-A_M6J7.chunk.js",
-        "bytes": 10917,
-        "gzipBytes": 3460
+        "file": "discovery.C3dCyvkZ.chunk.js",
+        "bytes": 11299,
+        "gzipBytes": 3601
       },
       {
         "namespace": "discovery",
-        "file": "discovery.C-zHxHhh.chunk.js",
-        "bytes": 10707,
-        "gzipBytes": 3949
+        "file": "discovery.DG6I9Hsc.chunk.js",
+        "bytes": 11046,
+        "gzipBytes": 4111
       },
       {
         "namespace": "reader",
