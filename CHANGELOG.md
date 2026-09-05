@@ -2,7 +2,7 @@
 
 All notable changes to Rinspace Web will be documented in this file. Releases follow Semantic Versioning once the legal release gate is approved.
 
-## Unreleased
+## 0.1.1 - 2026-09-05
 
 - Added the versioned two-world route contract, shared `world-shell`, cross-document turn transition, and quiet outer-world home.
 - Added a fail-closed synthetic inner-world contract demo with stable `/p/:id/:slug` resolution and automated browser coverage.
@@ -11,4 +11,4 @@ All notable changes to Rinspace Web will be documented in this file. Releases fo
 - Added deterministic guest/member demo data with offline network isolation.
 - Added static-package, non-root container, public CI, SBOM, checksum, and provenance release contracts.
 
-No public release has been authorized. See `config/release-policy.json` for the fail-closed release gate.
+Release creation remains an explicit maintainer operation; `config/release-policy.json` only defines artifact readiness.

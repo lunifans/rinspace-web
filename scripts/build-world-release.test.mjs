@@ -71,7 +71,7 @@ test("world release is checksummed and installable by a clean public consumer", 
     );
     execFileSync(
       "corepack",
-      ["pnpm", "install", "--offline", "--ignore-scripts"],
+      ["pnpm", "install", "--ignore-scripts"],
       {
         cwd: consumer,
         stdio: "pipe",
